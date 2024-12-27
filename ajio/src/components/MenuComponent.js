@@ -15,15 +15,15 @@ const NavbarWithHoverMenu = () => {
   const handleCategoryClick = (categoryKey) => {
     setActiveCategory((prevCategory) => 
       prevCategory === categoryKey ? null : categoryKey
-    ); // Toggle the active category on click
+    );  
   };
 
   const handleMouseEnter = (categoryKey) => {
-    setActiveCategory(categoryKey); // Set the active category on hover
+    setActiveCategory(categoryKey);  
   };
 
   const handleMouseLeave = () => {
-    setActiveCategory(null); // Reset when mouse leaves the category area
+    setActiveCategory(null);  
   };
 
   return (

@@ -21,57 +21,66 @@ const QuickviewSwiperComponent = ({ innerData, marginValue, height }) => {
   return (
     <Controls.Grid container justifyContent="center">
 
-      <Controls.Grid item xs={3} sx={{ marginY: "auto", display: { xs: "none", md: "block" } }}>
-        <Swiper
-          direction="vertical"
-          autoplay={{
-            delay: 3000, 
-            disableOnInteraction: false, 
+<Controls.Grid
+  item
+  xs={3}
+  sx={{
+    display: {xs:"none",md:'flex'},  
+    flexDirection: 'column',   
+    justifyContent: 'center',  
+    alignItems: 'center',  
+    height: '100%',   
+  }}
+>
+  <Swiper
+    direction="vertical"
+    autoplay={{
+      delay: 3000,
+      disableOnInteraction: false,
+    }}
+    spaceBetween={1}
+    slidesPerView={4}
+    modules={[Navigation, Autoplay]}
+    style={{
+      height: '72vh',  
+      width: '100%',
+      alignItems: 'center' ,
+      marginY: 'auto',   
+      justifyContent: 'center',
+    }}
+  >
+    {innerData?.innerimages.map((item, index) => (
+      <SwiperSlide key={index} onClick={() => handleThumbnailClick(index)}>
+        <Controls.CardMedia
+          component="img"
+          src={item}
+          alt={`Thumbnail ${index + 1}`}
+          sx={{
+            width: '60px',
+            height: '80px',
+            border: '1px solid lightgray',
+            position: 'relative',
+            objectFit: 'cover',
+          
           }}
-          spaceBetween={10}
-          slidesPerView={4}
-          modules={[Navigation, Autoplay]}
-          style={{
-            height: "80vh",
-            width: "100%",
-            alignItems: "center",
-            marginY: "auto",
-          }}
-        >
-          {innerData?.innerimages.map((item, index) => (
-            <SwiperSlide key={index} onClick={() => handleThumbnailClick(index)}>
-              <Controls.CardMedia
-                component="img"
-                src={item}
-                alt={`Thumbnail ${index + 1}`}
-                sx={{
-                  width: "60px",
-                  height: "80px",
-                  border: "1px solid lightgray",
-                  position: "relative",
-                  objectFit: "cover",
-                }}
-              />
+        />
+        {selectedIndex === index && (
+          <Controls.Box
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '60px',
+              height: '80px',
+              backgroundColor: 'rgba(255, 255, 255, 0.5)',
+            }}
+          />
+        )}
+      </SwiperSlide>
+    ))}
+  </Swiper>
+</Controls.Grid>
 
-              {selectedIndex === index && (
-                <Controls.Box
-                  sx={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "60px",
-                    height: "80px",
-                    backgroundColor: "rgba(255, 255, 255, 0.5)",
-                  }}
-                />
-              )}
-            </SwiperSlide>
-          ))}
-        </Swiper>
-
-
-
-      </Controls.Grid>
 
 
       <Controls.Grid
@@ -86,7 +95,7 @@ const QuickviewSwiperComponent = ({ innerData, marginValue, height }) => {
             delay: 2000, 
             disableOnInteraction: false, 
           }}
-          loop={true  }
+          loop={true}
           onSwiper={(swiper) => {
             horizontalSwiperRef.current = swiper;
           }}
@@ -131,7 +140,6 @@ const QuickviewSwiperComponent = ({ innerData, marginValue, height }) => {
             zIndex: 10,
             padding: 1,
             cursor: "pointer",
-            // "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.9)" },
           }}
         >
           <Controls.ChevronLeftIcon />
@@ -147,7 +155,6 @@ const QuickviewSwiperComponent = ({ innerData, marginValue, height }) => {
             zIndex: 10,
             padding: 1,
             cursor: "pointer",
-            // "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.9)" },
           }}
         >
           <Controls.ChevronRightIcon />

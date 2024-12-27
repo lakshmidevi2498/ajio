@@ -1,15 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React, { useEffect, useRef, useState } from 'react'; 
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import { Pagination, Autoplay, Navigation } from 'swiper/modules';
-import Controls from '../commons/Controls';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import 'swiper/css/navigation'; 
+import Controls from '../commons/Controls'; 
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import QuickViewComponent from './QuickViewComponent';
+import { useDispatch, useSelector } from 'react-redux'; 
 import { loadProductsDataInitiate } from '../redux/actions/loadProductsAction';
 import { handleRecentView } from './GlobalFunction';
 import InnerSwiperComponent from './InnerSwiperComponent';
@@ -17,9 +12,7 @@ import InnerSwiperComponent from './InnerSwiperComponent';
 const SimilarProductsComponent = ({innerproductsdata}) => {
     console.log("SimilarProductsComponent",innerproductsdata)
 
-    const swiperRef = useRef(null);
-    const [images,setImages] = useState([])
-    const [hoveredIndex, setHoveredIndex] = useState(null)
+    const swiperRef = useRef(null); 
     const [quickView, setQuickView] = useState(false)
     const [open, setOpen] = React.useState(false);
     const [innerData, setinnerData] = useState([])

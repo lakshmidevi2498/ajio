@@ -4,17 +4,32 @@ import jwt from 'jsonwebtoken';
 
 const userSchema = new mongoose.Schema({
   name: { type: String },
-  email: { type: String, unique: true, sparse: true }, // Add sparse: true
+  provider: { type: String, enum: ['phone', 'google', 'facebook','admin'], required: true },
+  fname: { type: String },
+  lname: { type: String },
+  sname: { type: String },
+  dob: { type: String },
+  gender: { type: String },
+  number:{type:String},
+  
+  email: { type: String, default: null, sparse: true },
+  password: { type: String },
   phoneNumber: { type: String },
   googleId: { type: String, unique: true, sparse: true },
   facebookId: { type: String, unique: true, sparse: true },
-  provider: { type: String, enum: ['phone', 'google', 'facebook'], required: true },
+
   avatar: { type: String },
   createdAt: { type: Date, default: Date.now },
   role: { type: String, enum: ['admin', 'user'], default: 'user' },
 });
 
-
+userSchema.pre('save', async function (next) {
+  if (this.provider === 'phone') {
+    // If authenticating via phone, unset email before saving
+    this._unset('email'); 
+  }
+  next();
+});
  
 userSchema.pre('save', async function (next) {
   if (this.isModified('password') && this.password) {
@@ -37,3 +52,41 @@ userSchema.methods.generateAuthToken = function () {
 };
 
 export default mongoose.model('User', userSchema);
+
+
+
+// phone:{
+//   phoneNumber: { type: String },
+//   mobileUid:{type: String,unique: true, sparse: true},
+//   name: { type: String },
+//   email: { type: String },
+//   fname: { type: String },
+//   lname: { type: String },
+//   sname: { type: String },
+//   dob: { type: String },
+//   gender: { type: String },
+//   number:{type:String},
+// },
+// facebook:{
+//   facebookId: { type: String, unique: true, sparse: true },
+//   name: { type: String },
+//   avatar: { type: String },
+//   email: { type: String },
+//   fname: { type: String },
+//   lname: { type: String },
+//   sname: { type: String },
+//   dob: { type: String },
+//   gender: { type: String },
+//   number:{type:String},
+// },
+// google:{
+//   name: { type: String },
+//   avatar: { type: String },
+//   fname: { type: String },
+//   lname: { type: String },
+//   sname: { type: String },
+//   dob: { type: String },
+//   gender: { type: String },
+//   number:{type:String},
+//   googleId: { type: String, unique: true, sparse: true },
+// },

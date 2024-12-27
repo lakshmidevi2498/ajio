@@ -1,8 +1,6 @@
 import React ,{useEffect, useState}from 'react'
 import Controls from '../commons/Controls'
 import CategoriesTwoComponent from './CategoriesTwoComponent';
-import GridToggleComponent from './CategoriesTwoComponent';
-import axios from 'axios'
 import {useDispatch ,useSelector} from 'react-redux'
 import { loadProductsDataInitiate } from '../redux/actions/loadProductsAction';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -29,8 +27,7 @@ const [checkedCategory, setCheckedCategory] = useState(null);
 
   useEffect(() => {
     const pdata = productData?.data || [];
-    // localStorage.setItem('categoryId',categoryId)
-    // localStorage.setItem('subcategoryId',subcategoryId)
+  
     const filtered = pdata.filter(
         (item) =>
             item.categories === categoryId &&
@@ -72,16 +69,16 @@ const content5 = [
       } else if (type === "Categories") {
         setCheckedCategory(labelName);
       }
-      
-      // Navigate to the new dynamic route with categoryId and the updated checkedLabel
+   
       navigate(`/categories/${categoryId}/${labelName}`);
     };
     const dataToLoop = categoryId === 'men' ? content : categoryId === 'women' ? content2 : categoryId === 'kid' ?   content3 :categoryId === 'beauty' ?  content4 : categoryId === "Home&Kitchen" ? content5 : [];
-
+  
+    
   return (
     <>
     <Controls.Grid container justifyContent="center">
-        <Controls.Grid item xs={10} sx={{}} mt={{xs:18,sm:12}}>
+        <Controls.Grid item xs={11} sm={11} md={9.5} lg={9.5} xl={9}sx={{}} mt={{xs:10,sm:12}}>
            <Controls.Grid item xs={12}>
             <Controls.Typography variant='caption1' sx={{fontSize:"12px",}}>Home / {categoryId} / {subcategoryId}</Controls.Typography>
            </Controls.Grid>
@@ -98,7 +95,8 @@ const content5 = [
                     display: 'flex',
                     justifyContent: 'flex-start',
                     alignItems: 'center',
-                    fontSize:{xs:"12px",sm:"20px"}
+                    fontSize:{xs:"12px",sm:"20px"}, 
+                    border:{xs:"1px solid lightgray",sm:"none"}
                   }}
                 >
                 Refined by
@@ -108,7 +106,7 @@ const content5 = [
                 {dataToLoop.map((item,index)=>(
 
                 <>
-                <Controls.Grid item key={index} sx={{display:"flex",justifyContent:"space-between"}}>
+                <Controls.Grid item key={index} sx={{display:"flex",justifyContent:"space-between"}} >
                 <Controls.Grid item >
                     <Controls.Grid item sx={{display:"flex"}} >
                         <Controls.MinimizeIcon fontSize='small'/>
@@ -118,13 +116,28 @@ const content5 = [
                         >{item.title}</Controls.Typography>
                     
                     </Controls.Grid>
-                    {item.name.map((itm, indx) => (
-  <Controls.Grid item sx={{ display: "flex" }} key={indx}>
+                    {item.name.map((itm, indx) =>{
+                        console.log('itm.nm:', itm.nm);
+                        console.log('categoryId:', categoryId);
+                        console.log('subcategoryId:', subcategoryId);
+                        console.log('Checked Condition:', 
+                          (item.title === "Gender" && itm.nm === categoryId) ||
+                          (item.title === "Categories" && itm.nm === subcategoryId)
+                        );
+                        
+                    
+                    return (
+                      
+  <Controls.Grid item sx={{ display: "flex" }}key={`${item.title}-${indx}`}>
     <Controls.Checkbox
       {...label}
       checked={
-        (item.title === "Gender" && itm.nm === categoryId) || 
-        (item.title === "Categories" && itm.nm === subcategoryId)
+        (item.title === "Gender" && 
+          itm.nm.trim().toLowerCase() === 
+            decodeURIComponent(categoryId).trim().toLowerCase()) ||
+        (item.title === "Categories" && 
+          itm.nm.trim().toLowerCase() === 
+            decodeURIComponent(subcategoryId).trim().toLowerCase())
       }
       onChange={() => handleCheckboxChange(itm.nm, item.title)}
     />
@@ -132,7 +145,9 @@ const content5 = [
       {itm.nm} ({itm.count})
     </Controls.Typography>
   </Controls.Grid>
-))}
+)
+                    }
+)}
 
   
 
@@ -166,13 +181,14 @@ const content5 = [
                  <Controls.Divider/>
                  </>
                 ))}
+                
                 {cnt.map((txt, index) => (
     < >
       <Controls.Grid key={index}
         item gap={1}
         onMouseEnter={() => setHoveredIndex(index)} 
         onMouseLeave={() => setHoveredIndex(null)} 
-        sx={{ display: "flex", alignItems: "center", cursor: "pointer", justifyContent: "space-between" }}p={2}
+        sx={{ display: {xs:"none",sm:"flex"}, alignItems: "center", cursor: "pointer", justifyContent: "space-between" }}p={2}
       >
         <Controls.Grid item sx={{display:"flex",}}>
           <Controls.AddIcon  fontSize='small' sx={{marginTop:.5}}/>
@@ -203,7 +219,7 @@ const content5 = [
           </Controls.Grid>
         )}
       </Controls.Grid>
-      <Controls.Divider />
+      <Controls.Divider sx={{display:{xs:"none",sm:"block"}}}/>
     </>
   ))}
               
@@ -276,8 +292,7 @@ const content5 = [
            
             </Controls.Grid>
             <Controls.Grid item xs={12}sm={9 } sx={{}}>
-                <CategoriesTwoComponent/>
-                {/* <GridToggleComponent/> */}
+                <CategoriesTwoComponent/> 
             </Controls.Grid>
            </Controls.Grid>
         </Controls.Grid>

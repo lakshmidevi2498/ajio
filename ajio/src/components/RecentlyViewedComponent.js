@@ -93,7 +93,7 @@ const RecentlyViewedComponent = () => {
         />
       </Controls.Grid>
       <Controls.Grid item my={4} sx={{justifyContent:"center",alignItems:"center"}}>
-      <InnerSwiperComponent data ={viewed}/>
+      <InnerSwiperComponent data ={viewed} />
       </Controls.Grid>
 
     </Controls.Grid>

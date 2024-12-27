@@ -40,7 +40,61 @@ body {
   }
 }
 
+.swiper-pagination-bullet {
+  width: 20px; /* Adjust width as needed */
+  height: 2px; /* Adjust height as needed */
+  background-color: #ccc; /* Adjust color as needed */
+  /* border-radius: 0;  */
+  margin: 0 5px; 
+}
 
 
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1.154;
+  position: relative;
+  background: conic-gradient(from 120deg at 50% 64%,#0000, #25b09b 1deg 120deg,#0000 121deg);
+  animation: l27-0 1.5s infinite cubic-bezier(0.3,1,0,1);
+}
+.loader:before,
+.loader:after {
+  content:'';
+  position: absolute;
+  inset:0;
+  background:inherit;
+  transform-origin: 50% 66%;
+  animation: l27-1 1.5s infinite;
+}
+.loader:after {
+  --s:-1;
+}
+@keyframes l27-0 {
+   0%,30%      {transform: rotate(0)}
+   70%         {transform: rotate(120deg)}
+   70.01%,100% {transform: rotate(360deg)}
+}
+@keyframes l27-1 {
+   0%      {transform: rotate(calc(var(--s,1)*120deg)) translate(0)}
+   30%,70% {transform: rotate(calc(var(--s,1)*120deg)) translate(calc(var(--s,1)*-5px),10px)}
+   100%    {transform: rotate(calc(var(--s,1)*120deg)) translate(0)}
+}
 
+.swiper-pagination-bullet {
+  border-radius: 0 !important;
+  width: 30px !important;
+  height: 3px !important;
+  background-color: #fff !important;
+  opacity: 0.5 !important;
+  background-image: linear-gradient(to right, #fff 50%, transparent 50%) !important;
+  background-size: 10px 2px !important;
+  position: 'relative '!important;
+  z-index: 1;
+ 
+}
 
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  background-image: linear-gradient(to right, #fff 100%, transparent 0%) !important;
+  background-size: 20px 2px !important;
+}

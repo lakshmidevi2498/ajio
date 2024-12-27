@@ -20,11 +20,12 @@ export const mobileLoginError = (error) => (
     payload:error
 })
 
-export const mobileLoginInitiate = (phoneNumber) => {
+export const mobileLoginInitiate = (phoneNumber,providerId,uId) => {
+  console.log("phoneNumber",phoneNumber,providerId)
     return async (dispatch)=>{
         dispatch(mobileLoginStart())
         try {
-          const mobileLogindata = await mobileLoginApi(phoneNumber)
+          const mobileLogindata = await mobileLoginApi(phoneNumber,providerId,uId)
           dispatch(mobileLoginSuccess(mobileLogindata))
         //   navigate('/')
   

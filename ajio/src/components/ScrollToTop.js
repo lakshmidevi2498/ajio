@@ -35,12 +35,11 @@ const ScrollToTop = () => {
       {showButton && (
         <Fab
           color="disable"
-          size="small"
-        //   variant="extended"
+          size="small" 
           onClick={scrollToTop}
           sx={{
             position: "fixed",
-            bottom: "4rem",
+            bottom: "4.5rem",
             right: "2rem",
             zIndex: 1000,
             padding:3,

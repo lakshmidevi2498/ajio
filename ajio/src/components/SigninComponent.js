@@ -21,17 +21,20 @@ const style = {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: "100%",
-    maxWidth: { md: "800px", lg: "380px", xxl: "1200px" },
+    maxWidth: { xs:"280px",sm:"500px",md: "450px", lg: "380px", xl: "500px" },
     height: "auto",
     maxHeight: "90vh",
     bgcolor: "background.paper",
     border: "2px solid lightgray",
     boxShadow: 24,
-    p: 4,
+    p: {xs:1,sm:4},
     overflowY: "auto",
+    outline:"none",
+    
 };
 
 const SigninComponent = ({ open, handleClose ,setOpen}) => {
+    
     const [phoneNumber , setPhoneNumber] = useState(null)
     const [modalOpen,setModalOpen] = useState(false)
     const auth = getAuth();
@@ -46,44 +49,7 @@ const SigninComponent = ({ open, handleClose ,setOpen}) => {
     }
 
 
-    // const setupRecaptcha = (recaptchaContainerId, auth) => {
-    //     if (!window.recaptchaVerifier) {
-    //         const container = document.getElementById(recaptchaContainerId);
-    //         if (!container) {
-    //             console.error("reCAPTCHA container not found");
-    //             return null;
-    //         }
-    
-    //         try {
-    //             window.recaptchaVerifier = new RecaptchaVerifier(
-    //                 recaptchaContainerId,
-    //                 {
-    //                     size: "invisible",
-    //                     callback: (response) => {
-    //                         console.log("reCAPTCHA solved:", response);
-    //                     },
-    //                     "expired-callback": () => {
-    //                         console.warn("reCAPTCHA expired. Please try again.");
-    //                     },
-    //                 },
-    //                 auth
-    //             );
-    
-    //             auth.settings.appVerificationDisabledForTesting = true; // Enable testing
-    //         } catch (error) {
-    //             console.error("Error initializing reCAPTCHA:", error);
-    //             return null;
-    //         }
-    //     }
-    
-    //     return window.recaptchaVerifier;
-    // };
-  
-
-    // Initialize Firebase Auth
-
-    
-    // Setup reCAPTCHA verifier
+   
     const setupRecaptcha = (recaptchaContainerId) => {
       try {
   
@@ -184,7 +150,7 @@ const SigninComponent = ({ open, handleClose ,setOpen}) => {
                             sx={{
                                 position: "absolute",
                                 top: 8,
-                                right: 8,
+                                right: {xs:5,sm:8},
                                 color: "black",
                             }}
                         >
@@ -197,7 +163,7 @@ const SigninComponent = ({ open, handleClose ,setOpen}) => {
                         <Controls.Grid item sx={{ textAlign: "start" }}>
                             <Controls.Typography variant="caption1" sx={{ fontSize: "12px" }}>Join / Sign In using</Controls.Typography>
                         </Controls.Grid>
-                        <Controls.Grid xs={12} sx={{ display: "flex", justifyContent: "space-between" }} gap={2} my={3}>
+                        <Controls.Grid xs={12} sx={{ display: "flex", justifyContent: "space-between", }} gap={{xs:1,sm:2}} my={3}>
                             <Controls.Grid
                                 item
                                 sx={{
@@ -237,6 +203,7 @@ const SigninComponent = ({ open, handleClose ,setOpen}) => {
                                         color: "#0a3882",
                                         fontWeight: "bold",
                                         marginLeft: 1,
+                                        fontSize:{xs:"15px",sm:"18px"}
                                     }}
                                     
                                 >
@@ -246,7 +213,7 @@ const SigninComponent = ({ open, handleClose ,setOpen}) => {
 
                             <Controls.Grid item sx={{ display: "flex", justifyContent: "center", border: "2px solid red" ,cursor:"pointer"}} xs={6} p={0.5} onClick={handleGoogle}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" marginTop="10px" viewBox="0 0 48 48"><path fill="#ffc107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C12.955 4 4 12.955 4 24s8.955 20 20 20s20-8.955 20-20c0-1.341-.138-2.65-.389-3.917" /><path fill="#ff3d00" d="m6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C16.318 4 9.656 8.337 6.306 14.691" /><path fill="#4caf50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.9 11.9 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44" /><path fill="#1976d2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917" /></svg>
-                                <Controls.Typography variant="caption1" sx={{ fontSize: "18px", color: "red", fontWeight: "bold", marginTop: 0.5, marginLeft: 1, }} >Google</Controls.Typography>
+                                <Controls.Typography variant="caption1" sx={{ fontSize: {xs:"15px",sm:"18px"}, color: "red", fontWeight: "bold", marginTop: 0.5, marginLeft: 1, }} >Google</Controls.Typography>
                             </Controls.Grid>
 
                         </Controls.Grid>
@@ -298,6 +265,7 @@ const SigninComponent = ({ open, handleClose ,setOpen}) => {
                         
                         <Controls.Grid item xs={12} sx={{ display: "block" }}mb={3}>
                         <Controls.TextField
+                        sx={{width:{xs:"150px",sm:"300px"}}}
                             id="standard-number"
                             //   label="Enter Mobile Number *"
                             type="mobile-number"
@@ -305,7 +273,7 @@ const SigninComponent = ({ open, handleClose ,setOpen}) => {
                         onChange={handleChange}
                         />
                         </Controls.Grid>
-                        <div id="recaptcha-container"></div>
+                        
                         <Controls.Grid item xs={12} my={2}>
                             <Controls.Button variant="contained" sx={{color:"white",backgroundColor:"#866528",paddingX:"45px",fontSize:"15px"}} onClick={handleMobileSignin}>CONTINUE</Controls.Button>
                         </Controls.Grid>
@@ -315,6 +283,7 @@ const SigninComponent = ({ open, handleClose ,setOpen}) => {
                             <Controls.Typography variant="caption1" sx={{fontSize:"12px"}}>and</Controls.Typography>&nbsp;
                             <Controls.Typography variant="caption1"sx={{color:"#176d93",fontSize:"12px"}}>Privacy Policy</Controls.Typography>
                         </Controls.Grid>
+                        <div id="recaptcha-container"></div>
                         <Controls.Grid item sx={{backgroundColor:"#FFF9EA",display:"flex",border:"1px solid orange"}} p={1} gap={1}>
                             <Controls.MailOutlineIcon sx={{marginTop:"7px",color:"orange"}}/>
                             <Controls.Typography variant="caption1" sx={{fontSize:"12px"}}>Email based login is no longer available. Please <Controls.Typography variant="caption1"sx={{color:"#176d93",fontSize:"12px",fontWeight:"bold"}}>click here</Controls.Typography> to restore your mobile number.</Controls.Typography>

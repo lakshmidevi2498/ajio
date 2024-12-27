@@ -35,7 +35,7 @@ const NavLinksComponent = () => {
 
   return (
     <Controls.Box>
-      <Controls.Grid container justifyContent="center" sx={{ position: "relative" }}>
+      <Controls.Grid container justifyContent="center" sx={{ position: "relative", }}>
         <Controls.Grid item xs={12}>
           {isMobile ? (
             <Controls.Grid item>
@@ -49,7 +49,7 @@ const NavLinksComponent = () => {
             </Controls.Grid>
           ) : (
             <Controls.Grid item >
-              <Controls.Box sx={{ display: "flex", gap: { xs: 3, sm: 1, md: 2, lg: 4 } }}>
+              <Controls.Box sx={{ display: "flex", gap: { xs: 3, sm: 1.6, md: 1.6, lg: 4 ,xl:8} }}>
                 {links.map((link) => (
                   <NavLink
                   key={link.name}
@@ -65,7 +65,7 @@ const NavLinksComponent = () => {
                 >
                   <Controls.Box
                     sx={{
-                      fontSize: { xs: "8px", sm: "12px",md:"16px", lg: "15px" }, 
+                      fontSize: { xs: "7px", sm: "11px",md:"12px", lg: "15px" ,xl:"30px"}, 
                     }}
                   >
                     {link.name}

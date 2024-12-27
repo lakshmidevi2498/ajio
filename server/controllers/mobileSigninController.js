@@ -1,11 +1,13 @@
 
 import twilio from 'twilio';
 import jwt from 'jsonwebtoken';
-import otpSchema from '../models/mobileSigninModel.js';
+// import otpSchema from '../models/mobileSigninModel.js';
+import user from '../models/userSchemaModal.js'
 import { response } from 'express';
 
 export const sendOtpController = async (req, res) => {
-    const { phoneNumber } = req.body;
+    const { phoneNumber ,uId} = req.body;
+    console.log("req.body",req.body)
 
     if (!phoneNumber) {
         return res.status(400).json({ message: "phoneNumber is required" });
@@ -13,20 +15,22 @@ export const sendOtpController = async (req, res) => {
 
     try {
   
-        const existingUser = await otpSchema.findOne({ phoneNumber });
+        const existingUser = await user.findOne({ mobileUid:uId });
         let token;
         if (existingUser) {
          
             token = jwt.sign({ userId: existingUser._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
             // console.log('Generated token for existing user:', token);
-            return res.status(200).json({ message: "User Found", user: existingUser, token });
+            return res.status(200).json({ 
+                // message: "User Found", 
+                user: existingUser, token });
         } else {
            
-                     const newUser = new otpSchema({ phoneNumber });
+                     const newUser = new user({ phoneNumber,  provider: 'phone',mobileUid:uId,email: null });
             await newUser.save();
             token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
             // console.log('Generated token for new user:', token);
-            return res.status(200).json({ message: "User Created", user: newUser, token });
+            return res.status(200).json({ message: "User login Successfully", user: newUser, token });
         }
     } catch (error) {
         console.error("Error processing OTP request:", error);

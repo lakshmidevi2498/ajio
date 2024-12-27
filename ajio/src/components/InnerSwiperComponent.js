@@ -11,8 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import QuickViewComponent from './QuickViewComponent';
 import { loadProductsDataInitiate } from '../redux/actions/loadProductsAction';
-import { handleRecentView } from './GlobalFunction';
-// import InnerSwiperComponent from './InnerSwiperComponent';
+import { handleRecentView } from './GlobalFunction'; 
 
 const InnerSwiperComponent = ({data}) => {
     const swiperRef = useRef(null);
@@ -20,8 +19,7 @@ const InnerSwiperComponent = ({data}) => {
     const [hoveredIndex, setHoveredIndex] = useState(null)
     const [quickView, setQuickView] = useState(false)
     const [open, setOpen] = React.useState(false);
-    const [innerData, setinnerData] = useState([])
-    // const [data , setData] = useState(null)
+    const [innerData, setinnerData] = useState([]) 
     const navigate = useNavigate()
 
     const handleHover = (item) => {
@@ -230,8 +228,7 @@ const InnerSwiperComponent = ({data}) => {
           zIndex: 10,
           
           borderRadius: "50px",
-          color: "gray",
-        //   "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.9)" },
+          color: "gray", 
         }}
       >
         <ChevronLeftIcon  sx={{fontSize: "30px",}}/>
@@ -247,8 +244,7 @@ const InnerSwiperComponent = ({data}) => {
           zIndex: 10,
           padding: 1,
           borderRadius: "50px",
-          color: "gray",
-        //   "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.9)" },
+          color: "gray", 
         }}
       >
         <ChevronRightIcon  sx={{fontSize: "30px",}}/>

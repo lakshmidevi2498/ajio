@@ -90,8 +90,13 @@ useEffect(()=>{
           const result = await confirmationResult.confirm(otp);
           const user = result.user;
           console.log("User signed in successfully:", user);
+          const phoneNumber = user.phoneNumber
+          const providerId = user.providerId   
+          const uId = user.providerData[0].uid 
+          console.log("uId",uId)       
+          await  dispatch(mobileLoginInitiate(phoneNumber,providerId,uId))
         //   const response = await axios.post('http://localhost:5000/sent-otp',{phoneNumber})
-          dispatch(mobileLoginInitiate(phoneNumber))
+   
         //   console.log("response",response.data)
         //   console.log("response",response.data.user.phoneNumber)
         //   console.log("response",response.data.token)

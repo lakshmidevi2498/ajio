@@ -1,11 +1,11 @@
 import API from "../../API/API";
 const api = new API();
 const endPoints = "sent-otp";
-export const mobileLoginApi = async (phoneNumber) => {
+export const mobileLoginApi = async (phoneNumber,providerId,uId) => {
   return new Promise(async (resolve, reject) => {
     try {
       console.log("this is get call in API---->",endPoints);
-      const response = await api.post(`${endPoints}`,{phoneNumber});
+      const response = await api.post(`${endPoints}`,{phoneNumber,providerId,uId});
       console.log("fetched data in mobileLoginApi", response);
       resolve(response);
    

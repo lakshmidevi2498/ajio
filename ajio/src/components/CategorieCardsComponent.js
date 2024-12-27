@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Controls from '../commons/Controls'
 import QuickViewComponent from './QuickViewComponent'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadProductsDataInitiate } from '../redux/actions/loadProductsAction';
 import { useParams,useNavigate } from 'react-router-dom';
 import { handleRecentView } from './GlobalFunction';
 
@@ -36,16 +35,6 @@ const CategorieCardsComponent = ({ isThreeGrid }) => {
     }, [productData, categoryId, subcategoryId]);
 
 
-
-
-    const cnt = {
-        images: [
-            "https://assets.ajio.com/medias/sys_master/root/20240509/lvVk/663cd24e05ac7d77bb4d8b0a/-473Wx593H-442295908-black-MODEL2.jpg",
-            "https://assets.ajio.com/medias/sys_master/root/20240509/ZmGF/663cdbbd16fd2c6e6af813d3/-473Wx593H-442295908-black-MODEL5.jpg",
-            "https://assets.ajio.com/medias/sys_master/root/20240509/krtC/663cd49316fd2c6e6af7e730/-473Wx593H-442295908-black-MODEL3.jpg",
-            "https://assets.ajio.com/medias/sys_master/root/20240509/CRZs/663cd68816fd2c6e6af7f249/-473Wx593H-442295908-black-MODEL4.jpg",
-        ]
-    };
       
     useEffect(() => {
         localStorage.setItem("recentlyViewed", JSON.stringify(recentlyViewed));
@@ -66,22 +55,14 @@ const CategorieCardsComponent = ({ isThreeGrid }) => {
         handleRecentView(item)
         navigate('/innerproducts',{state:{innerproductsdata:item}})
     }
-    // const handleRecentView = (item) => {
-    //     setRecentlyViewed((prev) => {
-    //       const isAlreadyViewed = prev.find((p) => p.id === item.id);
-    //       if (isAlreadyViewed) return prev;
-      
-    //       const updatedList = [...prev, item];
-    //       return updatedList.slice(-5); 
-    //     });
-    //   };
+
 
       
     return (
         <>
-            <Controls.Grid container justifyContent="center">
+            <Controls.Grid container justifyContent="center" >
                 {data.map((item, index) => (
-                    <Controls.Grid mb={2}
+                    <Controls.Grid mb={{xs:2,sm:4}}
                         item
                         xs={12}
                         sm={6}
@@ -210,7 +191,7 @@ const CategorieCardsComponent = ({ isThreeGrid }) => {
                     </Controls.Grid>
                 ))}
                 {quickView && (
-                    <QuickViewComponent open={open} setOpen={setOpen} cnt={cnt} handleClose={handleClose} innerData={innerData}/>
+                    <QuickViewComponent open={open} setOpen={setOpen}  handleClose={handleClose} innerData={innerData}/>
                 )}
 
 

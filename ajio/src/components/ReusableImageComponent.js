@@ -13,7 +13,7 @@ const ReusableImageComponent = ({data}) => {
       }, [data]);
   return (
     <>
-    {/* <Controls.Grid container justifyContent = "center"> */}
+  
         <Controls.Grid item xs={12}>
             <Controls.Box component='img' src={images[0]} width="100%" height="100%" sx={{ transition: 'transform 0.3s ease-in-out',
                                     '&:hover': {
@@ -21,7 +21,7 @@ const ReusableImageComponent = ({data}) => {
                                     },}}/>
         </Controls.Grid>
 
-    {/* </Controls.Grid> */}
+ 
     </>
   )
 }

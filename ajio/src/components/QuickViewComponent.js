@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Fab, Box, Modal, Typography, Grid, Button } from "@mui/material";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import Controls from "../commons/Controls";
-import ReusableSwiperComponent from "./ReusableSwiperComponent";
-import QuickviewSwiperComponent from "./QuickviewSwiperComponent";
+import React from "react";
+import { Fab, Box, Modal, Typography, Grid, Button } from "@mui/material"; 
+import Controls from "../commons/Controls"; 
 import ProductsDetailsComponent from "./ProductsDetailsComponent";
 
 
@@ -14,16 +11,17 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: "100%", 
   maxWidth: {md:"800px",lg:"1000px",xxl:"1200px"}, 
-  height: "90vh", 
-  maxHeight: "90vh", 
+  height: "100vh", 
+  maxHeight: "95vh", 
   bgcolor: "background.paper",
   border: "2px solid lightgray",
   boxShadow: 24,
   p: 4,
   overflowY: "auto", 
+  outline:"none"
 };
 
-const QuickViewComponent = ({ cnt, open, setOpen, handleClose ,innerData}) => {
+const QuickViewComponent = ({ cnt, open, handleClose ,innerData}) => {
  
 
 
@@ -48,14 +46,14 @@ const QuickViewComponent = ({ cnt, open, setOpen, handleClose ,innerData}) => {
             onClick={handleClose}
             sx={{
               position: "absolute",
-              top: 8,
+              top: 1,
               right: 8,
               color: "black",
             }}
           >
             <Controls.CloseIcon />
           </Button>
-          <ProductsDetailsComponent  innerData={innerData}  icons={icons} marginValue={"70px"} heightValue={"500px"} value={'block'} value2={'none'}/>
+          <ProductsDetailsComponent  innerData={innerData}  icons={icons} marginValue={"0px"} heightValue={"500px"} value={'block'} value2={'none'}  displayValue={"none"} productValue={{ xs: "10px",md:"26px", lg: "40px" }}/>
         </Box>
       </Modal>
 

@@ -2,9 +2,8 @@ import React from 'react'
 import Controls from '../commons/Controls'
 import theme from '../utilities/theme'
 import { Icon } from '@iconify/react';
-import OtpComponent from './OtpComponent';
 
-const FooterComponent = () => {
+const FooterComponent = ({value1,value2}) => {
   const contentOne = [
     {
       title: "AJIO",
@@ -67,9 +66,9 @@ const FooterComponent = () => {
     <>
       <Controls.Grid container justifyContent="center" margin="auto" alignItems="center">
         <Controls.Grid item xs={12} sx={{ backgroundColor: theme.palette.one.bag, justifyContent: "center", color: "#cccccc" }}>
-          <Controls.Grid item xs={12} sm={10} sx={{ margin: "auto", paddingX: "20px", }}>
-            <Controls.Accordion sx={{ backgroundColor: "transparent", color: "#cccccc", boxShadow: "none", border: "none", }}p={0}>
-              <Controls.Grid item xs={12} sm={6} md={5}lg={3} sx={{}} >
+          <Controls.Grid item xs={12} sm={10} sx={{ margin: "auto", paddingX: "10px", }}>
+            <Controls.Accordion sx={{ backgroundColor: "transparent", color: "#cccccc", boxShadow: "none", border: "none", display:value1}}p={0}>
+              <Controls.Grid item xs={12} sm={6} md={5}lg={3} sx={{}} p={0}>
                 <Controls.AccordionSummary
                   expandIcon={<Controls.ExpandMoreIcon sx={{ color: "white" }} />}
                   aria-controls="panel1-content"
@@ -78,7 +77,7 @@ const FooterComponent = () => {
                     display: 'flex',
                     justifyContent: 'flex-start',
                     alignItems: 'center',
-                    fontSize:{xs:"12px",sm:"14px"}
+                    fontSize:{xs:"12px",sm:"14px"},padding:0
                   }}
                 >
                   More about shopping from AJIO
@@ -89,7 +88,7 @@ const FooterComponent = () => {
               </Controls.AccordionDetails>
             </Controls.Accordion>
 
-            <Controls.Grid container spacing={2} sx={{ display: { xs: "block", sm: 'flex' }, justifyContent: { xs: "", sm: 'space-between' }, borderBottom: "2px solid lightgray", paddingBottom: 5 }}>
+            <Controls.Grid container spacing={2} sx={{ display: value2, justifyContent: { xs: "", sm: 'space-between' }, borderBottom: "2px solid lightgray", paddingBottom: 5 }}>
               <Controls.Grid item xs={12} sm={6} md={3} sx={{ textAlign: { xs: "center",md:"start" } }}>
                 {contentOne.map((content, index) => (
                   <Controls.Grid item xs={12} key={index} sx={{}}>
@@ -199,7 +198,10 @@ const FooterComponent = () => {
                 ))}
               </Controls.Grid>
             </Controls.Grid>
-            <Controls.Grid item sx={{ display: "flex", justifyContent: "space-between", display: { xs: "flex", sm: "flex" } }} my={3}>
+
+
+
+            <Controls.Grid item sx={{ display: "flex", justifyContent: "space-between", display: { xs: "flex", sm: "flex" } }} mt={3}>
               <Controls.Grid item>
                 <Controls.Typography variant='caption1' sx={{fontSize:{xs:'12px',sm:"14px",md:"16px"}}}>Payment Methods</Controls.Typography>
               </Controls.Grid>
@@ -355,15 +357,16 @@ const FooterComponent = () => {
 
 
               <Controls.Grid item sx={{ display: "end", }} >
-                <Controls.Grid item sx={{ display: "flex", alignItems: "center" }} mt={{ xs: 1.5, sm: 2.5,md:0 }} gap={{xs:0.2,sm:1}}>
+                <Controls.Grid item sx={{ display: "flex", alignItems: "center" }} mt={{ xs: 1.5, sm: 2.5,md:3 }} gap={{xs:0.2,sm:1}}>
                    
                   <Controls.Box
                     sx={{
-                      width: { xs: "20px",sm:"30px",md:"60px", lg: "70px" },
-                      height: { xs: "20px", sm:"30px", md:"60px",lg: "70px" },
+                      width: { xs: "20px",sm:"30px",md:"60px", lg: "40px" },
+                      height: { xs: "20px", sm:"30px", md:"60px",lg: "40px" },
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
+                      // marginTop:4
                     }}
                   >
                     <Icon icon="et:lock" width="100%" height="100%" />
@@ -385,6 +388,7 @@ const FooterComponent = () => {
 
               </Controls.Grid>
             </Controls.Grid>
+
           </Controls.Grid>
         </Controls.Grid>
       </Controls.Grid>

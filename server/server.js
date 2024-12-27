@@ -6,32 +6,35 @@ import cors from 'cors';
 import bodyParser from 'body-parser'; 
 import session from 'express-session'; 
 import passport from 'passport';
-
-// import AdminJS from 'adminjs';
-// import AdminJSExpress from '@adminjs/express';
-// import * as AdminJSMongoose from '@adminjs/mongoose';
-// import signupRoute from './routes/signupRoute.js';
-// import signinRoute from './routes/signinRoute.js';
+import path from 'path'
+import AdminJS from 'adminjs';
+import AdminJSExpress from '@adminjs/express';
+import * as AdminJSMongoose from '@adminjs/mongoose';
 import facebookRoute from './routes/facebookRoute.js';
 import productRoute from './routes/productRoute.js';
-// import cartRoute from './routes/cartRoute.js';
-// import wishlistRoute from './routes/wishlistRoute.js';
-// import checkoutRoute from './routes/checkoutRoute.js';
-// import addressRoute from './routes/addressRoute.js';
-// import razorpayRoute from './routes/razorpayRoute.js';
-// import orderHistoryRoute from './routes/orderHistoryRoute.js';
-import webpush from 'web-push';
-import db from'./db.js'; 
+import cartRoute from './routes/cartRoute.js';
+import wishlistRoute from './routes/wishlistRoute.js'; 
+import addressRoute from './routes/addressRoute.js';
+import razorpayRoute from './routes/razorpayRoute.js';   
 import contentRoute from './routes/contentRoute.js'
 import mobileSigninRoute from './routes/mobileSigninRoute.js'
 import googleRoute from './routes/googleRoute.js'
+import userRoute from './routes/userRoute.js'
+import orderRoute from './routes/orderRoute.js'
+import adminRoute from './routes/adminRoute.js'
+import wishlistSchema from './models/wishlistModal.js'
+import invoiceRoute from './routes/invoiceRoute.js'
+import db from './db.js'
+import { fileURLToPath } from 'url';
+
 
 
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5050;
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '10mb' })); 
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }))
 app.use(express.json());
 app.use(cors({
   origin: 'http://localhost:3000',
@@ -44,72 +47,107 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
 }));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const apiKeys = {
-  publicKey: 'BCoZetIZDVC9nbAkQmdXdLwXwXyEIYeuq1xpJ4Cnqc-TJdf3w9bkbD0JGu4v1kx7uuqBMHnKQPlkIaWPu5Er2uI',
-  privateKey: 'Piwyy7draXGvTt-3NotAU2XvdOGronca3JtyorLp6N8'
-};
-
-webpush.setVapidDetails(
-  'mailto:lakshmidevivalapudasu@gmail.com',
-  apiKeys.publicKey,
-  apiKeys.privateKey
-);
+app.use(express.static(path.join(__dirname, '../ajio/build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../ajio/build', 'index.html'));
+});
 
 
 
-
-
-
-
+AdminJS.registerAdapter({
+  Resource: AdminJSMongoose.Resource,
+  Database: AdminJSMongoose.Database,
+});
  
+const adminJs = new AdminJS({
+  databases: [mongoose],
+  rootPath: '/adminpanel',
+  resources: [
+    {
+      resource: wishlistSchema,
+      options: {
+        actions: {
+          edit: {
+            isAccessible: () => false, 
+          },
+          delete: {
+            isAccessible: () => false, 
+          },
+          create: {
+            isAccessible: () => false, 
+          },
+        }, 
+      },
+    },
+    {
+      resource: mongoose.model('Order'),
+      options: {
+        properties: {
+          cart: {
+            type: 'referenced',
+            ref: 'Cart',
+            position: '1',
+            properties: [
+              {
+                name: 'products',
+                type: 'mixed',
+                properties: [
+                  {
+                    name: 'product',
+                    type: 'referenced',
+                    ref: 'Product',
+                  },
+                  'size',
+                  'quantity',
+                  'shippingStatus',
+                ],
+              },
+              'orderStatus',
+              'cartDate',
+            ],
+          }, 
+        },
+        actions: {
+          edit: {
+            isAccessible: ({ record }) => {
+              return true; 
+            },
+          },
+        },
+      },
+    },
+
+  ],
+branding: {
+  companyName: 'Ajio',
+}
+});
 
 
+const adminRouter = AdminJSExpress.buildRouter(adminJs )
+app.use(adminJs.options.rootPath, adminRouter);
 
-// AdminJS.registerAdapter({
-//   Resource: AdminJSMongoose.Resource,
-//   Database: AdminJSMongoose.Database,
-// });
- 
-// const adminJs = new AdminJS({
-//   databases: [mongoose],
-//   rootPath: '/adminpanel',
-// });
-
-
-// const adminRouter = AdminJSExpress.buildRouter(adminJs)
-// app.use(adminJs.options.rootPath, adminRouter);
 
 // Routes
-// app.use('/signup', signupRoute);
-// app.use('/user', signupRoute);
+
 app.use('/auth', googleRoute);
 app.use('/auth/facebook', facebookRoute);
-// app.use('/api/user', signupRoute);
+app.use('/admin', adminRoute);
 app.use('/products', productRoute);
-app.use('/content', contentRoute);
-// app.use('/',mobileSigninRoute);
+app.use('/content', contentRoute); 
 app.use('/',mobileSigninRoute);
-// app.use('/cart', cartRoute);
-// app.use('/wishlist', wishlistRoute);
-// app.use('/checkout', checkoutRoute);
-// app.use('/address', addressRoute);
-// app.use('/order', razorpayRoute);
-// app.use('/orderhistory',orderHistoryRoute)
-// app.use('/buynow',checkoutRoute)
-// app.use('/order/update',orderHistoryRoute)
-// app.use('/save-subscription',notificationRoute) 
-// app.use('/',notificationRoute)
-
-// app.get('/logout', (req, res) => {
-//   req.logout((err) => {
-//     if (err) {
-//       return res.status(500).send({ message: 'Logout error' });
-//     }
-//     res.clearCookie('connect.sid');
-//     res.status(200).send({ message: 'Logged out successfully' });
-//   });
-// });
+app.use('/userdetails', userRoute);
+app.use('/cart', cartRoute);
+app.use('/wishlist', wishlistRoute); 
+app.use('/address', addressRoute);
+app.use('/order', razorpayRoute);
+app.use('/order',orderRoute) 
+app.use('/order/update',orderRoute)
+app.use('/download-invoice',invoiceRoute)
+ 
 
 
 

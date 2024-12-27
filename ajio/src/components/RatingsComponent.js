@@ -165,7 +165,6 @@ const RatingsComponent = ({ innerproductsdata }) => {
                 </Controls.Grid>
 
 
-                {/* </Controls.Grid> */}
               </Controls.Grid>
 
 
@@ -203,7 +202,6 @@ const RatingsComponent = ({ innerproductsdata }) => {
                 </Controls.Grid>
 
 
-                {/* </Controls.Grid> */}
               </Controls.Grid>
             </Controls.Grid>
           </Controls.Grid>

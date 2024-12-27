@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Controls from '../commons/Controls'
 import { Divider } from '@mui/material'
-import CategorieCardsComponent from './CategorieCardsComponent'
-import { useDispatch, useSelector } from 'react-redux'
-import { loadProductsDataInitiate } from '../redux/actions/loadProductsAction';
+import CategorieCardsComponent from './CategorieCardsComponent' 
 import { useParams } from 'react-router-dom';
 
 
@@ -15,26 +13,7 @@ const CategoriesTwoComponent = () => {
     const [isThreeGrid, setIsThreeGrid] = useState(true);
 
     const { categoryId, subcategoryId } = useParams();
-    
-    // const [data, setData] = useState([])
-    // const dispatch = useDispatch()
-    
-    // const productData = useSelector((state) => state.loadproductsdata.data || {})
-    // console.log("productData in CategoriesTwoComponent", productData)
-   
 
-    // useEffect(() => {
-    //     const pdata = productData?.data || [];
-    //     // localStorage.setItem('categoryId',categoryId)
-    //     // localStorage.setItem('subcategoryId',subcategoryId)
-    //     const filtered = pdata.filter(
-    //         (item) =>
-    //             item.categories === categoryId &&
-    //             item.subcatergory === subcategoryId
-    //     );
-    //     setData(filtered);
-    //     console.log("Filtered Data: in CategoriesTwoComponent", filtered);
-    // }, [productData, categoryId, subcategoryId]);
     const open = Boolean(anchorEl);
     const handleReadMore = () => {
         setRead(true)
@@ -55,14 +34,14 @@ const CategoriesTwoComponent = () => {
     };
 
     const handleMenuItemClick = (option) => {
-        setSelectedOption(option); // Update selected option
-        handleClose(); // Close the menu
+        setSelectedOption(option);  
+        handleClose();  
     };
     return (
         <>
             <Controls.Grid container justifycontent="center">
                 <Controls.Grid item sx={{ justifyContent: "center", }} xs={12}>
-                    <Controls.Grid item xs={12} sm={10} sx={{ justifyContent: "center", textAlign: "center", marginX: "auto", alignItems: "center", }}>
+                    <Controls.Grid item xs={12} sm={10} md={10}sx={{ justifyContent: "center", textAlign: "center", marginX: "auto", alignItems: "center", }}>
                         <Controls.Grid item>
                             <Controls.Typography variant="caption1" sx={{ fontSize: "14px" ,textTransform:"uppercase",letterSpacing:1,wordSpacing:1}}>{categoryId}'S</Controls.Typography>
                         </Controls.Grid>
@@ -139,7 +118,7 @@ const CategoriesTwoComponent = () => {
                         >
 
                             <Controls.Grid item mt={.5}>
-                                <Controls.Typography variant="caption1" sx={{ color: "lightgray" ,fontSize:{xs:"12px"}}}>SORT BY</Controls.Typography>
+                                <Controls.Typography variant="caption1" sx={{ color: "lightgray" ,fontSize:{xs:"10px",sm:"12px"}}}>SORT BY</Controls.Typography>
                             </Controls.Grid>
 
 

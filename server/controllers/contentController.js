@@ -34,7 +34,7 @@ export const postContentController = async (req, res) => {
 
   
     return res.status(200).json({
-      message: 'Content saved successfully',
+      // message: 'Content saved successfully',
       savedContent,
     });
   } catch (error) {

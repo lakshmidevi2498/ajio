@@ -6,20 +6,21 @@ import 'swiper/css/navigation';
 import { Pagination, Autoplay, Navigation } from 'swiper/modules';
 import Controls from '../commons/Controls';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'; 
+import ReactDOMServer from 'react-dom/server';
 
-const ReusableSwiperComponent = ({ data, value1, value2, value3, value4, value5, autoplayEnabled, autoplayValues,leftValue,rightValue ,bgColor}) => {
+const ReusableSwiperComponent = ({ data, value1, value2, value3, value4, value5, autoplayEnabled, autoplayValues, leftValue, rightValue, bgColor }) => {
     console.log("data in ReusableSwiperComponent", data);
     const swiperRef = useRef(null);
     const [images, setImages] = useState([]);
 
-    // Update the state whenever `data` changes
     useEffect(() => {
         if (data?.images) {
             setImages(data.images);
             console.log("data.images", data.images);
         }
     }, [data]);
+    
 
     return (
         <Controls.Grid container justifyContent="center" sx={{ position: 'relative', }} mt={0}>
@@ -27,7 +28,12 @@ const ReusableSwiperComponent = ({ data, value1, value2, value3, value4, value5,
                 <Swiper
                     spaceBetween={0}
                     loop={true}
-                    // pagination={true}
+                    pagination={{
+                        clickable: true,
+                        renderBullet: function (index, className) {
+                            return '<span class="' + className + '"></span>';
+                        },
+                    }}
                     navigation={{
                         nextEl: '.custom-swiper-button-next',
                         prevEl: '.custom-swiper-button-prev',
@@ -65,50 +71,46 @@ const ReusableSwiperComponent = ({ data, value1, value2, value3, value4, value5,
                         </SwiperSlide>
                     ))}
                 </Swiper>
-               
+              
+                <div className="swiper-pagination-bullet"  ></div>
+             
                 <Controls.Grid item
                     className="custom-swiper-button-prev"
                     sx={{
-                        display:leftValue,
+                        display: leftValue,
                         position: 'absolute',
                         top: '50%',
                         left: '10px',
                         transform: 'translateY(-50%)',
                         zIndex: 10,
-                        padding:1,
-                        borderRadius:"50px",
-                        // backgroundColor: 'rgba(255, 255, 255, 0.7)',
-                        backgroundColor:bgColor,
+                        padding: 1,
+                        borderRadius: "50px",
+                        backgroundColor: bgColor,
                         '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.9)' },
                     }}
                 >
                     <ChevronLeftIcon />
-                </Controls.Grid >
+                </Controls.Grid>
                 <Controls.Grid item
                     className="custom-swiper-button-next"
                     sx={{
-                        display:rightValue,
+                        display: rightValue,
                         position: 'absolute',
                         top: '50%',
                         right: '10px',
                         transform: 'translateY(-50%)',
                         zIndex: 10,
-                        padding:1,
-                        borderRadius:"50px",
-                        // backgroundColor: 'rgba(255, 255, 255, 0.7)',
-                        backgroundColor:bgColor,
+                        padding: 1,
+                        borderRadius: "50px",
+                        backgroundColor: bgColor,
                         '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.9)' },
                     }}
                 >
                     <ChevronRightIcon />
-                </Controls.Grid >
+                </Controls.Grid>
             </Controls.Grid>
-            {/* <div className="custom-swiper-pagination" style={{ marginTop: '50px' ,
-                // border:"2px solid red"
-                }}></div> */}
         </Controls.Grid>
     );
 };
 
 export default ReusableSwiperComponent;
-

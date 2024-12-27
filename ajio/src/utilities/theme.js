@@ -1,4 +1,3 @@
-
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -13,87 +12,74 @@ const theme = createTheme({
   },
   palette: {
     one: {
-
       textbg: "#000000",
+      text: "#176D93",
+      text2: "#866528",
       links: "#4b9c9a",
       bag: "#2c4152",
       btn: "406786",
-      orange:"#FDF8EB",
-      color:"#866528",
-      textcolor:"#666666",
-      input:"#FFfDED"
+      orange: "#FDF8EB",
+      textcolor: "#666666",
+      input: "#FFfDED"
     },
-
   },
 
   typography: {
-
     caption1: {
       fontFamily: "SourceSansPro",
     },
-
     text1: {
       fontFamily: "cursive",
-    }
-
+    },
   },
 
   components: {
     MuiButton: {
-
       styleOverrides: {
         root: {
-          borderRadius: '8px',
-          padding: '10px 15px',
+          // borderRadius: '8px',
+          // padding: '10px 15px',
         },
       },
       variants: [
         {
-
-          props: { variant: 'primary' },
+          props: { variant: 'outlined' },
           style: {
-            backgroundColor: '#db0707',
-            color: '#ffffff',
+            backgroundColor: 'white',
+            color: '#866528',
             fontWeight: 'bold',
             textTransform: "initial",
-            fontSize: { xs: "12px" }, 
-
-            // backgroundColor: theme.palette.one.bg,
-            // color: "#fff",
-            ":hover": {
-              // backgroundColor: theme.palette.one.bg,
-            },
-            '&:hover': {
-              backgroundColor: '#e85877',
+            fontSize: { xs: "12px" },
+            border:"2px solid #866528",
+            ':hover': {
+              // backgroundColor: '#e85877',
             },
           },
         },
         {
-
           props: { variant: 'secondary' },
           style: {
             backgroundColor: '#ff5722',
             color: '#ffffff',
             fontWeight: 'bold',
-            '&:hover': {
+            ':hover': {
               backgroundColor: '#e64a19',
             },
           },
         },
         {
-
-          props: { variant: 'outlined' },
+          props: { variant: 'contained' },
           style: {
-        textTransform: "initial",
-        fontSize: { xs: "12px" },
-        backgroundColor: "#fff",
-        fontWeight: 'bold',
-       
-        ":hover": {
-            backgroundColor: "#f7f7f7",
+            textTransform: "initial",
+            fontSize: { xs: "12px" },
+            backgroundColor: "#866528",
+            fontWeight: 'bold',
+            color:"white",
+            ':hover': {
+              backgroundColor: "#866528",
+            },
+          },
         },
-      },
-    },
       ],
     },
     MuiTooltip: {
@@ -103,39 +89,29 @@ const theme = createTheme({
           color: 'white',
           fontSize: '14px',
           padding: '10px',
-          borderRadius: "10px"
+          borderRadius: "10px",
         },
         arrow: {
           color: '#21a6a4',
         },
       },
     },
-    MuiTextField: {
-      defaultProps: {
-        size: 'small',
-        fullWidth: true,
-      },
+    MuiInput: {
       styleOverrides: {
-        root: {
-          '& .MuiOutlinedInput-root': {
-            '& .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'black', // Default border color
-            },
-            // '&:hover .MuiOutlinedInput-notchedOutline': {
-            //   borderColor: 'lightgray', // Hover border color
-            // },
-            // '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-            //   borderColor: 'green', // Focused border color
-            // },
+        underline: {
+          '&:before': {
+            borderBottomColor: "lightgray", // Default border color
           },
-          '& .MuiInputLabel-root': {
-            color: 'black',  
-            
+          '&:hover:before': {
+            borderBottomColor: "lightgray", // Hover border color
+          },
+          '&:after': {
+            borderBottomColor: "#866528", // Focused border color
           },
         },
       },
     },
-  
   },
-})
+});
+
 export default theme;
