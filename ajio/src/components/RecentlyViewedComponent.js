@@ -29,21 +29,9 @@ const RecentlyViewedComponent = () => {
         console.log("storedProducts",storedProducts)
       }, []);
 
-      const handleHover = (item) => {
 
-        setQuickView(true)
-        setinnerData(item)
-        setOpen(true)
-    }
-    const handleClose = () => {
-        setQuickView(false)
-        setOpen(false)
-    }
 
-    const handleNavigate = (item) => {
-        // handleRecentView(item)
-        navigate('/innerproducts',{state:{innerproductsdata:item}})
-    }
+  
   return (
     <>
     <Controls.Grid container sx={{justifyContent:'center',}} mx='auto'>

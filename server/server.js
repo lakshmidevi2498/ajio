@@ -40,20 +40,21 @@ app.use(cors({
   origin: 'http://localhost:3000',
   methods: ['GET', 'POST', 'DELETE', 'PUT' ],
   credentials: true,
+
 }));
+console.log("1")
 app.use(passport.initialize());
 app.use(session({
   secret: 'session-key',
   resave: false,
   saveUninitialized: true,
 }));
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(express.static(path.join(__dirname, '../ajio/build')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../ajio/build', 'index.html'));
-});
+
+
 
 
 
@@ -147,6 +148,15 @@ app.use('/order', razorpayRoute);
 app.use('/order',orderRoute) 
 app.use('/order/update',orderRoute)
 app.use('/download-invoice',invoiceRoute)
+
+// Serve React static files
+app.use(express.static(path.join(__dirname, '../ajio/build')));
+
+// Fallback for React routing
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../ajio/build', 'index.html'));
+});
+
  
 
 

@@ -87,8 +87,8 @@ const handleCancelRequestMobile = () => {
                         <Controls.Box sx={style}>
                             {openn &&
                                 <>
-                                <Controls.Grid item xs={12} sx={{border:"2px solid red"}}>
-                                    <Controls.Box sx={{ border:"2px solid green" }}>
+                                <Controls.Grid item xs={12} >
+                                    <Controls.Box >
                                         <Controls.Grid tem p={{xs:1,sm:3}} xs={12}>
                                             <Controls.Typography variant=' caption1' sx={{fontSize:{xs:"12px",sm:"16px"}}}>Are you sure you want to cancel this item?</Controls.Typography>
                                         </Controls.Grid>

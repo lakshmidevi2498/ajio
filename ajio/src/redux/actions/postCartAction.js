@@ -25,9 +25,7 @@ export const postCartInitiate = (userId,productId,size) => {
         dispatch(postCartStart())
         try {
           const postCartdata = await postCartApi(userId,productId,size)
-          dispatch(postCartSuccess(postCartdata))
-          // toast.success("product is added to cart ")
-        //   navigate('/')
+          dispatch(postCartSuccess(postCartdata)) 
   
         } catch (err) {
           console.log("error",err)

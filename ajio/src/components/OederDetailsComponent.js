@@ -4,13 +4,16 @@ import theme from '../utilities/theme'
 import { loadOrderInitiate } from '../redux/actions/loadOrderAction'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserId } from './GlobalFunction'
+import { getToken, getUserId } from './GlobalFunction'
 import VideoLabelIcon from '@mui/icons-material/VideoLabel';
 import ProductStatusBarComponent from './ProductStatusBarComponent'
 import CancelModalComponent from './CancelModalComponent'
 import { saveAs } from "file-saver";
 import axios from 'axios'
 import { postInvoiceInitiate } from '../redux/actions/postinvioiceAction'
+import { postCartInitiate } from '../redux/actions/postCartAction'
+import { loadCartInitiate } from '../redux/actions/loadCartAction'
+import { loadProductsDataInitiate } from '../redux/actions/loadProductsAction'
 
 const OederDetailsComponent = () => {
     const [orders, setOrders] = useState([])
@@ -22,6 +25,7 @@ const OederDetailsComponent = () => {
     const { id } = location.state || {};
     const dispatch = useDispatch()
     const userId = getUserId()
+    const token = getToken()
     const navigate = useNavigate()
 
     const ordersData = useSelector((state) => state.loadOrder.data || {})
@@ -117,6 +121,14 @@ const OederDetailsComponent = () => {
             console.error("Error downloading the invoice", error);
         }
     };
+
+  const handleAddToBag = async (productId,size) => {
+  
+    await dispatch(postCartInitiate(userId,productId,size))
+    await dispatch(loadCartInitiate(token,userId))
+    await dispatch(loadProductsDataInitiate())
+  
+  }
 
 
     return (
@@ -259,7 +271,7 @@ const OederDetailsComponent = () => {
                                                     </Controls.Grid>
 
                                                     {item.productShippingStatus === "Cancelled" ? (
-                                                        <Controls.Grid item sx={{ textAlign: { xs: "right", md: "center" }, zIndex: 20, }} md={4} lg={3}>
+                                                        <Controls.Grid item sx={{ textAlign: { xs: "right", md: "center" }, zIndex: 20, cursor:"pointer"}} md={4} lg={3} onClick={ () => handleAddToBag(item?.product?._id,item?.size)}>
                                                         <Controls.Typography variant='caption1' sx={{ color: theme.palette.one.text, zIndex: 200, fontSize: { md: "13px", lg: "15px" } }}>Re-order-Item</Controls.Typography>
                                                     </Controls.Grid>
                                                     ) : item.productShippingStatus !== "Delivered" ?

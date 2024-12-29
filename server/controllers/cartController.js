@@ -24,7 +24,7 @@ export const postCartController = async (req, res) => {
                 cart.products.push({ product: productId, size: cartSize, quantity: 1 });
                 cart.cartDate = new Date();
                 const updatedCart = await cart.save();
-                res.status(200).json({ message: 'Product added to existing cart', cart: updatedCart });
+                res.status(200).json({ message: 'Product added to cart', cart: updatedCart });
             } else {
                 res.status(200).json({ message: 'Product already in the cart', cart });
             }

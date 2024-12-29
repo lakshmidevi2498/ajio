@@ -7,13 +7,12 @@ import { Pagination, Autoplay, Navigation } from 'swiper/modules';
 import Controls from '../commons/Controls';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom'; 
 import QuickViewComponent from './QuickViewComponent';
 import { loadProductsDataInitiate } from '../redux/actions/loadProductsAction';
 import { handleRecentView } from './GlobalFunction'; 
 
-const InnerSwiperComponent = ({data}) => {
+const InnerSwiperComponent = ({data }) => {
     const swiperRef = useRef(null);
     const [images,setImages] = useState([])
     const [hoveredIndex, setHoveredIndex] = useState(null)

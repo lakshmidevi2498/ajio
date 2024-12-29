@@ -243,7 +243,7 @@ const CartComponent = () => {
                             ) : (
                                 <>
                                     <Controls.Grid item xs={12}>
-                                        <Controls.Box component="img" src="./assets/images/Animation - 1730963467545.gif" sx={{ display: "block", margin: "auto", width: "300px", height: "300px" }} />
+                                        <Controls.Box component="img" src="/assets/images/Animation - 1730963467545.gif" sx={{ display: "block", margin: "auto", width: "300px", height: "300px" }} />
                                         <Controls.Grid item sx={{ textAlign: "center" }} xs={12}>
                                             <Controls.Typography
                                                 variant="text1"

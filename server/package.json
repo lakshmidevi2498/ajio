@@ -12,7 +12,6 @@
     "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.8.2",
-    "nodemon": "^3.1.7",
     "passport": "^0.7.0",
     "passport-facebook": "^3.0.0",
     "passport-google-oauth20": "^2.0.0",
@@ -23,7 +22,10 @@
     "web-push": "^3.6.7"
   },
   "scripts": {
-    "start": "nodemon server.cjs"
+    "start": "nodemon server.js"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
 }

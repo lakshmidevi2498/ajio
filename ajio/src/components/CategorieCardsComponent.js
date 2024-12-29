@@ -25,7 +25,7 @@ const CategorieCardsComponent = ({ isThreeGrid }) => {
 
     useEffect(() => {
         const pdata = productData?.data || [];
-        const filtered = pdata.filter(
+        const filtered = pdata?.filter(
             (item) =>
                 item.categories === categoryId &&
                 item.subcatergory === subcategoryId
