@@ -11,8 +11,8 @@ const userSchema = new mongoose.Schema({
   dob: { type: String },
   gender: { type: String },
   number:{type:String},
-  
-  email: { type: String, default: null, sparse: true },
+  mobileUid:{type:String,unique: true, sparse: true},
+  email: {type: String},
   password: { type: String },
   phoneNumber: { type: String },
   googleId: { type: String, unique: true, sparse: true },
@@ -23,25 +23,8 @@ const userSchema = new mongoose.Schema({
   role: { type: String, enum: ['admin', 'user'], default: 'user' },
 });
 
-userSchema.pre('save', async function (next) {
-  if (this.provider === 'phone') {
-    // If authenticating via phone, unset email before saving
-    this._unset('email'); 
-  }
-  next();
-});
- 
-userSchema.pre('save', async function (next) {
-  if (this.isModified('password') && this.password) {
-    this.password = await bcrypt.hash(this.password, 10);
-  }
-  next();
-});
+const User = mongoose.model('User', userSchema);
 
- 
-userSchema.methods.comparePassword = async function (password) {
-  return bcrypt.compare(password, this.password);
-};
 
  
 userSchema.methods.generateAuthToken = function () {

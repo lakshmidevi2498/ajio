@@ -1,7 +1,7 @@
 {
   "name": "ajio",
   "version": "0.1.0",
-   "proxy": "http://localhost:5050",
+  "proxy": "http://localhost:5050",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.13.5",
@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI = true react-scripts build",
+    "build": "CI  = react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -54,6 +54,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
- 
 }

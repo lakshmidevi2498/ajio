@@ -8,6 +8,7 @@ import MobileNavbarComponent from './MobileNavbarComponent'
 import { useMediaQuery } from '@mui/material'
 import CartNavbarComponent from '../CartNavbarComponent'
 import PromisesComponent from '../PromisesComponent'
+import {useSelector} from 'react-redux'
 
 const MainNavbarComponent = ({value1,value2,count ,value3,value4,value8 ,promises,cart,}) => {
 
@@ -18,6 +19,24 @@ const MainNavbarComponent = ({value1,value2,count ,value3,value4,value8 ,promise
     const [number, setNumber] = useState(null)
     const [searchParams] = useSearchParams();
     const isMobileScreen = useMediaQuery(theme.breakpoints.down('sm')); 
+  
+    const mobileResponse = useSelector((state)=>state.mobileuserdata.data || {})
+    console.log("mobileResponse",mobileResponse)
+
+useEffect(()=>{
+    const response = mobileResponse?.data
+    console.log("response",response)
+    console.log("response",response?.token)
+    sessionStorage.setItem('token',response?.token)
+    console.log("response",response?.user.phoneNumber)
+    sessionStorage.setItem('number',response?.user.phoneNumber)
+    sessionStorage.setItem('mobileUser',response?.user._id)
+    const storedToken = sessionStorage.getItem('token');
+    const storedValue = sessionStorage.getItem('number');
+    setName(storedValue)
+    setToken(storedToken)
+
+},[mobileResponse])
 
 
     useEffect(() => {
@@ -45,32 +64,35 @@ const MainNavbarComponent = ({value1,value2,count ,value3,value4,value8 ,promise
             if (!existingName) {
                 sessionStorage.setItem('username', username);
             }
-            setName(username);
+            const firstWord = username.split(' ')[0];
+                setName(firstWord); 
         }
     }, [token]);
-    const storedToken = sessionStorage.getItem('googleToken') || sessionStorage.getItem('Token');
-    const storedValue = sessionStorage.getItem('username') || sessionStorage.getItem('number');
-    useEffect(() => {
+ 
+ 
+//     useEffect(() => {
        
-        if (storedToken) {
-            setToken(storedToken);
-        }
+//         if (storedToken) {
+//             setToken(storedToken);
+//         }
 
         
-        if (storedValue) {
+//         if (storedValue) {
 
-            const phoneNumberPattern = /^\+?[1-9]\d{1,14}$/;
-            const isPhoneNumber = phoneNumberPattern.test(storedValue);
+//             const phoneNumberPattern = /^\+?[1-9]\d{1,14}$/;
+//             const isPhoneNumber = phoneNumberPattern.test(storedValue);
 
-            if (isPhoneNumber) {
-                setName(storedValue);
-            } else {
-                const firstWord = storedValue.split(' ')[0];
-                setName(firstWord);
-            }
-        }
-console.log("namein navbar",name)
-    }, [storedToken,storedValue,name]);
+//             if (isPhoneNumber) {
+//                 setName(storedValue);
+//                 console.log("number in navbar",name)
+//             } else {
+//                 const firstWord = storedValue.split(' ')[0];
+//                 setName(firstWord);
+//                 console.log("namein navbar",name)
+//             }
+//         }
+// console.log("namein navbar",name)
+//     }, [storedToken,storedValue]);
 
     const navigate = useNavigate()
     const handleNavigate = () => {
@@ -90,7 +112,7 @@ console.log("namein navbar",name)
         sessionStorage.clear();
         setName("");
         navigate('/#')
-        console.log("storedToken,storedValue,name",storedToken,storedValue,name)
+        // console.log("storedToken,storedValue,name",storedToken,storedValue,name)
 
     }
     const handleProfilePage = () => {

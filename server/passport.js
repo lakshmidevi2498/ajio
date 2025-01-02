@@ -51,9 +51,11 @@ passport.use(
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
       callbackURL: "http://localhost:5050/auth/facebook/callback",
-      // profileFields: ['id', 'displayName', 'photos', 'email'], // Ensure email is included
+      profileFields: ['id', 'displayName', 'photos', 'email'], // Ensure email is included
+      scope: ['email']
     },
     async (accessToken, refreshToken, profile, done) => {
+      console.log("profile",profile)
       try { 
         console.log("refreshToken Token:", refreshToken);  
         console.log("Access Token:", accessToken);  
@@ -71,6 +73,7 @@ passport.use(
 
           await user.save();
         }
+        console.log("user",user)
 
         done(null, user);
       } catch (err) {

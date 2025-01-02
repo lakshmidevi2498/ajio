@@ -25,18 +25,8 @@ const OtpComponent = ({ setModalOpen, modalOpen, phoneNumber,setOpen }) => {
     const [otp, setOtp] = useState(Array(6).fill(""));
     const navigate = useNavigate();
     const dispatch = useDispatch()
-    const mobileResponse = useSelector((state)=>state.mobileuserdata.data || {})
-    console.log("mobileResponse",mobileResponse)
-useEffect(()=>{
-    const response = mobileResponse?.data
-    console.log("response",response)
-    console.log("response",response?.token)
-    sessionStorage.setItem('token',response?.token)
-    console.log("response",response?.user.phoneNumber)
-    sessionStorage.setItem('number',response?.user.phoneNumber)
-    sessionStorage.setItem('mobileUser',response?.user._id)
+   
 
-},[mobileResponse])
     const handleChange = (value, index) => {
         const newOtp = [...otp];
         newOtp[index] = value.slice(0, 1); 

@@ -26,7 +26,7 @@ export const sendOtpController = async (req, res) => {
                 user: existingUser, token });
         } else {
            
-                     const newUser = new user({ phoneNumber,  provider: 'phone',mobileUid:uId,email: null });
+                     const newUser = new user({ phoneNumber,  provider: 'phone',mobileUid:uId,});
             await newUser.save();
             token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
             // console.log('Generated token for new user:', token);

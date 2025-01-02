@@ -14,11 +14,7 @@ export const postAddressController = async (req, res) => {
 
         const {building, name, mobile, state, district, addressType, area, pincode, terms,landmark } = values;
 
-        // if (!building || !name || !mobile || !state || !district || !addressType || !area || !pincode || !terms) {
-        //     return res.status(400).json({ message: 'All fields are required' });
-        // }
 
-        // const name = `${lname} ${fname}`;
         const addressDetails = new addressSchema({ user:userId,building, name, mobile, state, district, addressType, area, pincode, terms,landmark });
 
         await addressDetails.save();
