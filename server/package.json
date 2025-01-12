@@ -24,7 +24,9 @@
   },
   "scripts": {
     "start": "nodemon server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "build-frontend": "cd ../ajio && npm install && npm run build && cp -r build ../server/build",
+    "deploy": "npm run build-frontend && npm start"
   },
   "type": "module",
   "devDependencies": {
