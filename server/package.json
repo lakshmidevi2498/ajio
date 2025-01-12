@@ -25,7 +25,7 @@
   "scripts": {
     "start": "nodemon server.js",
     "dev": "nodemon server.js",
-     "build": "cd client && npm install && npm run build"
+     "build": "cd ajio && npm install && npm run build"
   },
   "type": "module",
   "devDependencies": {
