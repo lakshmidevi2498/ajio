@@ -25,6 +25,8 @@ import wishlistSchema from './models/wishlistModal.js'
 import invoiceRoute from './routes/invoiceRoute.js'
 import db from './db.js'
 import { fileURLToPath } from 'url';
+import MongoStore from 'connect-mongo';
+// import connectMongo  from 'connect-mongo'
 
 
 
@@ -43,11 +45,25 @@ app.use(cors({
 }));
 console.log("1")
 app.use(passport.initialize());
-app.use(session({
-  secret: 'session-key',
-  resave: false,
-  saveUninitialized: true,
-}));
+// app.use(session({
+//   secret: 'session-key',
+//   resave: false,
+//   saveUninitialized: true,
+// }));
+app.use(
+  session({
+    secret: 'session-key', // Replace with a secure key
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URI, // Replace with your MongoDB URL
+    }),
+    cookie: {
+      secure: process.env.NODE_ENV === 'production', // Secure cookies in production
+    },
+  })
+);
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

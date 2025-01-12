@@ -6,6 +6,7 @@
     "axios": "^1.7.8",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
+    "connect-mongo": "^5.1.0",
     "cors": "^2.8.5",
     "data-uri-to-buffer": "^6.0.2",
     "dotenv": "^16.4.5",
@@ -23,7 +24,8 @@
   },
   "scripts": {
     "start": "nodemon server.js",
-    "dev": "nodemon server.js" 
+    "dev": "nodemon server.js",
+     "build": "cd client && npm install && npm run build"
   },
   "type": "module",
   "devDependencies": {
