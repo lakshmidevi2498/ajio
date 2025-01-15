@@ -22,12 +22,13 @@
     "twilio": "^5.3.7",
     "web-push": "^3.6.7"
   },
-  "scripts": {
-    "start": "nodemon server.js",
-    "dev": "nodemon server.js",
-    "build-frontend": "cd ../ajio && npm install && npm run build && cp -r build ../server/build",
-    "deploy": "npm run build-frontend && npm start"
-  },
+ "scripts": {
+  "start": "npx nodemon server.js",
+  "dev": "npx nodemon server.js",
+  "build-frontend": "cd ../ajio && npm install && npm run build && cp -r build ../server/build",
+  "deploy": "npm run build-frontend && npm start"
+},
+
   "type": "module",
   "devDependencies": {
     "nodemon": "^3.1.9"
