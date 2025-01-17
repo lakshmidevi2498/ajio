@@ -26,8 +26,8 @@
   "start": "npx nodemon server.js",
   "dev": "npx nodemon server.js",
   "build-frontend": "cd ../ajio && npm install && npm run build",
-  "install-backend": "npm install --prefix server",  
-     "deploy": "npm run install-backend && npm run build-frontend && npm start"
+  "install-backend": "npm install ",
+     "deploy": "npm run build-frontend && npm start && npm run install-backend"
 },
 
 
