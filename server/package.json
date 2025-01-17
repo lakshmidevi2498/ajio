@@ -2,7 +2,7 @@
   "scripts": {
     "start": "npx nodemon server.js",
     "dev": "npx nodemon server.js",
-    "build-frontend": "cd ../ajio && npm install && npm run build && cp -r build ../server/build",
+   "build-frontend": "cd ../ajio && npm install && npm run build && xcopy /E /I build ../server/build",
     "deploy": "npm run build-frontend && npm start"
   },
   "dependencies": {
