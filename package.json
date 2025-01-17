@@ -7,7 +7,7 @@
       "build": "npm install --prefix ajio && npm run build --prefix ajio",
       "start": "node server/server.js",
       "dev": "concurrently \"npm run client\" \"npm run server\"",
-      "server": "cd server &&  node server.js",
+     "server": "cd server && nodemon server.js",
       "client": "cd ajio && npm start"
     },
   "dependencies": {

@@ -6,9 +6,9 @@ export const loadProfileApi = async ( userId,token) => {
     try {
       console.log("this is post call in API---->",endPoints);
       const response = await api.get(`${endPoints}/?userId=${userId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        // headers: {
+        //   Authorization: `Bearer ${token}`,
+        // },
       });
       console.log("fetched user in loadProfileApi", response);
       console.log("fetched user in loadProfileApi", response.data);

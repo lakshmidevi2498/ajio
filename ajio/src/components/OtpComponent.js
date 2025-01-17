@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { mobileLoginInitiate } from "../redux/actions/mobileLoginAction";
+import { getToken } from "./GlobalFunction";
 
 const style = {
     position: "absolute",
@@ -25,6 +26,7 @@ const OtpComponent = ({ setModalOpen, modalOpen, phoneNumber,setOpen }) => {
     const [otp, setOtp] = useState(Array(6).fill(""));
     const navigate = useNavigate();
     const dispatch = useDispatch()
+    const token = getToken()
    
 
     const handleChange = (value, index) => {
@@ -83,8 +85,10 @@ const OtpComponent = ({ setModalOpen, modalOpen, phoneNumber,setOpen }) => {
           const phoneNumber = user.phoneNumber
           const providerId = user.providerId   
           const uId = user.providerData[0].uid 
-          console.log("uId",uId)       
+          console.log("uId",uId)  
+          if(!token){     
           await  dispatch(mobileLoginInitiate(phoneNumber,providerId,uId))
+          }
         //   const response = await axios.post('http://localhost:5000/sent-otp',{phoneNumber})
    
         //   console.log("response",response.data)

@@ -42,3 +42,16 @@ export const getToken = () => {
       return null;
   }
 };
+
+export const getUserName = () => {
+    const socialUserName = sessionStorage.getItem("username");
+    const mobileUserName = sessionStorage.getItem("number");
+    
+    if (socialUserName !== null ) {
+        return socialUserName;
+    } else if (mobileUserName !== null ) {
+        return mobileUserName;
+    }  else {
+        return null;
+    }
+  };

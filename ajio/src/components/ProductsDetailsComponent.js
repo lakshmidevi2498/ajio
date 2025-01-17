@@ -438,13 +438,13 @@ return (
 
             ) : (
               <Controls.Grid item xs={10} mx="auto" onClick={()=>handleAddToWshlist(innerData._id)}>
-              <Controls.Button variant="contained" sx={{ fontSize: { xs: "12px", lg: "18px" }, backgroundColor: "white", color: "#866528", paddingX: { xs: "15px", lg: "30px" }, border: "1px solid #866528",  fontWeight: "normal", }}><Controls.FavoriteBorderIcon sx={{ color: "#866528", marginRight: "3px", fontSize: { xs: "14px", md: "18px" },'&:hover':{color:"white"} }} />SAVE TO WISHLIST</Controls.Button>
+              <Controls.Button variant="contained" sx={{ fontSize: { xs: "12px", lg: "18px" }, backgroundColor: "white", color: "#866528", paddingX: { xs: "15px", lg: "30px" }, border: "1px solid #866528",  fontWeight: "normal",'&:hover':{backgroundColor: "white"} }}><Controls.FavoriteBorderIcon sx={{ color: "#866528", marginRight: "3px", fontSize: { xs: "14px", md: "18px" }, }} />SAVE TO WISHLIST</Controls.Button>
             </Controls.Grid>
 
             )}
             </Controls.Grid>
             
-            <Controls.Grid item xs={10} sx={{ justifyContent: "center", marginX: "auto", display: value2 }}>
+            <Controls.Grid item xs={10} lg={9}sx={{ justifyContent: "center", marginX: "auto", display: value2 }}>
               <Controls.Accordion sx={{ backgroundColor: "transparent", boxShadow: "none", border: "none", }}>
                 <Controls.AccordionSummary
                   expandIcon={<Controls.ExpandMoreIcon sx={{ color: "black" }} />}

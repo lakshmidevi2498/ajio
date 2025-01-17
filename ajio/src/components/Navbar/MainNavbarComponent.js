@@ -9,6 +9,7 @@ import { useMediaQuery } from '@mui/material'
 import CartNavbarComponent from '../CartNavbarComponent'
 import PromisesComponent from '../PromisesComponent'
 import {useSelector} from 'react-redux'
+import { getUserId } from '../GlobalFunction'
 
 const MainNavbarComponent = ({value1,value2,count ,value3,value4,value8 ,promises,cart,}) => {
 
@@ -20,80 +21,81 @@ const MainNavbarComponent = ({value1,value2,count ,value3,value4,value8 ,promise
     const [searchParams] = useSearchParams();
     const isMobileScreen = useMediaQuery(theme.breakpoints.down('sm')); 
   
-    const mobileResponse = useSelector((state)=>state.mobileuserdata.data || {})
+    const mobileResponse = useSelector((state)=>state.mobileuserdata.data || [])
     console.log("mobileResponse",mobileResponse)
+    
 
-useEffect(()=>{
-    const response = mobileResponse?.data
-    console.log("response",response)
-    console.log("response",response?.token)
-    sessionStorage.setItem('token',response?.token)
-    console.log("response",response?.user.phoneNumber)
-    sessionStorage.setItem('number',response?.user.phoneNumber)
-    sessionStorage.setItem('mobileUser',response?.user._id)
-    const storedToken = sessionStorage.getItem('token');
-    const storedValue = sessionStorage.getItem('number');
-    setName(storedValue)
-    setToken(storedToken)
-
-},[mobileResponse])
+    useEffect(() => {
+        if (mobileResponse && typeof mobileResponse === 'object' && !Array.isArray(mobileResponse)) {  
+            const response = mobileResponse?.data;
+            console.log("response", response);
+            console.log("response", response?.token);
+    
+            sessionStorage.setItem('token', response?.token);
+            console.log("response", response?.user?.phoneNumber);
+    
+            sessionStorage.setItem('number', response?.user?.phoneNumber);
+            sessionStorage.setItem('mobileUser', response?.user?._id);
+    
+            // const storedToken = sessionStorage.getItem('token');
+            // const storedValue = sessionStorage.getItem('number');
+    
+            // setName(storedValue);
+            // setToken(storedToken);
+        }
+    }, [mobileResponse]);
+    
 
 
     useEffect(() => {
         const token = searchParams.get('token');
         const id = searchParams.get('id');
         const username = searchParams.get('name');
-
+        console.log("token", token, id, username);
+    
         if (token) {
             const existingToken = sessionStorage.getItem('googleToken');
             if (!existingToken) {
                 sessionStorage.setItem('googleToken', token);
-                
+                console.log("token", token)
             }
-            setToken(token);
+            // setToken(token);
         }
-
+    
         if (id) {
             const existingSocialUserId = sessionStorage.getItem('socialUserId');
             if (!existingSocialUserId) {
                 sessionStorage.setItem('socialUserId', id);
+                console.log("id", id)
             }
         }
-
+    
         if (username) {
             const existingName = sessionStorage.getItem('username');
             if (!existingName) {
                 sessionStorage.setItem('username', username);
+                console.log("username", username)
             }
             const firstWord = username.split(' ')[0];
-                setName(firstWord); 
+            // setName(firstWord);
         }
-    }, [token]);
+    }, []);
+
+    useEffect(()=>{
+        const token = getUserId()
+        if(token){
+        const forceToken = sessionStorage.getItem("token") || sessionStorage.getItem("googleToken");
+        setToken(forceToken);
+
+        const socialUserName = sessionStorage.getItem("username") ||  sessionStorage.getItem("number")
+        const firstWord = socialUserName.split(' ')[0];
+        setName(firstWord)
+        }
+    })
+    
  
  
-//     useEffect(() => {
-       
-//         if (storedToken) {
-//             setToken(storedToken);
-//         }
 
-        
-//         if (storedValue) {
-
-//             const phoneNumberPattern = /^\+?[1-9]\d{1,14}$/;
-//             const isPhoneNumber = phoneNumberPattern.test(storedValue);
-
-//             if (isPhoneNumber) {
-//                 setName(storedValue);
-//                 console.log("number in navbar",name)
-//             } else {
-//                 const firstWord = storedValue.split(' ')[0];
-//                 setName(firstWord);
-//                 console.log("namein navbar",name)
-//             }
-//         }
-// console.log("namein navbar",name)
-//     }, [storedToken,storedValue]);
 
     const navigate = useNavigate()
     const handleNavigate = () => {
@@ -147,7 +149,7 @@ useEffect(()=>{
                                 <Controls.Grid item xs={12} sx={{ }}>
                                     <Controls.Grid item xs={9} sm={name ? 12 : name.length>7 ? 6: 7} md={name.length>=5 ? 12 :10} sx={{ justifyContent:"end",display: value4, marginLeft:{sm:name?25 :name.length>7 ? 40 :45,lg:name.length>7 ? 43 : 50,xxl:100},}}>
                                         <Controls.Grid item xs={12} xl={8}sx={{ display: { xs: "none", sm: "flex" }, justifyContent: "space-between" ,}}>
-                                            {(name != "" && name != null && undefined) ?
+                                            {(name != "" && name != null ) ?
                                                 <>
                                                 {/* {token && ( */}
                                                     <Controls.Grid item gap={{xs:4.5,xl:8}} sx={{ fontSize: { xs: "13px", }, display: "flex", letterSpacing: 1.5 ,}} xs={8} sm={name.length>7 ? 12 :8} lg={name.length>7 ? 12:10} xl={8}mt={{sm:0.7,md:0.5,lg:0.8}} >

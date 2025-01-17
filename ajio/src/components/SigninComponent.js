@@ -11,6 +11,7 @@ import { auth } from "../firebase/Firebase";
 import { useDispatch } from "react-redux";
 import { facebookLoginInitiate } from "../redux/actions/facebookLoginAction";
 import {googleLoginInitiate} from'../redux/actions/googleLoginAction'
+import { getToken } from "./GlobalFunction";
 
 
 
@@ -39,6 +40,7 @@ const SigninComponent = ({ open, handleClose ,setOpen}) => {
     const [modalOpen,setModalOpen] = useState(false)
     const auth = getAuth();
     const dispatch = useDispatch()
+    const token = getToken()
    
     const navigate = useNavigate()
 
@@ -78,6 +80,7 @@ const SigninComponent = ({ open, handleClose ,setOpen}) => {
     
    
     const handleMobileSignin = async () => {
+        if(!token){
       try {
        
         const recaptchaVerifier = setupRecaptcha();
@@ -92,6 +95,7 @@ const SigninComponent = ({ open, handleClose ,setOpen}) => {
         console.error("Error sending OTP:", error);
         alert("Error sending OTP. Please try again later.");
       }
+    }
     };
     
   
@@ -115,11 +119,15 @@ const SigninComponent = ({ open, handleClose ,setOpen}) => {
     
   const handleGoogle= () => {
    
+   if(!token){
     dispatch(googleLoginInitiate())
+   }
+
   }
   const handleFacebook = () => {
-   
+    if(!token){
     dispatch(facebookLoginInitiate())
+    }
   }
   
   

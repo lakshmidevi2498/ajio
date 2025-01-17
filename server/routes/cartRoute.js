@@ -4,7 +4,7 @@ import { getCartController, postCartController ,updateCartController ,deleteCart
 const router = express.Router()
 
 router.post('/:userId/:productId',postCartController)
-router.get('/:userId',authenticate,getCartController)
+router.get('/:userId',getCartController)
 router.put('/:userId',updateCartController)
 router.delete('/:userId/:productId',deleteCartController)
 
