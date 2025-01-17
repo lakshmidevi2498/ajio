@@ -7,21 +7,21 @@ type:types.ADMIN_LOGIN_START
 })
 
 export const adminLoginSuccess = (data) => (
-    console.log("this is adminLoginSuccessAction---->" ,data),
+    // console.log("this is adminLoginSuccessAction---->" ,data),
     {
     type:types.ADMIN_LOGIN_SUCCESS,
     payload:data
 })
 
 export const adminLoginError = (error) => (
-    console.log("this is adminLoginErrorAction---->" ,error),
+    // console.log("this is adminLoginErrorAction---->" ,error),
     {
     type:types.ADMIN_LOGIN_ERROR,
     payload:error
 })
 
 export const adminLoginInitiate = (user) => {
-  console.log("user",user)
+  // console.log("user",user)
     return async (dispatch)=>{
         dispatch(adminLoginStart())
         try {
@@ -30,7 +30,7 @@ export const adminLoginInitiate = (user) => {
         //   navigate('/')
   
         } catch (err) {
-          console.log("error",err)
+          // console.log("error",err)
           dispatch(adminLoginError(err))
           toast.error("admin & Password authentication failed")
   

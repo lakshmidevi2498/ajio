@@ -1,15 +1,15 @@
 {
-  "name": "ajio-mern-app",
-  "version": "1.0.0",
-"scripts": {
-  "install": "npm install --prefix server && npm install --prefix ajio",
-  "build": "npm install --prefix ajio && npm run build --prefix ajio",
-  "start": "node server/server.js",
-  "dev": "concurrently \"npm run start --prefix ajio\" \"npm run start --prefix server\"",
-  "server": "npm start --prefix server",
-  "client": "npm start --prefix ajio"
-}
-,
+  
+    "name": "ajio-mern-app",
+    "version": "1.0.0",
+    "scripts": {
+      "install": "npm install --prefix server && npm install --prefix ajio",
+      "build": "npm install --prefix ajio && npm run build --prefix ajio",
+      "start": "node server/server.js",
+      "dev": "concurrently \"npm run client\" \"npm run server\"",
+      "server": "cd server &&  node server.js",
+      "client": "cd ajio && npm start"
+    },
   "dependencies": {
     "concurrently": "^9.1.0",
     "dotenv": "^16.4.7"

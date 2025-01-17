@@ -1,10 +1,4 @@
 {
-  "scripts": {
-    "start": "npx nodemon server.js",
-    "dev": "npx nodemon server.js",
-   "build-frontend": "cd ../ajio && npm install && npm run build && xcopy /E /I build ../server/build",
-    "deploy": "npm run build-frontend && npm start"
-  },
   "dependencies": {
     "@adminjs/express": "^6.1.0",
     "@adminjs/mongoose": "^4.1.0",
@@ -28,6 +22,12 @@
     "twilio": "^5.3.7",
     "web-push": "^3.6.7"
   },
+ "scripts": {
+  "start": "npx nodemon server.js",
+  "dev": "npx nodemon server.js",
+  "build-frontend": "cd ../ajio && npm install && npm run build",
+  "deploy": "npm run build-frontend && npm start"
+},
 
 
   "type": "module",

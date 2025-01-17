@@ -164,12 +164,11 @@ app.use('/order',orderRoute)
 app.use('/order/update',orderRoute)
 app.use('/download-invoice',invoiceRoute)
 
-// Serve React static files
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, '../ajio/build')));
 
 // Fallback for React routing
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+  res.sendFile(path.resolve(__dirname, '../ajio/build', 'index.html'));
 });
 
  
