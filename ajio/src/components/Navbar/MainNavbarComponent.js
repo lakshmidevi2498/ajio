@@ -130,7 +130,7 @@ const MainNavbarComponent = ({value1,value2,count ,value3,value4,value8 ,promise
     }
     return (
         <>
-            <Controls.Grid container justifyContent="center">
+            <Controls.Grid container justifyContent="center" border="2px solid green">
                 <Controls.Grid item xs={12} sx={{ borderTop: "3px solid black", position: "fixed", top: 0, zIndex: 20, backgroundColor: "white", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" ,}}>
                 {isMobileScreen ? <MobileNavbarComponent promises = {promises} cart={cart} count = {count}/> :
                     <Controls.Grid item xs={12} sm={11} md={9.5} sx={{ margin: "auto", minHeight:value8,paddingBottom:0.2 ,}}>

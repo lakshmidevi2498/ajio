@@ -26,11 +26,14 @@ const ProductsDetailsComponent = ({ innerData, icons, marginValue, heightValue, 
   console.log("wishlistData", wishlistData)
   useEffect(() => {
     const fetchCart = async () => {
+      if(userId){
       dispatch(loadCartInitiate(token, userId))
+      }
     }
     fetchCart()
   }, [])
   useEffect(() => {
+    if(userId){
     if (cartData && cartData.data) {
       const data = cartData.data.cartDetails;
       if (data && data.products) {
@@ -38,15 +41,18 @@ const ProductsDetailsComponent = ({ innerData, icons, marginValue, heightValue, 
         console.log("productsData", data.products);
       }
     }
+  }
   }, [cartData]);
 
     useEffect(() => {
+      if(userId){
       if (wishlistData && wishlistData.data) {
         const data = wishlistData.data?.wishlistData;
         if (data && data.products) {
           setWishlistProduct(data.products);
         }
       }
+    }
     }, [wishlistData]);
 
   const isCartProduct = (productId) => {
@@ -78,20 +84,26 @@ const handleSizeClick = (size) => {
 };
 
 const handleAddToBag = async (productId, size) => {
+  if(userId){
 
   await dispatch(postCartInitiate(userId,productId,size))
   await dispatch(loadCartInitiate(token,userId))
   await dispatch(loadProductsDataInitiate())
+  }
 
 }
 const handleRemoveFromBag = async (productId) => {
+  if(userId){
   await dispatch(deleteCartInitiate(userId,productId))
   await dispatch(loadCartInitiate(token,userId))
+  }
 }
 const handleAddToWshlist = async (productId) => {
+  if(userId){
   await dispatch(postWishlistInitiate(userId,productId))
   await  dispatch(loadWishlistInitiate(userId))
   await dispatch(loadProductsDataInitiate())
+  }
 
 }
 return (
