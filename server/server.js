@@ -166,7 +166,7 @@ app.use(express.static(path.join(__dirname, '../ajio/build')));
 
 // Fallback for React routing
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../ajio/build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../ajio/build/index.html'));
 });
 
 
