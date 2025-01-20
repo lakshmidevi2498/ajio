@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Fab, Box, Modal, Typography, Grid, Button } from "@mui/material";
+// import { Fab, Box, Modal, Typography, Grid, Button } from "@mui/material";
 import Controls from "../commons/Controls";
 import axios from 'axios'
 import {useNavigate} from'react-router-dom'
@@ -142,7 +142,7 @@ const SigninComponent = ({ open, handleClose ,setOpen}) => {
     return (
         <Controls.Grid container justifyContent="center" >
             <Controls.Grid item>
-                <Modal
+                <Controls.Modal
                     open={open}
                     onClose={handleClose}
                     sx={{
@@ -151,8 +151,8 @@ const SigninComponent = ({ open, handleClose ,setOpen}) => {
                         justifyContent: "center",
                     }}
                 >
-                    <Box sx={style}>
-                        <Button
+                    <Controls.Box sx={style}>
+                        <Controls.Button
                             aria-label="close"
                             onClick={handleClose}
                             sx={{
@@ -163,7 +163,7 @@ const SigninComponent = ({ open, handleClose ,setOpen}) => {
                             }}
                         >
                             <Controls.CloseIcon />
-                        </Button>
+                        </Controls.Button>
                         <Controls.Grid item xs={12}>
                         <Controls.Grid item sx={{ textAlign: "start" }}mt={4} mb={2}>
                             <Controls.Typography variant="caption1" sx={{ fontSize: "25px" }}>Welcome to AJIO</Controls.Typography>
@@ -297,8 +297,8 @@ const SigninComponent = ({ open, handleClose ,setOpen}) => {
                             <Controls.Typography variant="caption1" sx={{fontSize:"12px"}}>Email based login is no longer available. Please <Controls.Typography variant="caption1"sx={{color:"#176d93",fontSize:"12px",fontWeight:"bold"}}>click here</Controls.Typography> to restore your mobile number.</Controls.Typography>
                         </Controls.Grid>
                         </Controls.Grid> 
-                    </Box>
-                </Modal>
+                    </Controls.Box>
+                </Controls.Modal>
             </Controls.Grid>
             {modalOpen && <OtpComponent setModalOpen={setModalOpen} modalOpen={modalOpen} phoneNumber={phoneNumber} setOpen={setOpen}/>}
         </Controls.Grid>
