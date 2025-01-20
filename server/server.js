@@ -38,7 +38,7 @@ app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }))
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://ajio-7e20.onrender.com',
   methods: ['GET', 'POST', 'DELETE', 'PUT'],
   credentials: true,
 
