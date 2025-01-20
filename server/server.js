@@ -52,14 +52,14 @@ app.use(passport.initialize());
 // }));
 app.use(
   session({
-    secret: 'session-key', // Replace with a secure key
+    secret: 'session-key', 
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      mongoUrl: process.env.MONGO_URI, // Replace with your MongoDB URL
+      mongoUrl: process.env.MONGO_URI, 
     }),
     cookie: {
-      secure: process.env.NODE_ENV === 'production', // Secure cookies in production
+      secure: process.env.NODE_ENV === 'production',
     },
   })
 );
@@ -67,8 +67,6 @@ app.use(
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-
 
 
 

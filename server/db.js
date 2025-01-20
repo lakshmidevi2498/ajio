@@ -1,7 +1,11 @@
 import mongoose from 'mongoose';
 
- 
-mongoose.connect(process.env.MONGO_URI, {
+const mongoURI =
+process.env.NODE_ENV === 'production'
+  ? process.env.MONGO_URI 
+  : 'mongodb://localhost:27017/AJIO'; 
+
+mongoose.connect(mongoURI, {
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true,
 });
