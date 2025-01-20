@@ -33,20 +33,19 @@
   },
   "scripts": {
     "start": "react-scripts start",
-   "build": "react-scripts build",
+    "build": "CI =react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-"eslintConfig": {
-  "extends": [
-    "react-app",
-    "react-app/jest"
-  ],
-  "rules": {
-    "no-unused-vars": "warn"
-  }
-},
-
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "rules": {
+      "no-unused-vars": "warn"
+    }
+  },
   "browserslist": {
     "production": [
       ">0.2%",
