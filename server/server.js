@@ -71,78 +71,78 @@ const __dirname = path.dirname(__filename);
 
 
 
-AdminJS.registerAdapter({
-  Resource: AdminJSMongoose.Resource,
-  Database: AdminJSMongoose.Database,
-});
+// AdminJS.registerAdapter({
+//   Resource: AdminJSMongoose.Resource,
+//   Database: AdminJSMongoose.Database,
+// });
 
-const adminJs = new AdminJS({
-  databases: [mongoose],
-  rootPath: '/adminpanel',
-  resources: [
-    {
-      resource: wishlistSchema,
-      options: {
-        actions: {
-          edit: {
-            isAccessible: () => false,
-          },
-          delete: {
-            isAccessible: () => false,
-          },
-          create: {
-            isAccessible: () => false,
-          },
-        },
-      },
-    },
-    {
-      resource: mongoose.model('Order'),
-      options: {
-        properties: {
-          cart: {
-            type: 'referenced',
-            ref: 'Cart',
-            position: '1',
-            properties: [
-              {
-                name: 'products',
-                type: 'mixed',
-                properties: [
-                  {
-                    name: 'product',
-                    type: 'referenced',
-                    ref: 'Product',
-                  },
-                  'size',
-                  'quantity',
-                  'shippingStatus',
-                ],
-              },
-              'orderStatus',
-              'cartDate',
-            ],
-          },
-        },
-        actions: {
-          edit: {
-            isAccessible: ({ record }) => {
-              return true;
-            },
-          },
-        },
-      },
-    },
+// const adminJs = new AdminJS({
+//   databases: [mongoose],
+//   rootPath: '/adminpanel',
+//   resources: [
+//     {
+//       resource: wishlistSchema,
+//       options: {
+//         actions: {
+//           edit: {
+//             isAccessible: () => false,
+//           },
+//           delete: {
+//             isAccessible: () => false,
+//           },
+//           create: {
+//             isAccessible: () => false,
+//           },
+//         },
+//       },
+//     },
+//     {
+//       resource: mongoose.model('Order'),
+//       options: {
+//         properties: {
+//           cart: {
+//             type: 'referenced',
+//             ref: 'Cart',
+//             position: '1',
+//             properties: [
+//               {
+//                 name: 'products',
+//                 type: 'mixed',
+//                 properties: [
+//                   {
+//                     name: 'product',
+//                     type: 'referenced',
+//                     ref: 'Product',
+//                   },
+//                   'size',
+//                   'quantity',
+//                   'shippingStatus',
+//                 ],
+//               },
+//               'orderStatus',
+//               'cartDate',
+//             ],
+//           },
+//         },
+//         actions: {
+//           edit: {
+//             isAccessible: ({ record }) => {
+//               return true;
+//             },
+//           },
+//         },
+//       },
+//     },
 
-  ],
-  branding: {
-    companyName: 'Ajio',
-  }
-});
+//   ],
+//   branding: {
+//     companyName: 'Ajio',
+//   }
+// });
 
 
-const adminRouter = AdminJSExpress.buildRouter(adminJs)
-app.use(adminJs.options.rootPath, adminRouter);
+// const adminRouter = AdminJSExpress.buildRouter(adminJs)
+// app.use(adminJs.options.rootPath, adminRouter);
 
 
 // Routes
