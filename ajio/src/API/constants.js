@@ -1,4 +1,4 @@
-export const BASE_URL = "https://ajio-7e20.onrender.com/"
+export const BASE_URL = "/"
 
 // current working url
 export const STATUS_CODE = {
