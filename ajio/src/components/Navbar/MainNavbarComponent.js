@@ -132,7 +132,7 @@ const MainNavbarComponent = ({value1,value2,count ,value3,value4,value8 ,promise
         <>
             <Controls.Grid container justifyContent="center" >
                 <Controls.Grid item xs={12} sx={{ borderTop: "3px solid black", position: "fixed", top: 0, zIndex: 20, backgroundColor: "white", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" ,}}>
-                {isMobileScreen ? <MobileNavbarComponent promises = {promises} cart={cart} count = {count}/> :
+                {!isMobileScreen ? 
                   <Controls.Grid item xs={12} sx={{}}>
                     <Controls.Grid item xs={12} sm={11} md={9.5}   sx={{ margin: "auto", minHeight:value8,paddingBottom:0.2 ,}}>
                         <Controls.Grid item xs={12} sx={{ display: "flex",  justifyContent: "flex-start",  alignItems: "center"}}>
@@ -317,7 +317,8 @@ const MainNavbarComponent = ({value1,value2,count ,value3,value4,value8 ,promise
                             </Controls.Grid>
                         </Controls.Grid>
                         </Controls.Grid>
-                    </Controls.Grid>}
+                    </Controls.Grid>
+                    :<MobileNavbarComponent promises = {promises} cart={cart} count = {count}/> }
                     
 
                 </Controls.Grid>

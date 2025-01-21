@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Fab, Box,Modal ,Typography,Grid,Button  } from "@mui/material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import Controls from "../commons/Controls"; 
+import { useNavigate } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -18,6 +19,7 @@ const style = {
 const OpenModalComponent = () => {
   const [showButton, setShowButton] = useState(true);
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate()
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -27,21 +29,25 @@ const OpenModalComponent = () => {
       name: "SHOP MEN",
       image:
         "https://assets.ajio.com/medias/sys_master/images/images/h83/hbd/10412172673054/women-first-pop-up-screen.jpg",
+        route:"/categories/men/jackets&jones"
     },
     {
       name: "SHOP WOMEN",
       image:
         "https://assets.ajio.com/medias/sys_master/images/images/h55/h6c/10412175196190/menfirstpopupscreen.jpg",
+         route:"/categories/women/kurtas"
     },
     {
       name: "KIDS",
       image:
         "https://assets.ajio.com/medias/sys_master/images/images/h9b/h59/10468934254622/kids-first-pop-up-screen.jpg",
+         route:"/categories/kid/Dress&Frocks"
     },
     {
       name: "SHOP SALE",
       image:
         "https://assets.ajio.com/medias/sys_master/images/images/ha3/hd7/13007045623838/Sale-firstview-Tile-may-06-2019.jpg",
+         route:"/categories/beauty/lipstick"
     },
   ];
 
@@ -54,7 +60,7 @@ const OpenModalComponent = () => {
           onClick={handleOpen}
           sx={{
             position: "fixed",
-            bottom: "0rem",
+            bottom: "1rem",
             right: "2rem",
             zIndex: 1000,
             padding: 3,
@@ -102,7 +108,7 @@ const OpenModalComponent = () => {
                       height: "auto",
                       marginTop: 1,
                       borderRadius: "4px",
-                    }}
+                    }}onClick={()=>navigate(item.route)}
                   />
                 </Grid>
               ))}
