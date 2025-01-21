@@ -75,7 +75,7 @@ const CategorieCardsComponent = ({ isThreeGrid }) => {
                             alignItems: "center",    
                             padding: 1,
                             position: "relative",
-                            height:{xs:"500px"},
+                            height:{xs:isThreeGrid?"500px":"400px",sm:isThreeGrid ? "500px":"400px"},
                             
                         }}
                         onMouseEnter={() => setHoveredIndex(index)}
@@ -90,7 +90,7 @@ const CategorieCardsComponent = ({ isThreeGrid }) => {
                                 width: "100%",
                                 height: "auto",
                                 maxWidth: "300px",
-                                maxHeight: "350px",
+                                maxHeight: isThreeGrid ? "350px":"300px",
                                 position: "relative",
                             }}
                             onClick={() => handleNavigate(item)}
@@ -106,7 +106,7 @@ const CategorieCardsComponent = ({ isThreeGrid }) => {
                                     fontWeight: "bold",
                                     position: "absolute",
                                     zIndex: 20,
-                                    top: "68.5%",
+                                    top: !isThreeGrid?"50%" : "68.5%",
                                     left: "50%",
                                     transform: "translate(-50%, -50%)",
                                     width: "100%",

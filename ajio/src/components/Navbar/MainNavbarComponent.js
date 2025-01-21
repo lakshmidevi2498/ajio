@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux'
 import { getUserId } from '../GlobalFunction'
 
 const MainNavbarComponent = ({ value1, value2, count, value3, value4, value8, promises, cart, }) => {
+    const userId = getUserId()
 
     const [open, setOpen] = useState(null)
     const [modal, setModal] = useState(null)
@@ -26,7 +27,7 @@ const MainNavbarComponent = ({ value1, value2, count, value3, value4, value8, pr
 
 
     useEffect(() => {
-        if (mobileResponse && typeof mobileResponse === 'object' && !Array.isArray(mobileResponse)) {
+        if (mobileResponse && typeof mobileResponse === 'object' && !Array.isArray(mobileResponse) && sessionStorage.getItem('token') === null) {
             const response = mobileResponse?.data;
             console.log("response", response);
             console.log("response", response?.token);
@@ -87,11 +88,11 @@ const MainNavbarComponent = ({ value1, value2, count, value3, value4, value8, pr
             const forceToken = sessionStorage.getItem("token") || sessionStorage.getItem("googleToken");
             setToken(forceToken);
 
-            const socialUserName = sessionStorage.getItem("username") || sessionStorage.getItem("number")
+            const socialUserName = sessionStorage.getItem("number") || sessionStorage.getItem("username") 
             const firstWord = socialUserName.split(' ')[0];
             setName(firstWord)
         }
-    }, [])
+    }, [token])
 
 
 
@@ -112,8 +113,14 @@ const MainNavbarComponent = ({ value1, value2, count, value3, value4, value8, pr
     }
 
     const handleLogout = () => {
+        console.log("storedToken1",token,userId,name)
         sessionStorage.clear();
+        sessionStorage.removeItem('token')
+        sessionStorage.removeItem('mobileUser')
+        sessionStorage.removeItem('number')
         setName("");
+        console.log("storedToken",token,userId,name)
+        console.log("mobileResponse after logout:", mobileResponse);
         navigate('/#')
         // console.log("storedToken,storedValue,name",storedToken,storedValue,name)
 
@@ -146,7 +153,7 @@ const MainNavbarComponent = ({ value1, value2, count, value3, value4, value8, pr
                             <Controls.Grid item xs={12} sm={11} md={9.5} sx={{ margin: "auto", minHeight: value8, paddingBottom: 0.2, }}>
                                 <Controls.Grid item xs={12} sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
                                     <Controls.Grid item xs={3} sm={1} md={2} lg={3} sx={{ display: "block", justifyContent: "flex-start", alignItems: "center", marginY: "auto", justifyContent: "center", cursor: "pointer", }} onClick={handleNavigate}>
-                                        <Controls.Box component="img" src="./assets/images/Ajio-Logo.png" width="100%" height="100%" sx={{ width: { sm: "150%", md: "100%", lg: "45%" }, height: "100%", display: { xs: "none", sm: "block" } }} />
+                                        <Controls.Box component="img" src="/assets/images/Ajio-Logo.png" width="100%" height="100%" sx={{ width: { sm: "150%", md: "100%", lg: "45%" }, height: "100%", display: { xs: "none", sm: "block" } }} />
                                     </Controls.Grid>
                                     <Controls.Grid item sm={12} md={name.length > 5 ? 12 : 11} sx={{
                                         display: "flex",
