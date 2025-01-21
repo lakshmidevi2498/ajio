@@ -91,7 +91,7 @@ const MainNavbarComponent = ({value1,value2,count ,value3,value4,value8 ,promise
         const firstWord = socialUserName.split(' ')[0];
         setName(firstWord)
         }
-    })
+    },[])
     
  
  
@@ -130,14 +130,15 @@ const MainNavbarComponent = ({value1,value2,count ,value3,value4,value8 ,promise
     }
     return (
         <>
-            <Controls.Grid container justifyContent="center" >
-                <Controls.Grid item xs={12} sx={{ borderTop: "3px solid black", position: "fixed", top: 0, zIndex: 20, backgroundColor: "white", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" ,}}>
+            <Controls.Grid container justifyContent="center" border="2px solid purple">
+                {/* <Controls.Grid item xs={12} sx={{ border:"2px solid green"}}> */}
+                <Controls.Grid item xs={12} sx={{ borderTop: "3px solid black", position: "fixed", top: 0, zIndex: 20, backgroundColor: "white", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" , border:"2px solid red"}}>
                 {!isMobileScreen ? 
-                  <Controls.Grid item xs={12} sx={{}}>
-                    <Controls.Grid item xs={12} sm={11} md={9.5}   sx={{ margin: "auto", minHeight:value8,paddingBottom:0.2 ,}}>
+                  <Controls.Grid item xs={12} sx={{ border:"2px solid yellow"}}>
+                    <Controls.Grid item xs={12} sm={11} md={9.5}   sx={{ margin: "auto", minHeight:value8,paddingBottom:0.2 , border:"3px solid pink"}}>
                         <Controls.Grid item xs={12} sx={{ display: "flex",  justifyContent: "flex-start",  alignItems: "center"}}>
                             <Controls.Grid item xs={3} sm={1} md={2} lg={3} sx={{ display: "block", justifyContent: "flex-start", alignItems: "center", marginY: "auto", justifyContent: "center", cursor: "pointer", }} onClick={handleNavigate}>
-                                <Controls.Box component="img" src="/assets/images/ajio-Logo.png" width="100%" height="100%" sx={{ width: { sm: "150%", md:"100%",lg: "45%" }, height: "100%", display: { xs: "none", sm: "block" } }} />
+                                <Controls.Box component="img" src="assets/images/ajio-Logo.png" width="100%" height="100%" sx={{ width: { sm: "150%", md:"100%",lg: "45%" }, height: "100%", display: { xs: "none", sm: "block" } }} />
                               </Controls.Grid>
                             <Controls.Grid item sm={12}md={name.length>5 ? 12 :11} sx={{
                                 display: "flex",
@@ -150,9 +151,8 @@ const MainNavbarComponent = ({value1,value2,count ,value3,value4,value8 ,promise
                                 <Controls.Grid item xs={12} sx={{ }}>
                                     <Controls.Grid item xs={9} sm={name ? 12 : name.length>7 ? 6: 7} md={name.length>=5 ? 12 :10} sx={{ justifyContent:"end",display: value4, marginLeft:{sm:name?25 :name.length>7 ? 40 :45,lg:name.length>7 ? 43 : 50,xxl:100},}}>
                                         <Controls.Grid item xs={12} xl={8}sx={{ display: { xs: "none", sm: "flex" }, justifyContent: "space-between" ,}}>
-                                            {(name != "" && name != null ) ?
+                                            {(name !== "" && name !== null ) ?
                                                 <>
-                                                {/* {token && ( */}
                                                     <Controls.Grid item gap={{xs:4.5,xl:8}} sx={{ fontSize: { xs: "13px", }, display: "flex", letterSpacing: 1.5 ,}} xs={8} sm={name.length>7 ? 12 :8} lg={name.length>7 ? 12:10} xl={8}mt={{sm:0.7,md:0.5,lg:0.8}} >
                                                         <Controls.Grid item>
                                                             <Controls.Typography variant='caption1' sx={{ fontSize: { xs: "14px" }, fontFamily: "SourceSansPro" }}>{name}</Controls.Typography>
@@ -164,7 +164,6 @@ const MainNavbarComponent = ({value1,value2,count ,value3,value4,value8 ,promise
                                                             <Controls.Typography variant='caption1' sx={{ fontFamily: "SourceSansPro", cursor: "pointer" }} onClick={handleLogout}>Signout</Controls.Typography>
                                                         </Controls.Grid>
                                                     </Controls.Grid>
-                                                     {/* )} */}
                                                 </>
                                                 :
                                                 <Controls.Grid item sx={{ display: { xs: "none", sm: "flex" }, color: theme.palette.one.bag, letterSpacing: 2, textAlign: { xs: "center", md: "" }, '&:hover': { textDecoration: "underline" } ,}} xs={12} sm={7} md={7} lg={4.5} mt={1}>
@@ -198,7 +197,7 @@ const MainNavbarComponent = ({value1,value2,count ,value3,value4,value8 ,promise
                                     </Controls.Grid>
                                     <Controls.Grid item xs={11}sm={12} md={11} sx={{marginLeft:{xs:0,md:7,lg:8,xl:8},display:value2 }} pb={.5}>
                                     
-                                        <Controls.Grid item sx={{ display: "flex",}} gap={1}>
+                                        <Controls.Grid item sx={{ display: "flex",border:"2px solid red"}} gap={1}>
                                             <Controls.Grid
                                                 item
                                                 xs={0}
@@ -210,7 +209,7 @@ const MainNavbarComponent = ({value1,value2,count ,value3,value4,value8 ,promise
                                                     display: { xs: "none", sm: 'flex' },
                                                     flexDirection: 'column',
                                                     justifyContent: { sm: 'flex-end' },
-                                                    height: '100', 
+                                                    // height: '30', 
                                                     margin: { xs: "auto", sm: 0 },
                                                     textAlign: "center",
                                                     marginLeft:{sm:8,md:0},
@@ -323,6 +322,7 @@ const MainNavbarComponent = ({value1,value2,count ,value3,value4,value8 ,promise
 
                 </Controls.Grid>
                 { modal && <SigninComponent open={open} handleClose={handleClose}  setOpen={setOpen}/>}
+            {/* </Controls.Grid> */}
             </Controls.Grid>
         </>
     )
