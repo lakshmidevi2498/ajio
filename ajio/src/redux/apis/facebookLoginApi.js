@@ -5,11 +5,11 @@ export const facebookLoginApi = async () => {
 
   return new Promise((resolve, reject) => {
   
-    const authWindow = window.open("http://localhost:5050/auth/facebook", "_self");
+    const authWindow = window.open("https://ajio-7e20.onrender.com/auth/facebook", "_self");
 
  
     window.addEventListener("message", (event) => {
-      if (event.origin !== "http://localhost:3000") return;  
+      if (event.origin !== "https://ajio-7e20.onrender.com") return;  
 
       const { user, token, error } = event.data;
 
