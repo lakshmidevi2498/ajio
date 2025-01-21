@@ -133,8 +133,9 @@ const MainNavbarComponent = ({value1,value2,count ,value3,value4,value8 ,promise
             <Controls.Grid container justifyContent="center" >
                 <Controls.Grid item xs={12} sx={{ borderTop: "3px solid black", position: "fixed", top: 0, zIndex: 20, backgroundColor: "white", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" ,}}>
                 {isMobileScreen ? <MobileNavbarComponent promises = {promises} cart={cart} count = {count}/> :
-                    <Controls.Grid item xs={12}  sx={{ margin: "auto", minHeight:value8,paddingBottom:0.2 ,}}>
-                        <Controls.Grid item xs={12} sm={11} md={9.5} sx={{ display: "flex",  justifyContent: "flex-start",  alignItems: "center",marginX:"auto",}}>
+                  <Controls.Grid item xs={12} sx={{}}>
+                    <Controls.Grid item xs={12} sm={11} md={9.5}   sx={{ margin: "auto", minHeight:value8,paddingBottom:0.2 ,}}>
+                        <Controls.Grid item xs={12} sx={{ display: "flex",  justifyContent: "flex-start",  alignItems: "center"}}>
                             <Controls.Grid item xs={3} sm={1} md={2} lg={3} sx={{ display: "block", justifyContent: "flex-start", alignItems: "center", marginY: "auto", justifyContent: "center", cursor: "pointer", }} onClick={handleNavigate}>
                                 <Controls.Box component="img" src="/assets/images/ajio-Logo.png" width="100%" height="100%" sx={{ width: { sm: "150%", md:"100%",lg: "45%" }, height: "100%", display: { xs: "none", sm: "block" } }} />
                               </Controls.Grid>
@@ -314,6 +315,7 @@ const MainNavbarComponent = ({value1,value2,count ,value3,value4,value8 ,promise
                                 </Controls.Grid>
 
                             </Controls.Grid>
+                        </Controls.Grid>
                         </Controls.Grid>
                     </Controls.Grid>}
                     

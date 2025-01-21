@@ -65,7 +65,7 @@ const NavLinksComponent = () => {
                 >
                   <Controls.Box
                     sx={{
-                      fontSize: { xs: "7px", sm: "11px",md:"12px", lg: "15px" ,xl:"30px"}, 
+                      fontSize: { xs: "7px", sm: "11px",md:"12px", lg: "15px" ,xl:"20px"}, 
                     }}
                   >
                     {link.name}
