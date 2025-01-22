@@ -15,7 +15,7 @@ export const mobileLoginReducer = (state = initialState, action) => {
         error: null,
       };
     case types.MOBILE_LOGIN_SUCCESS:
-      console.log("this is loadProductsDatasuccessreducer----> ", action.payload);
+      console.log("this is mobileLoginsuccessreducer----> ", action.payload);
       return {
         ...state,
         data: action.payload,
@@ -23,7 +23,7 @@ export const mobileLoginReducer = (state = initialState, action) => {
         error: null,
       };
     case types.MOBILE_LOGIN_ERROR:
-      console.log("this is loadProductsDataerrorreducer----> ");
+      console.log("this is mobileLoginerrorreducer----> ");
       return {
         ...state,
         loading: false,

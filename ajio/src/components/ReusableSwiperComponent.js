@@ -6,11 +6,9 @@ import 'swiper/css/navigation';
 import { Pagination, Autoplay, Navigation } from 'swiper/modules';
 import Controls from '../commons/Controls';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight'; 
-import ReactDOMServer from 'react-dom/server';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-const ReusableSwiperComponent = ({ data, value1, value2, value3, value4, value5, autoplayEnabled, autoplayValues, leftValue, rightValue, bgColor }) => {
-    // console.log("data in ReusableSwiperComponent", data);
+const ReusableSwiperComponent = ({ data, value1, value2, value3, value4, value5, autoplayEnabled, autoplayValues, leftValue, rightValue, bgColor,paginationEnabled  }) => {
     const swiperRef = useRef(null);
     const [images, setImages] = useState([]);
 
@@ -20,23 +18,26 @@ const ReusableSwiperComponent = ({ data, value1, value2, value3, value4, value5,
             console.log("data.images", data.images);
         }
     }, [data]);
-    
+
+    const leftButtonRef = useRef(null); 
+    const rightButtonRef = useRef(null); 
 
     return (
-        <Controls.Grid container justifyContent="center" sx={{ position: 'relative', }} mt={0}>
+        <Controls.Grid container justifyContent="center" sx={{ position: 'relative' }} mt={0}>
             <Controls.Grid item xs={12} sx={{ position: 'relative' }}>
                 <Swiper
                     spaceBetween={0}
                     loop={true}
-                    pagination={{
+                    pagination={paginationEnabled
+                        ? {
                         clickable: true,
                         renderBullet: function (index, className) {
                             return '<span class="' + className + '"></span>';
                         },
-                    }}
+                    }: false}
                     navigation={{
-                        nextEl: '.custom-swiper-button-next',
-                        prevEl: '.custom-swiper-button-prev',
+                        nextEl: rightButtonRef.current,  
+                        prevEl: leftButtonRef.current,  
                     }}
                     {...(autoplayEnabled ? {
                         autoplay: autoplayValues || { delay: 800, disableOnInteraction: false },
@@ -71,10 +72,10 @@ const ReusableSwiperComponent = ({ data, value1, value2, value3, value4, value5,
                         </SwiperSlide>
                     ))}
                 </Swiper>
-              
                 <div className="swiper-pagination-bullet"  ></div>
-             
+
                 <Controls.Grid item
+                    ref={leftButtonRef}   
                     className="custom-swiper-button-prev"
                     sx={{
                         display: leftValue,
@@ -91,7 +92,9 @@ const ReusableSwiperComponent = ({ data, value1, value2, value3, value4, value5,
                 >
                     <ChevronLeftIcon />
                 </Controls.Grid>
+
                 <Controls.Grid item
+                    ref={rightButtonRef}  
                     className="custom-swiper-button-next"
                     sx={{
                         display: rightValue,
