@@ -8,91 +8,68 @@ import MobileNavbarComponent from './MobileNavbarComponent'
 import { useMediaQuery } from '@mui/material'
 import CartNavbarComponent from '../CartNavbarComponent'
 import PromisesComponent from '../PromisesComponent'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getUserId } from '../GlobalFunction'
+import { RESET_MOBILE_DATA } from '../../redux/actions/actionTypes';
+import { auth } from "../../firebase/Firebase"
 
 const MainNavbarComponent = ({ value1, value2, count, value3, value4, value8, promises, cart, }) => {
     const userId = getUserId()
-
+    const dispatch = useDispatch()
+    const isMobileScreen = useMediaQuery(theme.breakpoints.down('sm'));
     const [open, setOpen] = useState(null)
     const [modal, setModal] = useState(null)
-    const [token, setToken] = useState(null)
-    const [name, setName] = useState("")
-    const [number, setNumber] = useState(null)
+    const [token, setToken] = useState(() => 
+        sessionStorage.getItem("token") || sessionStorage.getItem("googleToken") || ""
+    );
+    const [name, setName] = useState(() => {
+        const storedName = sessionStorage.getItem("number") || sessionStorage.getItem("username") || "";
+        return storedName.split(" ")[0]; 
+    });
+    
     const [searchParams] = useSearchParams();
-    const isMobileScreen = useMediaQuery(theme.breakpoints.down('sm'));
-
-    const mobileResponse = useSelector((state) => state.mobileuserdata.data || [])
-    console.log("mobileResponse", mobileResponse)
-
-
+    const mobileResponse = useSelector((state) => state.mobileuserdata.data || []);
+    
     useEffect(() => {
-        if (mobileResponse && typeof mobileResponse === 'object' && !Array.isArray(mobileResponse) && sessionStorage.getItem('token') === null) {
+       
+        if (mobileResponse && typeof mobileResponse === 'object' && !Array.isArray(mobileResponse) && !sessionStorage.getItem('token')) {
             const response = mobileResponse?.data;
-            console.log("response", response);
-            console.log("response", response?.token);
-
-            sessionStorage.setItem('token', response?.token);
-            console.log("response", response?.user?.phoneNumber);
-
-            sessionStorage.setItem('number', response?.user?.phoneNumber);
+    
+            if (response?.token) {
+                sessionStorage.setItem('token', response.token);
+                setToken(response.token);
+            }
+    
+            if (response?.user?.phoneNumber) {
+                sessionStorage.setItem('number', response.user.phoneNumber);
+                setName(response.user.phoneNumber);
+            }
+    
             sessionStorage.setItem('mobileUser', response?.user?._id);
-
-            // const storedToken = sessionStorage.getItem('token');
-            // const storedValue = sessionStorage.getItem('number');
-
-            // setName(storedValue);
-            // setToken(storedToken);
         }
     }, [mobileResponse]);
-
-
-
+    
     useEffect(() => {
         const token = searchParams.get('token');
         const id = searchParams.get('id');
         const username = searchParams.get('name');
-        console.log("token", token, id, username);
-
+    
         if (token) {
-            const existingToken = sessionStorage.getItem('googleToken');
-            if (!existingToken) {
-                sessionStorage.setItem('googleToken', token);
-                console.log("token", token)
-            }
-            // setToken(token);
+            sessionStorage.setItem('googleToken', token);
+            setToken(token);
         }
-
+    
         if (id) {
-            const existingSocialUserId = sessionStorage.getItem('socialUserId');
-            if (!existingSocialUserId) {
-                sessionStorage.setItem('socialUserId', id);
-                console.log("id", id)
-            }
+            sessionStorage.setItem('socialUserId', id);
         }
-
+    
         if (username) {
-            const existingName = sessionStorage.getItem('username');
-            if (!existingName) {
-                sessionStorage.setItem('username', username);
-                console.log("username", username)
-            }
-            const firstWord = username.split(' ')[0];
-            // setName(firstWord);
+            sessionStorage.setItem('username', username);
+            setName(username.split(' ')[0]);
         }
     }, []);
+    
 
-    useEffect(() => {
-        const token = getUserId()
-        if (token) {
-            const forceToken = sessionStorage.getItem("token") || sessionStorage.getItem("googleToken");
-            setToken(forceToken);
-
-            const socialUserName = sessionStorage.getItem("number") || sessionStorage.getItem("username") 
-            const firstWord = socialUserName.split(' ')[0];
-            setName(firstWord)
-        }
-    }, [token])
 
 
 
@@ -111,20 +88,53 @@ const MainNavbarComponent = ({ value1, value2, count, value3, value4, value8, pr
         setOpen(false)
         setModal(false)
     }
+ const handleLogout = () => {
+    
+        if (sessionStorage.getItem("token")) {
+            auth.signOut()
+                .then(() => {
+                    console.log("Firebase user logged out successfully.");
+    
+                    if (window.recaptchaVerifier) {
+                        window.recaptchaVerifier.clear(); 
+                        window.recaptchaVerifier = null; 
+                        console.log("reCAPTCHA verifier reset.");
+                    }
+    
+                    clearSessionAndRedirect();
+                })
+                .catch((error) => {
+                    console.error("Error logging out from Firebase:", error);
+                });
+        } else {
+            clearSessionAndRedirect();
+        }
+    };
+    
 
-    const handleLogout = () => {
-        console.log("storedToken1",token,userId,name)
+    
+    
+
+    const clearSessionAndRedirect = () => {
         sessionStorage.clear();
-        sessionStorage.removeItem('token')
-        sessionStorage.removeItem('mobileUser')
-        sessionStorage.removeItem('number')
+        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("googleToken");
+        sessionStorage.removeItem("mobileUser");
+        sessionStorage.removeItem("number");
+        
+     
+        dispatch({ type: RESET_MOBILE_DATA });
+    
+      
         setName("");
-        console.log("storedToken",token,userId,name)
+    
+        console.log("storedToken", token, userId, name);
         console.log("mobileResponse after logout:", mobileResponse);
-        navigate('/#')
-        // console.log("storedToken,storedValue,name",storedToken,storedValue,name)
-
-    }
+    
+    
+        navigate("/#");
+    };
+    
     const handleProfilePage = () => {
         navigate('/my-account/orders')
     }
@@ -155,7 +165,7 @@ const MainNavbarComponent = ({ value1, value2, count, value3, value4, value8, pr
                                     <Controls.Grid item xs={3} sm={1} md={2} lg={3} sx={{ display: "block", justifyContent: "flex-start", alignItems: "center", marginY: "auto", justifyContent: "center", cursor: "pointer", }} onClick={handleNavigate}>
                                         <Controls.Box component="img" src="/assets/images/Ajio-Logo.png" width="100%" height="100%" sx={{ width: { sm: "150%", md: "100%", lg: "45%" }, height: "100%", display: { xs: "none", sm: "block" } }} />
                                     </Controls.Grid>
-                                    <Controls.Grid item sm={12} md={name.length > 5 ? 12 : 11} sx={{
+                                    <Controls.Grid item sm={12} md={name?.length > 5 ? 12 : 11} sx={{
                                         display: "flex",
                                         justifyContent: "flex-end",
                                         alignItems: "center",
@@ -164,11 +174,11 @@ const MainNavbarComponent = ({ value1, value2, count, value3, value4, value8, pr
                                         marginLeftt: 0,
                                     }}>
                                         <Controls.Grid item xs={12} sx={{}}>
-                                            <Controls.Grid item xs={9} sm={name ? 12 : name.length > 7 ? 6 : 7} md={name.length >= 5 ? 12 : 10} sx={{ justifyContent: "end", display: value4, marginLeft: { sm: name ? 25 : name.length > 7 ? 40 : 45, lg: name.length > 7 ? 43 : 50, xxl: 100 }, }}>
+                                            <Controls.Grid item xs={9} sm={name ? 12 : name?.length > 7 ? 6 : 7} md={name?.length >= 5 ? 12 : 10} sx={{ justifyContent: "end", display: value4, marginLeft: { sm: name ? 25 : name?.length > 7 ? 40 : 45, lg: name?.length > 7 ? 43 : 50, xxl: 100 }, }}>
                                                 <Controls.Grid item xs={12} xl={8} sx={{ display: { xs: "none", sm: "flex" }, justifyContent: "space-between", }}>
-                                                    {(name !== "" && name !== null) ?
+                                                    {(name !== "" && name !== null ) ?
                                                         <>
-                                                            <Controls.Grid item gap={{ xs: 4.5, xl: 8 }} sx={{ fontSize: { xs: "13px", }, display: "flex", letterSpacing: 1.5, }} xs={8} sm={name.length > 7 ? 12 : 8} lg={name.length > 7 ? 12 : 10} xl={8} mt={{ sm: 0.7, md: 0.5, lg: 0.8 }} >
+                                                            <Controls.Grid item gap={{ xs: 4.5, xl: 8 }} sx={{ fontSize: { xs: "13px", }, display: "flex", letterSpacing: 1.5, }} xs={8} sm={name?.length > 7 ? 12 : 8} lg={name?.length > 7 ? 12 : 10} xl={8} mt={{ sm: 0.7, md: 0.5, lg: 0.8 }} >
                                                                 <Controls.Grid item>
                                                                     <Controls.Typography variant='caption1' sx={{ fontSize: { xs: "14px" }, fontFamily: "SourceSansPro" }}>{name}</Controls.Typography>
                                                                 </Controls.Grid>

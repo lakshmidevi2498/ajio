@@ -10,7 +10,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ReactDOMServer from 'react-dom/server';
 
 const ReusableSwiperComponent = ({ data, value1, value2, value3, value4, value5, autoplayEnabled, autoplayValues, leftValue, rightValue, bgColor }) => {
-    console.log("data in ReusableSwiperComponent", data);
+    // console.log("data in ReusableSwiperComponent", data);
     const swiperRef = useRef(null);
     const [images, setImages] = useState([]);
 

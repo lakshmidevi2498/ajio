@@ -64,7 +64,12 @@ const SigninComponent = ({ open, handleClose ,setOpen}) => {
                 callback: (response) => {
                     console.log("reCAPTCHA solved:", response);
                 },
-                'expired-callback': () => {},
+                'expired-callback': () => {
+                    console.log("reCAPTCHA expired. Resetting...");
+          
+            window.recaptchaVerifier.reset();
+            setupRecaptcha( 'recaptcha-container');
+                },
               }
             );
           }

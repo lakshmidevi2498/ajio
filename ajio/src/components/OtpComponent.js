@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { mobileLoginInitiate } from "../redux/actions/mobileLoginAction";
 import { getToken } from "./GlobalFunction";
+import { toast } from "react-toastify";
 
 const style = {
     position: "absolute",
@@ -50,7 +51,7 @@ const OtpComponent = ({ setModalOpen, modalOpen, phoneNumber,setOpen }) => {
 
         try {
             const user = await verifyOTP(otpCode);
-            alert(`Phone number verified! Welcome ${user.phoneNumber}`);
+            toast.success(`Phone number verified! Welcome ${user.phoneNumber}`);
             // console.log("accesstoken",user.accessToken)
             setModalOpen(false)
             setOpen(false)
@@ -119,7 +120,7 @@ const OtpComponent = ({ setModalOpen, modalOpen, phoneNumber,setOpen }) => {
             <Grid container sx={style}>
                 <Grid item xs={12}>
                     <Typography variant="body1" gutterBottom>
-                        Enter the OTP sent to +91 {phoneNumber}
+                        Enter the OTP sent to  {phoneNumber}
                     </Typography>
                 </Grid>
                 <Grid

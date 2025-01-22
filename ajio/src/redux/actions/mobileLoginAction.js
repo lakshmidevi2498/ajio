@@ -11,7 +11,13 @@ export const mobileLoginSuccess = (data) => (
     {
     type:types.MOBILE_LOGIN_SUCCESS,
     payload:data
-})
+}
+
+)
+
+export const resetMobileData = () => ({
+  type: types.RESET_MOBILE_DATA
+});
 
 export const mobileLoginError = (error) => (
     console.log("this is mobileLoginErrorAction---->" ,error),
@@ -26,6 +32,7 @@ export const mobileLoginInitiate = (phoneNumber,providerId,uId) => {
         dispatch(mobileLoginStart())
         try {
           const mobileLogindata = await mobileLoginApi(phoneNumber,providerId,uId)
+          console.log("mobileLogindata",mobileLogindata)
           dispatch(mobileLoginSuccess(mobileLogindata))
         //   navigate('/')
   

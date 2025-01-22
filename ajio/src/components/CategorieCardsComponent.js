@@ -17,7 +17,7 @@ const CategorieCardsComponent = ({ isThreeGrid }) => {
     const dispatch = useDispatch()
     const { categoryId, subcategoryId } = useParams();
     const productData = useSelector((state) => state.loadproductsdata.data || {})
-    console.log("productData", productData)
+    // console.log("productData", productData)
 
 
 
