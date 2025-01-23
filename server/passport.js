@@ -52,8 +52,8 @@ passport.use(
       clientSecret: process.env.FACEBOOK_APP_SECRET,
       callbackURL: "https://ajio-7e20.onrender.com/auth/facebook/callback",
       // passReqToCallback: true
-      // profileFields: ['id', 'displayName', 'photos', 'email'], // Ensure email is included
-      // scope: ['email']
+      profileFields: ['id', 'displayName', 'photos', 'email'], 
+      scope: ['email']
     },
     async (accessToken, refreshToken, profile, done) => {
       console.log("profile",profile)
