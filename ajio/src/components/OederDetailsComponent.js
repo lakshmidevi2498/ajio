@@ -109,7 +109,7 @@ const OederDetailsComponent = () => {
     const handleDownload = async (id) => {
       
         try {
-            const response = await axios.post("http://localhost:5050/download-invoice", { orders }, {
+            const response = await axios.post("https://ajio-7e20.onrender.com/download-invoice", { orders }, {
                 responseType: "blob",
             });
             // dispatch(postInvoiceInitiate(orders))
@@ -275,26 +275,35 @@ const OederDetailsComponent = () => {
                                                         <Controls.Typography variant='caption1' sx={{ color: theme.palette.one.text, zIndex: 200, fontSize: { md: "13px", lg: "15px" } }}>Re-order-Item</Controls.Typography>
                                                     </Controls.Grid>
                                                     ) : item.productShippingStatus !== "Delivered" ?
-                                                        (<Controls.Grid item sx={{ textAlign: { xs: "right", md: "center" },zIndex: 20, position: "relative" }} onClick={() => handleCancelProduct(item._id, orders.cart._id, item)} md={4} lg={3}>
+                                                        (
+                                                            <Controls.Grid
+                                                            item
+                                                            sx={{ textAlign: { xs: "right", md: "center" }, zIndex: 20, position: "relative" }}
+                                                            onClick={() => {
+                                                              if (!["Shipped", "Out_for_delivery", "Delivered"].includes(item.productShippingStatus)) {
+                                                                handleCancelProduct(item._id, orders.cart._id, item);
+                                                              }
+                                                            }}
+                                                            md={4}
+                                                            lg={3}
+                                                          >
                                                             <Controls.Button
-                                                                sx={{
+                                                              sx={{
+                                                                color: theme.palette.one.text,
+                                                                cursor: "pointer",
+                                                                textTransform: "initial",
+                                                                fontSize: { xs: "13px", md: "10px", lg: "13px" },
+                                                                "&.Mui-disabled": {
                                                                     color: theme.palette.one.text,
-                                                                    cursor: "pointer",
-                                                                    textTransform: "initial",
-                                                                    fontSize: {xs:"13px",md:"10px",lg:"13px"},
-                                                                    "&.Mui-disabled": {
-                                                                        color: theme.palette.one.text,
-                                                                        opacity: 0.7,
-                                                                    },
-                                                                }}
-                                                                disabled={["Shipped", "Out_for_delivery", "Delivered"].includes(item.productShippingStatus)}
+                                                                    opacity: 0.7,
+                                                                    cursor: "not-allowed", 
+                                                                  },
+                                                              }}
+                                                              disabled={["Shipped", "Out_for_delivery", "Delivered"].includes(item.productShippingStatus)}
                                                             >
-                                                                Cancel-Item
+                                                              Cancel-Item
                                                             </Controls.Button>
-
-
-
-                                                        </Controls.Grid>) : ""}
+                                                          </Controls.Grid>) : ""}
 
 
                                                 </Controls.Grid>

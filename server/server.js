@@ -26,6 +26,9 @@ import invoiceRoute from './routes/invoiceRoute.js'
 import db from './db.js'
 import { fileURLToPath } from 'url';
 import MongoStore from 'connect-mongo';
+import orderSchema from './models/orderModel.js'
+import addressModal from './models/addressModal.js';
+import userSchemaModal from './models/userSchemaModal.js';
 // import connectMongo  from 'connect-mongo'
 
 
@@ -83,6 +86,12 @@ const adminJs = new AdminJS({
     {
       resource: wishlistSchema,
       options: {
+        // properties: {
+        //   user: {
+        //     reference: 'User', 
+        //     isVisible: { list: true, show: true, edit: false },
+        //   },
+        // },
         actions: {
           edit: {
             isAccessible: () => false,
@@ -97,7 +106,7 @@ const adminJs = new AdminJS({
       },
     },
     {
-      resource: mongoose.model('Order'),
+      resource: orderSchema,
       options: {
         properties: {
           cart: {
@@ -124,15 +133,54 @@ const adminJs = new AdminJS({
             ],
           },
         },
-        actions: {
+        actions: {  // ✅ Combined actions inside options
           edit: {
-            isAccessible: ({ record }) => {
-              return true;
-            },
+            isAccessible: () => false,  // Disable edit
+          },
+          delete: {
+            isAccessible: () => false,  // Disable delete
+          },
+          create: {
+            isAccessible: () => false,  // Disable create
           },
         },
       },
     },
+    {
+      resource: addressModal,
+      options: {
+      
+        actions: {  
+          edit: {
+            isAccessible: () => false,  
+          },
+          delete: {
+            isAccessible: () => false, 
+          },
+          create: {
+            isAccessible: () => false, 
+          },
+        },
+      },
+    },
+    {
+      resource: userSchemaModal,
+      options: {
+      
+        actions: {  
+          edit: {
+            isAccessible: () => false,  
+          },
+          delete: {
+            isAccessible: () => false, 
+          },
+          create: {
+            isAccessible: () => false, 
+          },
+        },
+      },
+    }
+    
 
   ],
   branding: {
