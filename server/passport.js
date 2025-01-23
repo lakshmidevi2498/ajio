@@ -13,7 +13,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://ajio-7e20.onrender.com/auth/google/callback", 
+      callbackURL: "http://localhost:5050/auth/google/callback", 
       passReqToCallback: true
     },
     async (req, accessToken, refreshToken, profile, done) => {
@@ -50,9 +50,10 @@ passport.use(
     {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL: "https://ajio-7e20.onrender.com/auth/facebook/callback",
-      profileFields: ['id', 'displayName', 'photos', 'email'], 
-      scope: ['email']
+      callbackURL: "http://localhost:5050/auth/facebook/callback",
+      // passReqToCallback: true
+      // profileFields: ['id', 'displayName', 'photos', 'email'], // Ensure email is included
+      // scope: ['email']
     },
     async (accessToken, refreshToken, profile, done) => {
       console.log("profile",profile)

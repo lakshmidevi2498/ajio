@@ -41,6 +41,7 @@ const MyProfileDetailsComponent = () => {
         if (User) {
           let firstName = "";
           let lastName = "";
+          let number="";
       
           if (User.fname && User.lname) {
             firstName = User.fname;
@@ -48,14 +49,16 @@ const MyProfileDetailsComponent = () => {
           } else if (User.name) {
             [firstName, lastName] = User.name.split(" ");
           }
-      
+      if(User.phoneNumber){
+        number=User.phoneNumber
+      }
           setDetails((prevDetails) => ({
             ...prevDetails,
             fname: firstName || "",
             lname: lastName || "",
             email: User.email || "",
             dob: User.dob || "",
-            number: User.number || "",
+            number: User.number || User.phoneNumber || "",
             sname: User.sname || "",
             gender: User.gender || "",
           }));
