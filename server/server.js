@@ -110,7 +110,7 @@ const adminJs = new AdminJS({
       options: {
         properties: {
           cart: {
-            type: 'referenced',
+            type: 'reference',
             ref: 'Cart',
             position: '1',
             properties: [
@@ -120,7 +120,7 @@ const adminJs = new AdminJS({
                 properties: [
                   {
                     name: 'product',
-                    type: 'referenced',
+                    type: 'reference',
                     ref: 'Product',
                   },
                   'size',
@@ -133,15 +133,15 @@ const adminJs = new AdminJS({
             ],
           },
         },
-        actions: {  // ✅ Combined actions inside options
+        actions: {  
           edit: {
-            isAccessible: () => false,  // Disable edit
+            isAccessible: () => false,  
           },
           delete: {
-            isAccessible: () => false,  // Disable delete
+            isAccessible: () => false,  
           },
           create: {
-            isAccessible: () => false,  // Disable create
+            isAccessible: () => false,  
           },
         },
       },

@@ -24,7 +24,6 @@ const cartSchema = new mongoose.Schema({
     default: 'pending',
   },
   cartDate: { type: Date, default: Date.now },
-  order: { type: mongoose.Schema.Types.ObjectId, ref: 'Order' }  // Add reference to Order for bidirectional relationship
 });
 
 export default mongoose.model('Cart', cartSchema);
