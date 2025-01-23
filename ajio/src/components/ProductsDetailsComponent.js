@@ -445,7 +445,7 @@ return (
             <Controls.Grid item sx={{display:displayValue}}>
             {isWishlistProduct(innerData._id) ? (
               <Controls.Grid item xs={10} mx="auto">
-              <Controls.Button variant="contained" sx={{ fontSize: { xs: "12px", lg: "14px" }, backgroundColor: "white", color: "#866528", paddingX: { xs: "5px", lg: "20px" }, border: "1px solid #866528", fontWeight: "normal",  }}><Controls.FavoriteIcon sx={{ color: "#866528", marginRight: "3px", fontSize: { xs: "14px", md: "18px" },'&:hover':{color:"white"} }} />REMOVE FROM WISHLIST</Controls.Button>
+              <Controls.Button variant="contained" sx={{ fontSize: { xs: "12px", lg: "14px" }, backgroundColor: "white", color: "#866528", paddingX: { xs: "5px", lg: "20px" }, border: "1px solid #866528", fontWeight: "normal", '&:hover':{backgroundColor: "white"} }}><Controls.FavoriteIcon sx={{ color: "#866528", marginRight: "3px", fontSize: { xs: "14px", md: "18px" },'&:hover':{color:"white"} }} />REMOVE FROM WISHLIST</Controls.Button>
             </Controls.Grid>
 
             ) : (

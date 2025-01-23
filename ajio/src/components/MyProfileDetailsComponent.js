@@ -39,36 +39,29 @@ const MyProfileDetailsComponent = () => {
       useEffect(() => {
         const User = userData?.data?.user;
         if (User) {
-            if(User.fname !== ""){
-                setDetails((prevDetails) => ({
-                    ...prevDetails,
-                    fname: User.fname || "",
-                    lname: User.lname || "",
-        
-                  }));
-            }
-            else{
-                const name = User.name || "";
-                const [firstName, lastName] = name.split(" ");
+          let firstName = "";
+          let lastName = "";
       
-                setDetails((prevDetails) => ({
-                  ...prevDetails,
-                  fname: firstName || "",
-                  lname: lastName || "",
-                }));
-            }
-
+          if (User.fname && User.lname) {
+            firstName = User.fname;
+            lastName = User.lname;
+          } else if (User.name) {
+            [firstName, lastName] = User.name.split(" ");
+          }
+      
           setDetails((prevDetails) => ({
             ...prevDetails,
+            fname: firstName || "",
+            lname: lastName || "",
             email: User.email || "",
-            dob:User.dob || "",
-            number:User.number || "",
-            sname:User.sname || "",
-            gender:User.gender || "",
-
+            dob: User.dob || "",
+            number: User.number || "",
+            sname: User.sname || "",
+            gender: User.gender || "",
           }));
         }
       }, [userData]);
+      
     
       // Formik setup
       const formik = useFormik({
