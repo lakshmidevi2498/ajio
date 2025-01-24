@@ -109,7 +109,7 @@ const OederDetailsComponent = () => {
     const handleDownload = async (id) => {
       
         try {
-            const response = await axios.post("https://ajio-7e20.onrender.com/download-invoice", { orders }, {
+            const response = await axios.post("https://ajio-2.onrender.com/download-invoice", { orders }, {
                 responseType: "blob",
             });
             // dispatch(postInvoiceInitiate(orders))

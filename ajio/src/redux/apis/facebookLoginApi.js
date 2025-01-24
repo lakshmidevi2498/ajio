@@ -5,7 +5,7 @@ export const facebookLoginApi = async () => {
 
   return new Promise((resolve, reject) => {
   
-    const authWindow = window.open("https://ajio-7e20.onrender.com/auth/facebook", "_self");
+    const authWindow = window.open("https://ajio-2.onrender.com/auth/facebook", "_self");
 
  
     window.addEventListener("message", (event) => {

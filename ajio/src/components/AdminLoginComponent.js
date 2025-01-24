@@ -44,7 +44,7 @@ useEffect(() => {
   const role = admin?.role
   console.log("role",role)
   if (role === "admin") {
-        window.location.href = "https://ajio-7e20.onrender.com/adminpanel";
+        window.location.href = "https://ajio-2.onrender.com/adminpanel";
       }  
      
 }, [adminData]);
