@@ -22,17 +22,22 @@
     "twilio": "^5.3.7",
     "web-push": "^3.6.7"
   },
- "scripts": {
-  "start": "npx nodemon server.js",
-  "dev": "npx nodemon server.js",
-  "build-frontend": "cd ../ajio && npm install && npm run build",
-  "install-backend": "npm install ",
+  "scripts": {
+    "start": "npx nodemon server.js",
+    "dev": "npx nodemon server.js",
+    "build-frontend": "cd ../ajio && npm install && npm run build",
+    "install-backend": "npm install ",
     "deploy": "npm run install-backend && npm run build-frontend "
-},
-
-
+  },
   "type": "module",
   "devDependencies": {
     "nodemon": "^3.1.9"
-  }
+  },
+  "name": "server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
