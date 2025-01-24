@@ -106,10 +106,10 @@ const OederDetailsComponent = () => {
         setSelectProduct(item)
     }
 
-    const handleDownload = async (id) => {
+    const handleDownload = async (item,perProductCharge,addressId,paymentId) => {
       
         try {
-            const response = await axios.post("https://ajio-2.onrender.com/download-invoice", { orders }, {
+            const response = await axios.post("http://localhost:5050/download-invoice", { item,perProductCharge,addressId,paymentId }, {
                 responseType: "blob",
             });
             // dispatch(postInvoiceInitiate(orders))
@@ -193,7 +193,7 @@ const OederDetailsComponent = () => {
                                                         </Controls.Typography>
 
                                                         <Controls.Box component='img' src="./assets/images/Proforma Invoice.png" sx={{ width: "25px", height: "25px" }} />
-                                                        <Controls.Typography variant='caption1' sx={{ color: theme.palette.one.text, cursor: "pointer" }} onClick={() => handleDownload(orders._id)}>Invoice</Controls.Typography>
+                                                        <Controls.Typography variant='caption1' sx={{ color: theme.palette.one.text, cursor: "pointer" }} onClick={() => handleDownload(item,perProductCharge,orders?.address?._id,orders?.paymentDetails?.orderId)}>Invoice</Controls.Typography>
                                                     </Controls.Grid>
                                                 </Controls.Grid>)}
 
@@ -303,7 +303,8 @@ const OederDetailsComponent = () => {
                                                             >
                                                               Cancel-Item
                                                             </Controls.Button>
-                                                          </Controls.Grid>) : ""}
+                                                          </Controls.Grid>
+                                                          ) : ""}
 
 
                                                 </Controls.Grid>

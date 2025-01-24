@@ -195,7 +195,7 @@ const MainNavbarComponent = ({ value1, value2, count, value3, value4, value8, pr
                                                             <Controls.Typography variant="caption1" sx={{ fontSize: { xs: "20px", sm: "13px", xxl: "20px" }, fontFamily: "SourceSansPro", cursor: 'pointer', }} onClick={handleSignin}>
                                                                 SignIn
                                                             </Controls.Typography>
-                                                            <Controls.Typography variant="caption1" sx={{ fontSize: { xs: "20px", sm: "13px", xxl: "20px" }, fontFamily: "SourceSansPro", }} onClick={handleSignin}>
+                                                            <Controls.Typography variant="caption1" sx={{ fontSize: { xs: "20px", sm: "13px", xxl: "20px" }, fontFamily: "SourceSansPro", cursor: 'pointer',}} onClick={handleSignin}>
                                                                 / Join AJIO
                                                             </Controls.Typography>
                                                         </Controls.Grid>
