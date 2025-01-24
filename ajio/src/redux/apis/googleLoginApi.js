@@ -6,12 +6,12 @@ export const googleLoginApi = () => {
 
   return new Promise((resolve, reject) => {
   
-    const authWindow = window.open("https://ajio-7e20.onrender.com/auth/google", "_self");
+    const authWindow = window.open("https://ajio-2.onrender.com/auth/google", "_self");
     // console.log("authWindow",authWindow)
 
  
     window.addEventListener("message", (event) => {
-      if (event.origin !== "https://ajio-7e20.onrender.com") return;  
+      if (event.origin !== "https://ajio-2.onrender.com") return;  
 
       const { user, token, error } = event.data;
       console.log("event.data",event.data)
@@ -26,4 +26,3 @@ export const googleLoginApi = () => {
     });
   });
 };
-
