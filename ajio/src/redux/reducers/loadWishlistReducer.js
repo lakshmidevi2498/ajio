@@ -15,16 +15,14 @@ export const loadWishlistReducer = (state = initialState, action) => {
         loading: true,
         error: null,
       };
-    case types.WISHLIST_LOAD_SUCCESS:
-        console.log("this is loadWishlistReducersuccessreducer----> ",action.payload);
+    case types.WISHLIST_LOAD_SUCCESS: 
       return {
         ...state,
         data: action.payload,
         loading: false,
         error: null,
       };
-    case types.WISHLIST_LOAD_ERROR:
-        console.log("this is loadWishlistReducererrorreducer----> ");
+    case types.WISHLIST_LOAD_ERROR: 
       return {
         ...state,
         loading: false,

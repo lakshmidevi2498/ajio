@@ -233,8 +233,7 @@ const MainNavbarComponent = ({ value1, value2, count, value3, value4, value8, pr
                                                         sx={{
                                                             display: { xs: "none", sm: 'flex' },
                                                             flexDirection: 'column',
-                                                            justifyContent: { sm: 'flex-end' },
-                                                            // height: '30', 
+                                                            justifyContent: { sm: 'flex-end' }, 
                                                             margin: { xs: "auto", sm: 0 },
                                                             textAlign: "center",
                                                             marginLeft: { sm: 8, md: 0 },
@@ -346,8 +345,7 @@ const MainNavbarComponent = ({ value1, value2, count, value3, value4, value8, pr
 
 
                 </Controls.Grid>
-                {modal && <SigninComponent open={open} handleClose={handleClose} setOpen={setOpen} />}
-                {/* </Controls.Grid> */}
+                {modal && <SigninComponent open={open} handleClose={handleClose} setOpen={setOpen} />} 
             </Controls.Grid>
         </>
     )

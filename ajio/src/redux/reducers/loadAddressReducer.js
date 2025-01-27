@@ -15,16 +15,14 @@ export const loadAddresssReducer = (state = initialState, action) => {
         loading: true,
         error: null,
       };
-    case types.ADDRESS_LOAD_SUCCESS:
-        console.log("this is loadAddresssReducersuccessreducer----> ",action.payload);
+    case types.ADDRESS_LOAD_SUCCESS: 
       return {
         ...state,
         data: action.payload,
         loading: false,
         error: null,
       };
-    case types.ADDRESS_LOAD_ERROR:
-        console.log("this is loadAddresssReducererrorreducer----> ");
+    case types.ADDRESS_LOAD_ERROR: 
       return {
         ...state,
         loading: false,

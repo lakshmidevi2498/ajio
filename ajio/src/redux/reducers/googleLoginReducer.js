@@ -15,16 +15,14 @@ export const googleLoginReducer = (state = initialState, action) => {
         loading: true,
         error: null,
       };
-    case types.GOOGLE_LOGIN_SUCCESS:
-        console.log("this is googleloginsuccessreducer----> ",action.payload);
+    case types.GOOGLE_LOGIN_SUCCESS: 
       return {
         ...state,
         data: action.payload,
         loading: false,
         error: null,
       };
-    case types.GOOGLE_LOGIN_ERROR:
-        console.log("this is googleloginerrorreducer----> ");
+    case types.GOOGLE_LOGIN_ERROR: 
       return {
         ...state,
         loading: false,

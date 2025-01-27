@@ -15,16 +15,14 @@ export const updateCartReducer = (state = initialState, action) => {
         loading: true,
         error: null,
       };
-    case types.CART_PUT_SUCCESS:
-        console.log("this is loadCartReducersuccessreducer----> ",action.payload);
+    case types.CART_PUT_SUCCESS: 
       return {
         ...state,
         data: action.payload,
         loading: false,
         error: null,
       };
-    case types.CART_PUT_ERROR:
-        console.log("this is loadCartReducererrorreducer----> ");
+    case types.CART_PUT_ERROR: 
       return {
         ...state,
         loading: false,

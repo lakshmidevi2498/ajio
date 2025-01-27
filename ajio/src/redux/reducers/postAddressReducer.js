@@ -15,16 +15,14 @@ export const postAddressReducer = (state = initialState, action) => {
         loading: true,
         error: null,
       };
-    case types.ADDRESS_POST_SUCCESS:
-        console.log("this is postAddressReducersuccessreducer----> ",action.payload);
+    case types.ADDRESS_POST_SUCCESS: 
       return {
         ...state,
         data: action.payload,
         loading: false,
         error: null,
       };
-    case types.ADDRESS_POST_ERROR:
-        console.log("this is postAddressReducererrorreducer----> ");
+    case types.ADDRESS_POST_ERROR: 
       return {
         ...state,
         loading: false,

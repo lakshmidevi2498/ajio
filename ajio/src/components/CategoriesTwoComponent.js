@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import Controls from '../commons/Controls'
 import { Divider } from '@mui/material'
 import CategorieCardsComponent from './CategorieCardsComponent' 
@@ -20,12 +20,7 @@ const CategoriesTwoComponent = () => {
     }
     const handleLessMore = () => {
         setRead(false)
-    }
-
-
-    const handleFiveGrid = () => {
-
-    }
+    } 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -127,8 +122,7 @@ const CategoriesTwoComponent = () => {
                                 sx={{
                                     display: "flex",
                                     alignItems: "center",
-                                    border: "1px solid black",
-                                    // padding:{xs:0,sm:1}
+                                    border: "1px solid black", 
                                 }} onClick={handleClick}
                             >
                                 <Controls.Typography
@@ -178,50 +172,3 @@ const CategoriesTwoComponent = () => {
 
 export default CategoriesTwoComponent
 
-
-// import React, { useState } from 'react';
-// import { Grid, Button, Typography } from '@mui/material';
-
-// const GridToggleComponent = () => {
-//   const [isThreeGrid, setIsThreeGrid] = useState(true); // State to toggle between 3 and 5 grids
-
-//   const items = Array.from({ length: 10 }, (_, index) => `Item ${index + 1}`);
-
-//   return (
-//     <div>
-//       {/* Toggle Button */}
-//       <Button
-//         variant="contained"
-//         onClick={() => setIsThreeGrid(!isThreeGrid)}
-//         sx={{ marginBottom: 2 }}
-//       >
-//         Toggle to {isThreeGrid ? '5 Grid' : '3 Grid'}
-//       </Button>
-
-//       {/* Grid Container */}
-//       <Grid container spacing={2}>
-//         {items.map((item, index) => (
-//           <Grid
-//             item
-//             xs={12}
-//             sm={isThreeGrid ? 4 : 2.4} // Switch between 3-grid and 5-grid
-//             key={index}
-//           >
-//             <div
-//               style={{
-//                 border: '1px solid #ccc',
-//                 padding: '16px',
-//                 textAlign: 'center',
-//                 borderRadius: '8px',
-//               }}
-//             >
-//               <Typography variant="body1">{item}</Typography>
-//             </div>
-//           </Grid>
-//         ))}
-//       </Grid>
-//     </div>
-//   );
-// };
-
-// export default GridToggleComponent;

@@ -333,28 +333,16 @@ const FooterComponent = ({value1,value2}) => {
                     </Controls.Grid>
 
                     <Controls.Typography
-                      sx={{
-                        // marginLeft: "10px",
+                      sx={{ 
                         fontWeight: "bold",
                         fontSize: { xs: "8px", sm: "14px" }
                       }}
                     >
                       Money
                     </Controls.Typography>
-                  </Controls.Grid>
-
-
-
-
-
-
-
-
+                  </Controls.Grid> 
                 </Controls.Grid>
               </Controls.Grid>
-
-
-
 
               <Controls.Grid item sx={{ display: "end", }} >
                 <Controls.Grid item sx={{ display: "flex", alignItems: "center" }} mt={{ xs: 1.5, sm: 2.5,md:3 }} gap={{xs:0.2,sm:1}}>
@@ -365,8 +353,7 @@ const FooterComponent = ({value1,value2}) => {
                       height: { xs: "20px", sm:"30px", md:"60px",lg: "40px" },
                       display: "flex",
                       justifyContent: "center",
-                      alignItems: "center",
-                      // marginTop:4
+                      alignItems: "center", 
                     }}
                   >
                     <Icon icon="et:lock" width="100%" height="100%" />

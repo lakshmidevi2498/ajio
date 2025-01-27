@@ -1,8 +1,7 @@
 import React from 'react'
 import Controls from '../commons/Controls'
 import { useEffect } from 'react';
-import { Formik, Form, Field } from 'formik';
-import axios from 'axios'
+import { Formik, Form, Field } from 'formik'; 
 import * as Yup from 'yup';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -25,26 +24,23 @@ const style = {
   };
 
 const AdminLoginComponent = () => {
-    const [open, setOpen] = React.useState(false);
-    const [token, setToken] = useState(null);
-  const navigate = useNavigate()
+    const [open, setOpen] = React.useState(false); 
   const dispatch = useDispatch()
 
   const adminData = useSelector((state)=>state.adminloginreducer.data)
   console.log("adminData",adminData)
-
+  const allowedOrigins = process.env.NODE_ENV === 'production' 
+  ? 'https://ajio-2.onrender.com' 
+  : 'http://localhost:5050';
  
 
 useEffect(() => {
-
-  
- 
   const admin = adminData?.data?.admin
  
   const role = admin?.role
   console.log("role",role)
   if (role === "admin") {
-        window.location.href = "https://ajio-2.onrender.com/adminpanel";
+        window.location.href = `${allowedOrigins}/adminpanel`;
       }  
      
 }, [adminData]);

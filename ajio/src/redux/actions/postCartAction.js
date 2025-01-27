@@ -7,14 +7,12 @@ type:types.CART_POST_START
 })
 
 export const postCartSuccess = (data) => (
-    console.log("this is postCartSuccessAction---->" ,data),
     {
     type:types.CART_POST_SUCCESS,
     payload:data
 })
 
 export const postCartError = (error) => (
-    console.log("this is postCartErrorAction---->" ,error),
     {
     type:types.CART_POST_ERROR,
     payload:error

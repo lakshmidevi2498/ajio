@@ -5,7 +5,9 @@ import userSchemaModal from '../models/userSchemaModal.js';
 import '../passport.js';
 
 const router = express.Router();
-const CLIENT_URI = "http://localhost:3000/";
+const allowedOriginsFrontend = process.env.NODE_ENV === 'production' 
+? 'https://ajio-2.onrender.com' 
+: 'http://localhost:3000';
 
 router.get('/google', passport.authenticate('google', {
     scope: ['profile', 'email'],
@@ -42,7 +44,7 @@ console.log(",user",user)
 
             console.log("query", query);
 
-            res.redirect(`https://ajio-2.onrender.com/?${query}`);
+            res.redirect(`${allowedOriginsFrontend}/?${query}`);
             // res.status(200).json({message:"Google login successfull" ,user,token })
          } catch (error) {
             console.error('Error during Google callback:', error);

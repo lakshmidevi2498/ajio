@@ -15,16 +15,14 @@ export const deleteCartReducer = (state = initialState, action) => {
         loading: true,
         error: null,
       };
-    case types.CART_DELETE_SUCCESS:
-        console.log("this is deleteCartReducersuccessreducer----> ",action.payload);
+    case types.CART_DELETE_SUCCESS: 
       return {
         ...state,
         data: action.payload,
         loading: false,
         error: null,
       };
-    case types.CART_DELETE_ERROR:
-        console.log("this is deleteCartReducererrorreducer----> ");
+    case types.CART_DELETE_ERROR: 
       return {
         ...state,
         loading: false,

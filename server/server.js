@@ -39,9 +39,12 @@ const PORT = process.env.PORT || 5050;
 
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }))
+const allowedOrigins = process.env.NODE_ENV === 'production' 
+  ? 'https://ajio-2.onrender.com' 
+  : 'http://localhost:3000';
 app.use(express.json());
 app.use(cors({
-  origin: 'https://ajio-2.onrender.com',
+  origin:allowedOrigins,
   methods: ['GET', 'POST', 'DELETE', 'PUT'],
   credentials: true,
 

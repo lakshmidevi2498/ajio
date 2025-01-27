@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import Controls from '../commons/Controls' 
 import {  FormControl, useMediaQuery } from '@mui/material';
 import { useDispatch ,} from 'react-redux';
@@ -30,8 +30,7 @@ const CancelModalComponent = ({ selectProduct,perProductCharge ,cartId ,productI
         const isMobileScreen = useMediaQuery(theme.breakpoints.down('md'));
 
     const dispatch = useDispatch()
-    const userId = getUserId()
-    const token = getToken()
+    const userId = getUserId() 
     const navigate = useNavigate()
 
 

@@ -15,16 +15,14 @@ export const loadOrderReducer = (state = initialState, action) => {
         loading: true,
         error: null,
       };
-    case types.ORDER_LOAD_SUCCESS:
-        console.log("this is loadOrderReducersuccessreducer----> ",action.payload);
+    case types.ORDER_LOAD_SUCCESS: 
       return {
         ...state,
         data: action.payload,
         loading: false,
         error: null,
       };
-    case types.ORDER_LOAD_ERROR:
-        console.log("this is loadOrderReducererrorreducer----> ");
+    case types.ORDER_LOAD_ERROR: 
       return {
         ...state,
         loading: false,

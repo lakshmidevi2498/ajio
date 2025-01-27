@@ -1,13 +1,11 @@
  
 import * as types from "./actionTypes";
-// import { googleLoginApi } from "../apis/googleLoginApi";
 import {googleLoginApi} from '../apis/googleLoginApi'
 export const googleLoginStart = () => ({
   type: types.GOOGLE_LOGIN_START,
 });
 
 export const googleLoginSuccess = (data) => (
-  console.log("this is googleLoginSuccessAction---->" ,data),
   {
   
   type: types.GOOGLE_LOGIN_SUCCESS,
@@ -15,7 +13,6 @@ export const googleLoginSuccess = (data) => (
 });
 
 export const googleLoginError = (error) => (
-  console.log("this is googleLoginError---->" ,error),
   {
   type: types.GOOGLE_LOGIN_ERROR,
   payload: error,
@@ -29,7 +26,6 @@ export const googleLoginInitiate = (navigate) => {
      const userData = await googleLoginApi()
      console.log("userData",userData)
      dispatch(googleLoginSuccess(userData))
-    //  navigate("/")
     }
     catch(error){
      dispatch(googleLoginError(error.mesage))

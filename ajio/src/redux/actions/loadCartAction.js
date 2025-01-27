@@ -7,14 +7,12 @@ type:types.CART_LOAD_START
 })
 
 export const loadCartSuccess = (data) => (
-    console.log("this is loadCartSuccessAction---->" ,data),
     {
     type:types.CART_LOAD_SUCCESS,
     payload:data
 })
 
 export const loadCartError = (error) => (
-    console.log("this is loadCartErrorAction---->" ,error),
     {
     type:types.CART_LOAD_ERROR,
     payload:error
@@ -26,7 +24,6 @@ export const loadCartInitiate = (token,userId) => {
         try {
           const loadCartdata = await loadCartApi(token,userId)
           dispatch(loadCartSuccess(loadCartdata))
-        //   navigate('/')
   
         } catch (err) {
           console.log("error",err)

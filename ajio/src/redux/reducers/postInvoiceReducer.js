@@ -15,16 +15,14 @@ export const postInvoiceReducer = (state = initialState, action) => {
         loading: true,
         error: null,
       };
-    case types.INVOICE_POST_SUCCESS:
-        console.log("this is postInvoiceReducersuccessreducer----> ",action.payload);
+    case types.INVOICE_POST_SUCCESS: 
       return {
         ...state,
         data: action.payload,
         loading: false,
         error: null,
       };
-    case types.INVOICE_POST_ERROR:
-        console.log("this is postInvoiceReducererrorreducer----> ");
+    case types.INVOICE_POST_ERROR: 
       return {
         ...state,
         loading: false,

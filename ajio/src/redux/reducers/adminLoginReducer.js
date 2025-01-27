@@ -17,7 +17,7 @@ export const adminLoginReducer = (state = initialState, action) => {
         error: null,
       };
     case types.ADMIN_LOGIN_SUCCESS:
-        console.log("this is adminloginsuccessreducer----> ",action.payload);
+    
       return {
         ...state,
         data: action.payload,
@@ -25,7 +25,7 @@ export const adminLoginReducer = (state = initialState, action) => {
         error: null,
       };
     case types.ADMIN_LOGIN_ERROR:
-        console.log("this is adminloginerrorreducer----> ");
+      
       return {
         ...state,
         loading: false,

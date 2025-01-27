@@ -120,7 +120,6 @@ const BeautyCategoriesComponent = ({closeMenu}) => {
                         fontWeight: "bold",
                         cursor: "pointer",
                       }}
-                      // onClick={handleCategories}
                     >
                       {item}
                     </Controls.Typography>
@@ -147,12 +146,8 @@ const BeautyCategoriesComponent = ({closeMenu}) => {
                         "&:hover": { textDecoration: "underline" },
                       }}
                       onClick={() => {
-                        handleCategories(item.link)
-                        // navigate(item.link); // Navigate to the link
-                        // closeMenu();         // Close the menu
-                      }}
-                          
-                       
+                        handleCategories(item.link) 
+                      }}           
                     >
                       {item.name}
                     </Controls.Typography>

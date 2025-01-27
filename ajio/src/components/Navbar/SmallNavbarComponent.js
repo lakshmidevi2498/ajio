@@ -1,12 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef,  } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Pagination, Autoplay, Navigation } from 'swiper/modules';
 import Controls from '../../commons/Controls';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useNavigate } from 'react-router-dom';
 
 const SmallNavbarComponent = () => {
@@ -27,13 +24,6 @@ const SmallNavbarComponent = () => {
         <Controls.Grid item xs={12} sx={{ position: 'relative' }}mb={0.5}>
         <Swiper
                     spaceBetween={0}
-                    // loop={true}
-                    // pagination={true}
-                    // navigation={{
-                    //     nextEl: '.custom-swiper-button-next',
-                    //     prevEl: '.custom-swiper-button-prev',
-                    // }}
-                    // modules={[Navigation]}
                     onSwiper={(swiper) => {
                         swiperRef.current = swiper;
                     }}
@@ -57,10 +47,6 @@ const SmallNavbarComponent = () => {
                                     width: '30px',
                                     borderRadius:"50px",
                                     height: '30px',
-                                    // transition: 'transform 0.3s ease-in-out',
-                                    // '&:hover': {
-                                    //     transform: 'scale(1.01)',
-                                    // },
                                 }}onClick={()=>navigate(item.link)}
                             />
                             <Controls.Typography variant="caption" sx={{alignItems:"center",fontSize:"7px"}}>{item.name}</Controls.Typography>

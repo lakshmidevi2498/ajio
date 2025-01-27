@@ -5,7 +5,7 @@ import { Accordion,CardActionArea, AccordionDetails, AccordionSummary, AppBar, A
  import AccountCircleIcon from '@mui/icons-material/AccountCircle';
  import MenuIcon from '@mui/icons-material/Menu';
  import SearchIcon from '@mui/icons-material/Search';
- import { CheckBox, Close, DateRange, Facebook, Google, SpaRounded } from "@mui/icons-material"; 
+ import { CheckBox, Close, DateRange, Facebook} from "@mui/icons-material"; 
  import AddIcon from '@mui/icons-material/Add';
  import RemoveIcon from '@mui/icons-material/Remove';
  import GoogleIcon from '@mui/icons-material/Google';
@@ -98,7 +98,7 @@ import { Accordion,CardActionArea, AccordionDetails, AccordionSummary, AppBar, A
  
  
  const Controls =  { Grid,Typography,AppBar,Toolbar,Divider,SearchIcon,MenuIcon,LanguageIcon,AccountCircleIcon,ImageListItem,IconButton,Dialog,DialogActions,DialogContent,DialogTitle
-    ,CheckBox,Accordion,AccordionDetails,AccordionSummary,Button,ButtonGroup,Drawer,Divider,Box,Card,CardContent,CardMedia,ListItem,Switch,ButtonBase,FormLabel,FormHelperText,
+    ,CheckBox,Accordion,AccordionDetails,AccordionSummary,Button,ButtonGroup,Drawer,Divider,Card,CardContent,CardMedia,ListItem,Switch,ButtonBase,FormLabel,FormHelperText,
  Menu,MenuItem,Modal,Checkbox,FormControlLabel,TextField,Paper,DateRange,AddIcon,RemoveIcon,BottomNavigation,BottomNavigationAction,Stack,Pagination,Box,FormControl,
  Avatar,MenuItem,TextField,Close,Facebook ,GoogleIcon,MailOutlineIcon,AppleIcon,LocationOnOutlinedIcon,LinearProgress,List,WhatsAppIcon,InstagramIcon,FacebookOutlinedIcon
  ,IosShareIcon,FavoriteIcon,StarIcon,CelebrationIcon,TableRestaurantIcon,StorefrontIcon,EditCalendarIcon,StarBorderIcon,LinkedInIcon,PinterestIcon,ArrowForwardIosIcon,CurrencyRupeeIcon,

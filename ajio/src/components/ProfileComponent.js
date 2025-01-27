@@ -1,8 +1,6 @@
 import React from 'react'
 import Controls from '../commons/Controls'
-import { Outlet, useNavigate } from 'react-router-dom'
-import MyOrdersComponent from './MyOrdersComponent'
-import MyProfileDetailsComponent from './MyProfileDetailsComponent'
+import { Outlet, useNavigate } from 'react-router-dom' 
 
 const ProfileComponent = ({view}) => {
   const navigate = useNavigate()
@@ -58,8 +56,7 @@ const ProfileComponent = ({view}) => {
                         key={idx}
                         onClick={() => {
                             if (item.link) {
-                                navigate(item.link); 
-                                // closeMenu(); 
+                                navigate(item.link);  
                             }
                         }}
                         mb={idx === 2 ? -10 : 0.5}
@@ -69,8 +66,7 @@ const ProfileComponent = ({view}) => {
                             cursor: item.link ? "pointer" : "default",
                             color:"#6d6d6d",
                             fontWeight:"bold",
-                            fontSize:"15px",
-                            // '&:hover': item.link ? { textDecoration: "underline" } : {},
+                            fontSize:"15px", 
                         }}
                     >
                         {item.name}
@@ -101,8 +97,7 @@ const ProfileComponent = ({view}) => {
                                 key={idx}
                                 onClick={() => {
                                     if (item.link) {
-                                      navigate(item.link); 
-                                      // closeMenu(); 
+                                      navigate(item.link);  
                                     }
                                   }}
                                 sx={{
@@ -110,10 +105,8 @@ const ProfileComponent = ({view}) => {
                                     color:"#6d6d6d",
                             fontWeight:"bold",
                             fontSize:"15px",
-                                    cursor: item.link ? "pointer" : "default",
-                                  //  '&:hover': item ? { textDecoration:"underline" } : {},
-                                }}
-                                // onClick={handleCategories}
+                                    cursor: item.link ? "pointer" : "default", 
+                                }} 
                             >
                                 {item.name}
                             </Controls.Typography></Controls.Grid>
@@ -124,9 +117,7 @@ const ProfileComponent = ({view}) => {
         </Controls.Grid>
                     </Controls.Grid>
                  </Controls.Grid>
-                 <Controls.Grid item xs={12} sm={8}lg={9.5}>
-                 {/* {view === "orders" && <MyOrdersComponent/>}
-                 {view === "update-profile" && <MyProfileDetailsComponent/>} */}
+                 <Controls.Grid item xs={12} sm={8}lg={9.5}> 
                  <Outlet/>
                  
                  </Controls.Grid>

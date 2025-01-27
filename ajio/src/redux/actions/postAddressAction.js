@@ -7,14 +7,12 @@ type:types.ADDRESS_POST_START
 })
 
 export const postAddressSuccess = (data) => (
-    console.log("this is postAddressSuccessAction---->" ,data),
     {
     type:types.ADDRESS_POST_SUCCESS,
     payload:data
 })
 
 export const postAddressError = (error) => (
-    console.log("this is postAddressErrorAction---->" ,error),
     {
     type:types.ADDRESS_POST_ERROR,
     payload:error
@@ -26,8 +24,6 @@ export const postAddressInitiate = (values,userId,navigate) => {
         try {
           const postAddressdata = await postAddressApi(values,userId)
           dispatch(postAddressSuccess(postAddressdata))
-          // toast.success("product is added to Address ")
-        //   navigate('/')
   
         } catch (err) {
           console.log("error",err)

@@ -8,14 +8,12 @@ type:types.INVOICE_POST_START
 })
 
 export const postInvoiceSuccess = (data) => (
-    console.log("this is postInvoiceSuccessAction---->" ,data),
     {
     type:types.INVOICE_POST_SUCCESS,
     payload:data
 })
 
 export const postInvoiceError = (error) => (
-    console.log("this is postInvoiceErrorAction---->" ,error),
     {
     type:types.INVOICE_POST_ERROR,
     payload:error

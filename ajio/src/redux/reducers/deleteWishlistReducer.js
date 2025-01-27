@@ -15,16 +15,14 @@ export const deleteWishlistReducer = (state = initialState, action) => {
         loading: true,
         error: null,
       };
-    case types.WISHLIST_DELETE_SUCCESS:
-        console.log("this is deleteWishlistReducersuccessreducer----> ",action.payload);
+    case types.WISHLIST_DELETE_SUCCESS: 
       return {
         ...state,
         data: action.payload,
         loading: false,
         error: null,
       };
-    case types.WISHLIST_DELETE_ERROR:
-        console.log("this is deleteWishlistReducererrorreducer----> ");
+    case types.WISHLIST_DELETE_ERROR: 
       return {
         ...state,
         loading: false,

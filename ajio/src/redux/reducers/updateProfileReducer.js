@@ -15,16 +15,14 @@ export const updateProfileReducer = (state = initialState, action) => {
         loading: true,
         error: null,
       };
-    case types.PROFILE_PUT_SUCCESS:
-        console.log("this is loadProfileReducersuccessreducer----> ",action.payload);
+    case types.PROFILE_PUT_SUCCESS: 
       return {
         ...state,
         data: action.payload,
         loading: false,
         error: null,
       };
-    case types.PROFILE_PUT_ERROR:
-        console.log("this is loadProfileReducererrorreducer----> ");
+    case types.PROFILE_PUT_ERROR: 
       return {
         ...state,
         loading: false,

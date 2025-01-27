@@ -35,12 +35,6 @@ const theme = createTheme({
 
   components: {
     MuiButton: {
-      styleOverrides: {
-        root: {
-          // borderRadius: '8px',
-          // padding: '10px 15px',
-        },
-      },
       variants: [
         {
           props: { variant: 'outlined' },
@@ -52,7 +46,6 @@ const theme = createTheme({
             fontSize: { xs: "12px" },
             border:"2px solid #866528",
             ':hover': {
-              // backgroundColor: '#e85877',
             },
           },
         },
@@ -82,31 +75,17 @@ const theme = createTheme({
         },
       ],
     },
-    MuiTooltip: {
-      styleOverrides: {
-        tooltip: {
-          backgroundColor: "#21a6a4",
-          color: 'white',
-          fontSize: '14px',
-          padding: '10px',
-          borderRadius: "10px",
-        },
-        arrow: {
-          color: '#21a6a4',
-        },
-      },
-    },
     MuiInput: {
       styleOverrides: {
         underline: {
           '&:before': {
-            borderBottomColor: "lightgray", // Default border color
+            borderBottomColor: "lightgray", 
           },
           '&:hover:before': {
-            borderBottomColor: "lightgray", // Hover border color
+            borderBottomColor: "lightgray",  
           },
           '&:after': {
-            borderBottomColor: "#866528", // Focused border color
+            borderBottomColor: "#866528",  
           },
         },
       },

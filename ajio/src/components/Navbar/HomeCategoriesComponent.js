@@ -8,8 +8,6 @@ const HomeCategoriesComponent = ({closeMenu}) => {
         kidOne: ["NEW IN: CLOTHING ",
             "NEW IN: FOOTWEAR & ACCS ",
             "INNERWEAR & SLEEPWEAR ",],
-
-
     },
     {
         title: "BED LINEN",
@@ -211,15 +209,12 @@ const navigate = useNavigate()
                 </Controls.Grid>
                 <Controls.Grid item xs={3} >
                     {categoriesThree.map((category, index) => (
-                        <Controls.Grid item xs={12} key={index} mb={2}>
-                            {/* Title */}
+                        <Controls.Grid item xs={12} key={index} mb={2}> 
                             {category.title && (
                                 <Controls.Typography sx={{ fontWeight: "bold", mb: 1 }}>
                                     {category.title}
                                 </Controls.Typography>
-                            )}
-
-                            {/* Render items if available */}
+                            )} 
                             {category.items &&
                                 category.items.map((item, idx) => (
                                     <Controls.Typography

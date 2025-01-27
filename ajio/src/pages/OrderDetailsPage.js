@@ -1,6 +1,4 @@
 import React from 'react'
-import OrderDetailsComponent from '../components/OrderDetailsComponent'
-// import NavbarComponent from '../components/Navbar/NavbarComponent'
 import MainNavbarComponent from '../components/Navbar/MainNavbarComponent'
 import OederDetailsComponent from '../components/OederDetailsComponent'
 import IconsComponent from '../components/IconsComponent'

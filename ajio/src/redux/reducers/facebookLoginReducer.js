@@ -15,16 +15,14 @@ export const facebookLoginReducer = (state = initialState, action) => {
         loading: true,
         error: null,
       };
-    case types.FACEBOOK_LOGIN_SUCCESS:
-        console.log("this is facebookLoginsuccessreducer----> ",action.payload);
+    case types.FACEBOOK_LOGIN_SUCCESS: 
       return {
         ...state,
         data: action.payload,
         loading: false,
         error: null,
       };
-    case types.FACEBOOK_LOGIN_ERROR:
-        console.log("this is facebookLoginerrorreducer----> ");
+    case types.FACEBOOK_LOGIN_ERROR: 
       return {
         ...state,
         loading: false,

@@ -16,15 +16,13 @@ const initialState = {
         error: null,
       };
     case types.ORDER_PATCH_SUCCESS:
-        console.log("this is  OrderPatchReducersuccessreducer----> ",action.payload);
       return {
         ...state,
         data: action.payload,
         loading: false,
         error: null,
       };
-    case types.ORDER_PATCH_ERROR:
-        console.log("this is  OrderPatchReducererrorreducer----> ");
+    case types.ORDER_PATCH_ERROR: 
       return {
         ...state,
         loading: false,

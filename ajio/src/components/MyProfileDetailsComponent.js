@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Controls from '../commons/Controls'
-import axios from 'axios'
+import Controls from '../commons/Controls' 
 import { useDispatch, useSelector } from 'react-redux'
 import { loadProfileInitiate } from '../redux/actions/loadProfileAction'
 import { useFormik } from "formik";
@@ -129,8 +128,7 @@ const MyProfileDetailsComponent = () => {
                                     <div style={{ color: "red", fontSize: "10px" }}>{formik.errors.fname}</div>
                                 )}
                             </Controls.Grid>
-
-                            {/* Last Name */}
+ 
                             <Controls.Grid item xs={12} mb={2}>
                                 <Controls.Typography variant="caption1" sx={{ fontSize: "12px" }}>
                                     Last name *
@@ -149,8 +147,7 @@ const MyProfileDetailsComponent = () => {
                                     <div style={{ color: "red", fontSize: "10px" }}>{formik.errors.lname}</div>
                                 )}
                             </Controls.Grid>
-
-                            {/* Screen Name */}
+ 
                             <Controls.Grid item xs={12} mb={2}>
                                 <Controls.Typography variant="caption1" sx={{ fontSize: "12px" }}>
                                     Screen Name *
@@ -169,8 +166,7 @@ const MyProfileDetailsComponent = () => {
                                     <div style={{ color: "red", fontSize: "10px" }}>{formik.errors.sname}</div>
                                 )}
                             </Controls.Grid>
-
-                            {/* Email Address */}
+ 
                             <Controls.Grid item xs={12} mb={2}>
                                 <Controls.Typography variant="caption1" sx={{ fontSize: "12px" }}>
                                     Email Address *
@@ -239,8 +235,7 @@ const MyProfileDetailsComponent = () => {
                                     </Controls.RadioGroup>
                                 </Controls.FormControl>
                             </Controls.Grid>
-
-                            {/* Telephone */}
+ 
                             <Controls.Grid item xs={12} mb={2}>
                                 <Controls.Typography variant="caption1" sx={{ fontSize: "12px" }}>
                                     Telephone +91 *
@@ -260,7 +255,6 @@ const MyProfileDetailsComponent = () => {
                                 )}
                             </Controls.Grid>
 
-                            {/* Buttons */}
                             <Controls.Grid item sx={{ display: "flex", justifyContent: "center" }} gap={2} xs={12}>
                                 <Controls.Button
                                     type="button"

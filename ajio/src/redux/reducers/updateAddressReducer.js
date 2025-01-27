@@ -15,16 +15,14 @@ export const updateAddressReducer = (state = initialState, action) => {
         loading: true,
         error: null,
       };
-    case types.ADDRESS_PUT_SUCCESS:
-        console.log("this is loadAddressReducersuccessreducer----> ",action.payload);
+    case types.ADDRESS_PUT_SUCCESS: 
       return {
         ...state,
         data: action.payload,
         loading: false,
         error: null,
       };
-    case types.ADDRESS_PUT_ERROR:
-        console.log("this is loadAddressReducererrorreducer----> ");
+    case types.ADDRESS_PUT_ERROR: 
       return {
         ...state,
         loading: false,

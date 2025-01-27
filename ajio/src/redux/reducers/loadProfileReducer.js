@@ -15,16 +15,14 @@ export const loadProfileReducer = (state = initialState, action) => {
         loading: true,
         error: null,
       };
-    case types.PROFILE_LOAD_SUCCESS:
-        console.log("this is loadProfileReducersuccessreducer----> ",action.payload);
+    case types.PROFILE_LOAD_SUCCESS: 
       return {
         ...state,
         data: action.payload,
         loading: false,
         error: null,
       };
-    case types.PROFILE_LOAD_ERROR:
-        console.log("this is loadProfileReducererrorreducer----> ");
+    case types.PROFILE_LOAD_ERROR: 
       return {
         ...state,
         loading: false,

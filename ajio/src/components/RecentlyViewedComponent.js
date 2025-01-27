@@ -1,25 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React, { useEffect, useRef, useState } from 'react'; 
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import { Pagination, Autoplay, Navigation } from 'swiper/modules';
-import Controls from '../commons/Controls';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { useNavigate } from 'react-router-dom';
-import QuickViewComponent from './QuickViewComponent';
+import 'swiper/css/navigation'; 
+import Controls from '../commons/Controls'; 
 import InnerSwiperComponent from './InnerSwiperComponent';
 
-const RecentlyViewedComponent = () => {
-    const swiperRef = useRef(null);
+const RecentlyViewedComponent = () => { 
     const [viewed, setViewed] = useState([]);
-    const [hoveredIndex, setHoveredIndex] = useState(null)
-    const [quickView, setQuickView] = useState(false)
-    const [open, setOpen] = React.useState(false);
-    const [data, setData] = useState([])
-    const [innerData, setinnerData] = useState([])
-    const navigate = useNavigate()
+   
 
     useEffect(() => {
         const storedProducts = JSON.parse(sessionStorage.getItem("recentlyViewed"));

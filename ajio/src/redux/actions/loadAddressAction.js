@@ -7,14 +7,12 @@ type:types.ADDRESS_LOAD_START
 })
 
 export const loadAddressSuccess = (data) => (
-    console.log("this is loadAddressSuccessAction---->" ,data),
     {
     type:types.ADDRESS_LOAD_SUCCESS,
     payload:data
 })
 
 export const loadAddressError = (error) => (
-    console.log("this is loadAddressErrorAction---->" ,error),
     {
     type:types.ADDRESS_LOAD_ERROR,
     payload:error
@@ -26,7 +24,6 @@ export const loadAddressInitiate = (userId) => {
         try {
           const loadAddressdata = await loadAddressApi(userId)
           dispatch(loadAddressSuccess(loadAddressdata))
-        //   navigate('/')
   
         } catch (err) {
           console.log("error",err)

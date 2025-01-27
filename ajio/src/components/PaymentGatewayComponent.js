@@ -17,9 +17,6 @@ const PaymentGatewayComponent = ({ totalAmount, bagTotal, bagDiscount, orderTota
     const razorpayOrderDetails = useSelector((state) => state.razopayorder.data || [])
     console.log("razorpayOrderDetails", razorpayOrderDetails)
 
-
-
-
     const orderDeleted = useSelector((state) => state.deleteorder.data || [])
     console.log("orderDeleted", orderDeleted)
 
@@ -157,10 +154,7 @@ const PaymentGatewayComponent = ({ totalAmount, bagTotal, bagDiscount, orderTota
                     rzp1.open();
                 } else {
                     console.error("Order ID is not available");
-                }
-            // } else {
-            //     console.error("Order details are not yet available");
-            // }
+                } 
         } catch (error) {
             console.error("Error processing the order or payment:", error);
             alert("There was an error processing your payment. Please try again later.");
@@ -259,7 +253,7 @@ const PaymentGatewayComponent = ({ totalAmount, bagTotal, bagDiscount, orderTota
                                         style={{
                                             padding: "2px 15px",
                                             fontSize: { xs: "10px", sm: "14px" },
-                                            width: "100%", // Customize the width as needed
+                                            width: "100%",
                                         }}
                                     >
                                         <option
@@ -301,9 +295,9 @@ const PaymentGatewayComponent = ({ totalAmount, bagTotal, bagDiscount, orderTota
                                     <Controls.Checkbox
                                         checked={true}
                                         sx={{
-                                            color: theme.palette.one.text2, // Customize the checkbox color
+                                            color: theme.palette.one.text2,  
                                             '&.Mui-checked': {
-                                                color: theme.palette.one.text2, // Customize the checked state color
+                                                color: theme.palette.one.text2, 
                                             }
                                         }}
                                     />

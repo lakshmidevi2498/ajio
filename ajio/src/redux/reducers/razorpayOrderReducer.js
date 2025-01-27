@@ -16,7 +16,6 @@ export const razorpayOrderReducer = (state = initialState, action) => {
         error: null,
       };
     case types.RAZORPAY_ORDER_POST_SUCCESS:
-        console.log("this is razorpayOrderReducersuccessreducer----> ",action.payload);
       return {
         ...state,
         data: action.payload,

@@ -12,16 +12,9 @@ const CategorieCardsComponent = ({ isThreeGrid }) => {
     const [data, setData] = useState([])
     const [innerData, setinnerData] = useState([])
     const [recentlyViewed, setRecentlyViewed] = useState([]);
-    const navigate= useNavigate()
-
-    const dispatch = useDispatch()
+    const navigate= useNavigate() 
     const { categoryId, subcategoryId } = useParams();
-    const productData = useSelector((state) => state.loadproductsdata.data || {})
-    // console.log("productData", productData)
-
-
-
- 
+    const productData = useSelector((state) => state.loadproductsdata.data || {}) 
 
     useEffect(() => {
         const pdata = productData?.data || [];
@@ -86,6 +79,7 @@ const CategorieCardsComponent = ({ isThreeGrid }) => {
                         <Controls.Box
                             component="img"
                             src={item.image}
+                            loading="lazy" 
                             sx={{
                                 width: "100%",
                                 height: "auto",

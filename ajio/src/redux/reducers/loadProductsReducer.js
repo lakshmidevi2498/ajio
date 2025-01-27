@@ -16,16 +16,14 @@ export const loadProductsDataReducer = (state = initialState, action) => {
         loading: true,
         error: null,
       };
-    case types.LOAD_PRODUCTS_DATA_SUCCESS:
-        console.log("this is loadProductsDatasuccessreducer----> ",action.payload );
+    case types.LOAD_PRODUCTS_DATA_SUCCESS: 
       return {
         ...state,
         data: action.payload,
         loading: false,
         error: null,
       };
-    case types.LOAD_PRODUCTS_DATA_ERROR:
-        console.log("this is loadProductsDataerrorreducer----> ");
+    case types.LOAD_PRODUCTS_DATA_ERROR: 
       return {
         ...state,
         loading: false,

@@ -7,14 +7,12 @@ type:types.PROFILE_PUT_START
 })
 
 export const updateProfileSuccess = (data) => (
-    console.log("this is putProfileSuccessAction---->" ,data),
     {
     type:types.PROFILE_PUT_SUCCESS,
     payload:data
 })
 
 export const updateProfileError = (error) => (
-    console.log("this is putProfileErrorAction---->" ,error),
     {
     type:types.PROFILE_PUT_ERROR,
     payload:error
@@ -26,7 +24,6 @@ export const updateProfileInitiate = (userId,values) => {
         try {
           const updateProfiledata = await updateProfileApi(userId,values)
           dispatch(updateProfileSuccess(updateProfiledata))
-        //   navigate('/')
   
         } catch (err) {
           console.log("error",err)

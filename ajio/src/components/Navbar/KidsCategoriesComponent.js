@@ -10,7 +10,6 @@ const KidsCategoriesComponent = ({closeMenu}) => {
                 "NEW IN: FOOTWEAR & ACCS ",
                 "INNERWEAR & SLEEPWEAR ",],
 
-
         },
         {
             title: "BOYS",
@@ -223,9 +222,7 @@ const KidsCategoriesComponent = ({closeMenu}) => {
                                 <Controls.Typography sx={{ fontWeight: "bold", mb: 1 }}>
                                     {category.title}
                                 </Controls.Typography>
-                            )}
-
-                            {/* Render items if available */}
+                            )} 
                             {category.items &&
                                 category.items.map((item, idx) => (
                                     <Controls.Typography
@@ -245,9 +242,7 @@ const KidsCategoriesComponent = ({closeMenu}) => {
                                     >
                                         {item.name}
                                     </Controls.Typography>
-                                ))}
-
-                            {/* Render kid if available */}
+                                ))} 
                             {category.kid &&
                                 category.kid.map((item, idx) => (
                                     <Controls.Typography
@@ -271,8 +266,7 @@ const KidsCategoriesComponent = ({closeMenu}) => {
                             <Controls.Typography sx={{ fontWeight: "bold", mb: 1 }}>{category.title}</Controls.Typography>
                             {category.items.map((item, idx) => (
                                 <Controls.Typography
-                                    key={idx}
-                                    // onClick={() => item.link && navigate(item.link)}
+                                    key={idx} 
                                     sx={{
                                         mb: 0.5,
                                         fontSize: "13px",

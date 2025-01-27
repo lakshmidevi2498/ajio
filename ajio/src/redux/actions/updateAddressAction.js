@@ -7,14 +7,12 @@ type:types.ADDRESS_PUT_START
 })
 
 export const updateAddressSuccess = (data) => (
-    console.log("this is putAddressSuccessAction---->" ,data),
     {
     type:types.ADDRESS_PUT_SUCCESS,
     payload:data
 })
 
 export const updateAddressError = (error) => (
-    console.log("this is putAddressErrorAction---->" ,error),
     {
     type:types.ADDRESS_PUT_ERROR,
     payload:error
@@ -26,7 +24,6 @@ export const updateAddressInitiate = (values,editAddress) => {
         try {
           const updateAddressdata = await updateAddressApi(values,editAddress)
           dispatch(updateAddressSuccess(updateAddressdata))
-        //   navigate('/')
   
         } catch (err) {
           console.log("error",err)

@@ -33,7 +33,7 @@ const WishlistComponent = () => {
         }
       }
       fetchCart()
-    }, [])
+    }, [userId])
 
   useEffect(() => {
     if (wishlistData && wishlistData.data) {

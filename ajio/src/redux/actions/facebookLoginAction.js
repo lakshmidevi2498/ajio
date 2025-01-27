@@ -7,7 +7,6 @@ export const facebookLoginStart = () => ({
 });
 
 export const facebookLoginSuccess = (data) => (
-  console.log("this is facebookLoginSuccessAction---->" ,data),
   {
   
   type: types.FACEBOOK_LOGIN_SUCCESS,
@@ -15,7 +14,6 @@ export const facebookLoginSuccess = (data) => (
 });
 
 export const facebookLoginError = (error) => (
-  console.log("this is facebookLoginError---->" ,error),
   {
   type: types.FACEBOOK_LOGIN_ERROR,
   payload: error,

@@ -96,11 +96,6 @@ const CartNavbarComponent = ({count}) => {
                 height: '25px' 
             },
         }));
-        
-
-
-      
-
 
         return (
             <ColorlibStepIconRoot ownerState={{ completed, active }}>

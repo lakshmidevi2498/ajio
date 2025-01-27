@@ -15,16 +15,14 @@ export const loadContentReducer = (state = initialState, action) => {
         loading: true,
         error: null,
       };
-    case types.CONTENT_LOAD_SUCCESS:
-        console.log("this is loadContentReducersuccessreducer----> ",action.payload);
+    case types.CONTENT_LOAD_SUCCESS: 
       return {
         ...state,
         data: action.payload,
         loading: false,
         error: null,
       };
-    case types.CONTENT_LOAD_ERROR:
-        console.log("this is loadContentReducererrorreducer----> ");
+    case types.CONTENT_LOAD_ERROR: 
       return {
         ...state,
         loading: false,

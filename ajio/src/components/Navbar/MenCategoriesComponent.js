@@ -124,10 +124,7 @@ const MenCategoriesComponent = ({closeMenu}) => {
                 <Controls.Typography sx={{ fontWeight: "bold", mb: 1 }}>{category.title}</Controls.Typography>
                 {category.menOne.map((item, idx) => (
                     <Controls.Typography
-                        key={idx}
-                        // onClick={() => item.link 
-                            // && navigate(item.link)
-                        // }
+                        key={idx} 
                         sx={{
                             mb: 0.5,
                             fontWeight:'bold',
@@ -144,18 +141,14 @@ const MenCategoriesComponent = ({closeMenu}) => {
             <Controls.Typography sx={{ fontWeight: "bold", mb: 1 }}>{category.title}</Controls.Typography>
             {category.menTwo.map((item, idx) => (
                 <Controls.Typography
-                    key={idx}
-                    // onClick={() => item.link 
-                    //     && navigate(item.link)
-                    // }
+                    key={idx} 
                     sx={{
                         mb: 0.5,
                         fontSize:"13px",
                         fontWeight:'normal',
                         cursor: item ? "pointer" : "default",
                         '&:hover': item ? { textDecoration:"underline" } : {},
-                    }}
-                    // onClick={handleCategories}
+                    }} 
                 >
                     {item}
                 </Controls.Typography>
@@ -165,17 +158,13 @@ const MenCategoriesComponent = ({closeMenu}) => {
             <Controls.Typography sx={{ fontWeight: "bold", mb: 1 }}>{category.title}</Controls.Typography>
             {category.menThree.map((item, idx) => (
                 <Controls.Typography
-                    key={idx}
-                    // onClick={() => item.link 
-                    //     && navigate(item.link)
-                    // }
+                    key={idx} 
                     sx={{
                         mb: 0.5,
                         fontWeight:'bold',
                         cursor: item ? "pointer" : "default",
                        
-                    }}
-                    // onClick={handleCategories}
+                    }} 
                 >
                     {item}
                 </Controls.Typography>
@@ -185,10 +174,7 @@ const MenCategoriesComponent = ({closeMenu}) => {
             <Controls.Typography sx={{ fontWeight: "bold", mb: 1 }}>{category.title}</Controls.Typography>
             {category.menFour.map((item, idx) => (
                 <Controls.Typography
-                    key={idx}
-                    // onClick={() => item.link 
-                    //     && navigate(item.link)
-                    // }
+                    key={idx} 
                     sx={{
                         mb: 0.5,
                         fontSize:"13px",
@@ -223,8 +209,7 @@ const MenCategoriesComponent = ({closeMenu}) => {
                                     fontSize:"13px",
                                     cursor: item.link ? "pointer" : "default",
                                    '&:hover': item ? { textDecoration:"underline" } : {},
-                                }}
-                                // onClick={handleCategories}
+                                }} 
                             >
                                 {item.name}
                             </Controls.Typography>
@@ -250,8 +235,7 @@ const MenCategoriesComponent = ({closeMenu}) => {
                                     fontSize:"13px",
                                     cursor: item.link ? "pointer" : "default",
                                    '&:hover': item ? { textDecoration:"underline" } : {},
-                                }}
-                                // onClick={handleCategories}
+                                }} 
                             >
                                 {item.name}
                             </Controls.Typography>
@@ -277,8 +261,7 @@ const MenCategoriesComponent = ({closeMenu}) => {
                                     fontSize:"13px",
                                     cursor: item.link ? "pointer" : "default",
                                     '&:hover': item ? { textDecoration:"underline" } : {},
-                                }}
-                                // onClick={handleCategories}
+                                }} 
                             >
                                 {item.name}
                             </Controls.Typography>

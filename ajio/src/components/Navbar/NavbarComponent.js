@@ -11,8 +11,7 @@ const NavbarComponent = () => {
   const [open , setOpen] = useState(null)
   const [modal , setModal] = useState(null)
   const [token ,setToken] = useState(null)
-  const[name ,setName] = useState("")
-  const [number ,setNumber] = useState(null)
+  const[name ,setName] = useState("") 
   const [searchParams] = useSearchParams();
 
   

@@ -52,7 +52,7 @@ const ProductStatusBarComponent = ({item ,orderDate }) => {
       [`&.${stepConnectorClasses.alternativeLabel}`]: {
           ...(orientation === 'vertical'
               ? { left: 'calc(50% - 1px)', marginBottom: 5 ,} 
-              : { top: 5, marginLeft: -15, marginRight: -15 }), // Adjust for horizontal
+              : { top: 5, marginLeft: -15, marginRight: -15 }), 
       },
       [`&.${stepConnectorClasses.active}`]: {
           [`& .${stepConnectorClasses.line}`]: {
@@ -66,8 +66,8 @@ const ProductStatusBarComponent = ({item ,orderDate }) => {
       },
       [`& .${stepConnectorClasses.line}`]: {
           ...(orientation === 'vertical'
-              ? { width: 5, height: '50px', marginRight: 'auto', marginLeft:-6} // Vertical connector styles
-              : { height: 3, border: 'none', borderRadius: 1 }), // Horizontal connector styles
+              ? { width: 5, height: '50px', marginRight: 'auto', marginLeft:-6} 
+              : { height: 3, border: 'none', borderRadius: 1 }),  
           backgroundColor: 'transparent',
           borderTop:
               orientation === 'horizontal'
@@ -99,8 +99,7 @@ const ProductStatusBarComponent = ({item ,orderDate }) => {
             ? '#13ed4d'
             : '#eaeaf0',
           margin: '0 auto',
-          position: 'relative',
-          // left: -1.5,
+          position: 'relative', 
         };
       });
   

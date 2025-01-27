@@ -7,14 +7,12 @@ type:types.WISHLIST_POST_START
 })
 
 export const postWishlistSuccess = (data) => (
-    console.log("this is postWishlistSuccessAction---->" ,data),
     {
     type:types.WISHLIST_POST_SUCCESS,
     payload:data
 })
 
 export const postWishlistError = (error) => (
-    console.log("this is postWishlistErrorAction---->" ,error),
     {
     type:types.WISHLIST_POST_ERROR,
     payload:error
@@ -26,8 +24,6 @@ export const postWishlistInitiate = (userId,productId) => {
         try {
           const postWishlistdata = await postWishlistApi(userId,productId)
           dispatch(postWishlistSuccess(postWishlistdata))
-          // toast.success("product is added to wishlist")
-        //   navigate('/')
   
         } catch (err) {
           console.log("error",err)

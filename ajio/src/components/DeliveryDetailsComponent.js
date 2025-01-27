@@ -189,11 +189,7 @@ fetchAddress()
                 </>
 
 ) :
- (
- 
- 
-
-          
+ (       
     <Controls.Grid item mt={1} px={{ xs: 2, lg: 8 }}>
     {(firstValidItem || secondValidation) && (
       <Controls.Grid item sx={{ display: { xs: "block", sm: "flex" }, justifyContent: { xs: "flex-start", sm: "space-between" } }}>

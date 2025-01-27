@@ -15,16 +15,14 @@ export const deleteOrderReducer = (state = initialState, action) => {
         loading: true,
         error: null,
       };
-    case types.ORDER_DELETE_SUCCESS:
-        console.log("this is deleteOrderReducersuccessreducer----> ",action.payload);
+    case types.ORDER_DELETE_SUCCESS: 
       return {
         ...state,
         data: action.payload,
         loading: false,
         error: null,
       };
-    case types.ORDER_DELETE_ERROR:
-        console.log("this is deleteOrderReducererrorreducer----> ");
+    case types.ORDER_DELETE_ERROR: 
       return {
         ...state,
         loading: false,

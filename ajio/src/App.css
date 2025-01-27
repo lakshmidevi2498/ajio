@@ -41,15 +41,14 @@ body {
 }
 
 .swiper-pagination-bullet {
-  width: 20px; /* Adjust width as needed */
-  height: 2px; /* Adjust height as needed */
-  background-color: #ccc; /* Adjust color as needed */
-  /* border-radius: 0;  */
+  width: 20px; 
+  height: 2px; 
+  background-color: #ccc;   
   margin: 0 5px; 
 }
 
 
-/* HTML: <div class="loader"></div> */
+ 
 .loader {
   width: 50px;
   aspect-ratio: 1.154;

@@ -4,11 +4,9 @@ const endPoints = "wishlist";
 export const loadWishlistApi = async (userId) => {
   return new Promise(async (resolve, reject) => {
     try {
-      console.log("this is post call in API---->",endPoints);
+  
       const response = await api.get(`${endPoints}/${userId}`
       );
-      console.log("fetched user in loadCartApi", response);
-      console.log("fetched user in loadCartApi", response.data);
       resolve(response);
    
     } catch (error) {

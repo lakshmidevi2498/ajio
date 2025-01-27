@@ -101,7 +101,7 @@ class API {
       axios(axiosConfig)
   .then((response) => {
     if (response && response.status === STATUS_CODE.INTERNAL_SERVER_ERROR) {
-      const errorMessage = response.data.message  ;
+      // const errorMessage = response.data.message  ;
       // toast.error(errorMessage);
     } else {
       resolve(response);

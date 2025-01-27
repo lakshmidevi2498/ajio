@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {   useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -8,13 +8,11 @@ import Controls from '../commons/Controls';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useNavigate } from 'react-router-dom'; 
-import QuickViewComponent from './QuickViewComponent';
-import { loadProductsDataInitiate } from '../redux/actions/loadProductsAction';
+import QuickViewComponent from './QuickViewComponent'; 
 import { handleRecentView } from './GlobalFunction'; 
 
 const InnerSwiperComponent = ({data }) => {
-    const swiperRef = useRef(null);
-    const [images,setImages] = useState([])
+    const swiperRef = useRef(null); 
     const [hoveredIndex, setHoveredIndex] = useState(null)
     const [quickView, setQuickView] = useState(false)
     const [open, setOpen] = React.useState(false);

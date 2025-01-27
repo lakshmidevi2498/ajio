@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Modal, Grid, Typography, TextField, Button } from "@mui/material";
-import axios from "axios";
+import React, { useState } from "react";
+import { Modal, Grid, Typography, TextField, Button } from "@mui/material"; 
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { mobileLoginInitiate } from "../redux/actions/mobileLoginAction";
 import { getToken } from "./GlobalFunction";
 import { toast } from "react-toastify";
@@ -24,8 +23,7 @@ const style = {
 };
 
 const OtpComponent = ({ setModalOpen, modalOpen, phoneNumber,setOpen }) => {
-    const [otp, setOtp] = useState(Array(6).fill(""));
-    const navigate = useNavigate();
+    const [otp, setOtp] = useState(Array(6).fill("")); 
     const dispatch = useDispatch()
     const token = getToken()
    
@@ -51,22 +49,9 @@ const OtpComponent = ({ setModalOpen, modalOpen, phoneNumber,setOpen }) => {
 
         try {
             const user = await verifyOTP(otpCode);
-            toast.success(`Phone number verified! Welcome ${user.phoneNumber}`);
-            // console.log("accesstoken",user.accessToken)
+            toast.success(`Phone number verified! Welcome ${user.phoneNumber}`); 
             setModalOpen(false)
-            setOpen(false)
-            //  navigate('/' );
-
-            // const response = await axios.post("http://localhost:5000/verify-otp", {
-            //     otpCode,
-            //     phoneNumber,
-            // });
-            // if (response.data.success === true) {
-            //     alert("OTP verified successfully!");
-            //     navigate('/');
-            // } else {
-            //     alert("Invalid OTP. Please try again.");
-            // }
+            setOpen(false) 
         } catch (error) {
             console.error("Error verifying OTP:", error);
             alert("An error occurred. Please try again later.");
@@ -90,15 +75,6 @@ const OtpComponent = ({ setModalOpen, modalOpen, phoneNumber,setOpen }) => {
           if(!token){     
           await  dispatch(mobileLoginInitiate(phoneNumber,providerId,uId))
           }
-        //   const response = await axios.post('http://localhost:5000/sent-otp',{phoneNumber})
-   
-        //   console.log("response",response.data)
-        //   console.log("response",response.data.user.phoneNumber)
-        //   console.log("response",response.data.token)
-      
-          // Navigate to the desired route
-           // This should be an await function if used asynchronously
-      
           return user;
         } catch (error) {
           console.error("Error verifying OTP:", error);

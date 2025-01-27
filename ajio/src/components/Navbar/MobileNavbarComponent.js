@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import Controls from '../../commons/Controls'
-import theme from '../../utilities/theme'
-import NavLinksComponent from './NavLinksComponent'
+import theme from '../../utilities/theme' 
 import SmallNavbarComponent from './SmallNavbarComponent'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import SigninComponent from '../SigninComponent'
-import CartNavbarComponent from '../CartNavbarComponent'
-import PromisesComponent from '../PromisesComponent'
+import SigninComponent from '../SigninComponent' 
 
 const MobileNavbarComponent = ({promises ,cart ,count}) => {
 
   const [open, setOpen] = useState(null)
   const [modal, setModal] = useState(null)
   const [token, setToken] = useState(null)
-  const [name, setName] = useState("")
-  const [number, setNumber] = useState(null)
+  const [name, setName] = useState("") 
   const [searchParams] = useSearchParams();
 
 
@@ -70,9 +66,7 @@ const MobileNavbarComponent = ({promises ,cart ,count}) => {
   }, [name]);
 
   const navigate = useNavigate()
-  const handleNavigate = () => {
-    navigate('/')
-  }
+  
 
   const handleSignin = () => {
     setOpen(true)
@@ -101,11 +95,11 @@ const MobileNavbarComponent = ({promises ,cart ,count}) => {
             </Controls.Grid>
             <Controls.Grid item xs={name.length>5 ?12 :9}>
               <Controls.Grid item xs={12} sx={{ display: { xs: "block", sm: "flex" }, justifyContent: "space-between", }}>
-                {name != "" ?
+                {name !== "" ?
                   <>
                     <Controls.Grid item gap={1.5} sx={{ fontSize: { xs: "11px", }, display: "flex", letterSpacing: 1.5 ,}} lg={name.length>5 ? 10 :6} mt={0.8}>
                       <Controls.Grid item >
-                        <Controls.Typography variant='caption1' sx={{ fontSize: name.length > 5 ? "10px" : "14px", fontFamily: "SourceSansPro" }}                        >{name}</Controls.Typography>
+                        <Controls.Typography variant='caption1' sx={{ fontSize: name.length > 5 ? "10px" : "14px", fontFamily: "SourceSansPro" }} >{name}</Controls.Typography>
                       </Controls.Grid>
                       <Controls.Grid item mt={{sm:0.5}}>
                         <Controls.Typography variant='caption1' sx={{ fontFamily: "SourceSansPro",fontSize: name.length > 5 ? "10px" : "14px",  }}>My Account</Controls.Typography>
@@ -120,7 +114,7 @@ const MobileNavbarComponent = ({promises ,cart ,count}) => {
                     <Controls.Typography variant="caption1" sx={{ fontSize: { xs: "13px", sm: "13px", xxl: "20px" }, fontFamily: "SourceSansPro", cursor: 'pointer', }} onClick={handleSignin}>
                       SignIn
                     </Controls.Typography>
-                    <Controls.Typography variant="caption1" sx={{ fontSize: { xs: "13px", sm: "13px", xxl: "20px" }, fontFamily: "SourceSansPro", }}>
+                    <Controls.Typography variant="caption1" sx={{ fontSize: { xs: "13px", sm: "13px", xxl: "20px" }, fontFamily: "SourceSansPro",cursor: 'pointer', }}>
                       / Join AJIO
                     </Controls.Typography>
                   </Controls.Grid>
@@ -137,8 +131,6 @@ const MobileNavbarComponent = ({promises ,cart ,count}) => {
             </Controls.Grid>
           </Controls.Grid>
           <Controls.Grid item xs={12} sx={{}}>
-          
-          {/* { cart && <CartNavbarComponent  count={count}/>} */}
           </Controls.Grid>
 
           <Controls.Divider sx={{ marginTop: "10px", display: { xs: "block", sm: "none" }, }} xs={12} />

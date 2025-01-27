@@ -1,17 +1,19 @@
-import API from "../../API/API";
-const api = new API();
-const endPoints = "auth/google";
- 
+
 export const googleLoginApi = () => {
+  const allowedOrigins = process.env.NODE_ENV === 'production' 
+  ? 'https://ajio-2.onrender.com' 
+  : 'http://localhost:5050';
+  const allowedOriginsFrontend = process.env.NODE_ENV === 'production' 
+  ? 'https://ajio-2.onrender.com' 
+  : 'http://localhost:3000';
 
   return new Promise((resolve, reject) => {
   
-    const authWindow = window.open("https://ajio-2.onrender.com/auth/google", "_self");
-    // console.log("authWindow",authWindow)
+    const authWindow = window.open(`${allowedOrigins}/auth/google`, "_self");
 
  
     window.addEventListener("message", (event) => {
-      if (event.origin !== "https://ajio-2.onrender.com") return;  
+      if (event.origin !== allowedOriginsFrontend) return;  
 
       const { user, token, error } = event.data;
       console.log("event.data",event.data)

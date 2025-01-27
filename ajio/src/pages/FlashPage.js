@@ -9,7 +9,6 @@ import MainNavbarComponent from '../components/Navbar/MainNavbarComponent'
 const FlashPage = () => {
   return (
     <>
-    {/* <div class="loader"></div> */}
     <MainNavbarComponent  value1={"none"}  value2={"block"} value3={"none"} value4={"flex"} value8={ { xs: "130px", sm: "75px", md: "90px", }}/>
     <CorouselComponent/>
     <IconsComponent/>

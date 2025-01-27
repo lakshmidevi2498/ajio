@@ -4,7 +4,11 @@ import jwt from 'jsonwebtoken';
 import '../passport.js';   
 
 const router = express.Router();
-const CLIENT_URI = "http://localhost:3000/";
+const allowedOriginsFrontend = process.env.NODE_ENV === 'production' 
+? 'https://ajio-2.onrender.com' 
+: 'http://localhost:3000';
+
+
 
 router.get('/', (req, res, next) => {
   console.log('Facebook Auth route hit');
@@ -51,7 +55,7 @@ router.get('/callback',
         authType: "facebook"
       }).toString();
       console.log("query", query);
-      res.redirect(`https://ajio-2.onrender.com?${query}`);
+      res.redirect(`${allowedOriginsFrontend}?${query}`);
     } catch (error) {
       console.error('Error during Facebook callback:', error);
       res.status(500).send({ message: 'Server Error' });

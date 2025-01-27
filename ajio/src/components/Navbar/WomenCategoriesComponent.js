@@ -156,10 +156,7 @@ const categoriesTwo = [
             <Controls.Typography sx={{ fontWeight: "bold", mb: 1 }}>{category.title}</Controls.Typography>
             {category.womenTwo.map((item, idx) => (
                 <Controls.Typography
-                    key={idx}
-                    // onClick={() => item.link 
-                        // && navigate(item.link)
-                    // }
+                    key={idx} 
                     sx={{
                         mb: 0.5,
                         fontSize:"13px",

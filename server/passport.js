@@ -5,7 +5,11 @@ import userSchema from './models/userSchemaModal.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
- 
+
+
+const allowedOrigins = process.env.NODE_ENV === 'production' 
+? 'https://ajio-2.onrender.com' 
+: 'http://localhost:5050';
 
 // Google Strategy
 passport.use(
@@ -13,7 +17,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://ajio-2.onrender.com/auth/google/callback", 
+      callbackURL: `${allowedOrigins}/auth/google/callback`, 
       passReqToCallback: true
     },
     async (req, accessToken, refreshToken, profile, done) => {
@@ -50,7 +54,7 @@ passport.use(
     {
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL: "https://ajio-2.onrender.com/auth/facebook/callback",
+      callbackURL: `${allowedOrigins}/auth/facebook/callback`,
       // passReqToCallback: true
       profileFields: ['id', 'displayName', 'photos', 'email'], 
       scope: ['email']

@@ -15,16 +15,14 @@ export const razorpayOrderValidateReducer = (state = initialState, action) => {
         loading: true,
         error: null,
       };
-    case types.RAZORPAY_ORDER_VALIDATE_POST_SUCCESS:
-        console.log("this is razorpayOrderValidateReducersuccessreducer----> ",action.payload);
+    case types.RAZORPAY_ORDER_VALIDATE_POST_SUCCESS: 
       return {
         ...state,
         data: action.payload,
         loading: false,
         error: null,
       };
-    case types.RAZORPAY_ORDER_VALIDATE_POST_ERROR:
-        console.log("this is razorpayOrderValidateReducererrorreducer----> ");
+    case types.RAZORPAY_ORDER_VALIDATE_POST_ERROR: 
       return {
         ...state,
         loading: false,

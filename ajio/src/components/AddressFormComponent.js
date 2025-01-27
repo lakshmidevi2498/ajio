@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Controls from '../commons/Controls'
-import axios from 'axios'
-import { useDispatch, useSelector } from 'react-redux'
-import { loadProfileInitiate } from '../redux/actions/loadProfileAction'
+import Controls from '../commons/Controls' 
+import { useDispatch, useSelector } from 'react-redux' 
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { getToken, getUserId } from './GlobalFunction'
@@ -11,12 +9,11 @@ import { postAddressInitiate } from '../redux/actions/postAddressAction'
 import { loadAddressInitiate } from '../redux/actions/loadAddressAction'
 import { updateAddressInitiate } from '../redux/actions/updateAddressAction'
 
-const AddressFormComponent = ({setOpen ,setShowAddress ,editAddress}) => {
+const AddressFormComponent = ({setShowAddress ,editAddress}) => {
     const [address ,setAddress] = useState(null)
     const [index,setIndex] = useState(null)
     const dispatch = useDispatch()
-    const userId = getUserId()
-    const token = getToken()
+    const userId = getUserId() 
     useEffect(()=>{
         const edit = sessionStorage.getItem('editAddress')
         setIndex(edit)
@@ -155,10 +152,7 @@ const AddressFormComponent = ({setOpen ,setShowAddress ,editAddress}) => {
                                 {formik.touched.pincode && formik.errors.pincode && (
                                     <div style={{ color: "red", fontSize: "10px" }}>{formik.errors.pincode}</div>
                                 )}
-                            </Controls.Grid>
-
-
-                            {/* area Address */}
+                            </Controls.Grid> 
                             <Controls.Grid item xs={12} mb={2}>
 
                                 <Controls.TextField
@@ -261,9 +255,9 @@ const AddressFormComponent = ({setOpen ,setShowAddress ,editAddress}) => {
                                     </Controls.FormLabel>
                                     <Controls.RadioGroup
                                         aria-labelledby="address-type-label"
-                                        name="addressType" // Matches Formik's field name
-                                        value={formik.values.addressType} // Bind to Formik's value
-                                        onChange={formik.handleChange} // Bind Formik's onChange
+                                        name="addressType"  
+                                        value={formik.values.addressType}  
+                                        onChange={formik.handleChange} 
                                         row
                                     >
                                         <Controls.FormControlLabel
@@ -325,12 +319,9 @@ const AddressFormComponent = ({setOpen ,setShowAddress ,editAddress}) => {
                                     <div style={{ color: "red", fontSize: "10px", marginLeft: "16px" }}>
                                         {formik.errors.terms}
                                     </div>
-                                )}
-
-
-                            {/* Buttons */}
+                                )} 
                             <Controls.Grid item sx={{ display: "flex", justifyContent: "center" }} xs={12} mt={6}>
-  {/* RESET Button */}
+  
   <Controls.Button
     type="button"
     variant="outlined"
@@ -345,7 +336,7 @@ const AddressFormComponent = ({setOpen ,setShowAddress ,editAddress}) => {
     RESET
   </Controls.Button>
 
-  {/* Conditional Button */}
+ 
   {index !== null ? (
     <Controls.Button
       type="submit"

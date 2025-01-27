@@ -7,14 +7,12 @@ type:types.PROFILE_LOAD_START
 })
 
 export const loadProfileSuccess = (data) => (
-    console.log("this is loadProfileSuccessAction---->" ,data),
     {
     type:types.PROFILE_LOAD_SUCCESS,
     payload:data
 })
 
 export const loadProfileError = (error) => (
-    console.log("this is loadProfileErrorAction---->" ,error),
     {
     type:types.PROFILE_LOAD_ERROR,
     payload:error
@@ -25,8 +23,7 @@ export const loadProfileInitiate = (userId,token) => {
         dispatch(loadProfileStart())
         try {
           const loadProfiledata = await loadProfileApi(userId,token)
-          dispatch(loadProfileSuccess(loadProfiledata))
-        //   navigate('/')
+            dispatch(loadProfileSuccess(loadProfiledata))
   
         } catch (err) {
           console.log("error",err)

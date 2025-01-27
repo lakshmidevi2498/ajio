@@ -151,7 +151,7 @@ const MyOrdersComponent = () => {
                             }}
                             PaperProps={{
                                 sx: {
-                                    width: "150px", // Set the desired width
+                                    width: "150px",  
                                 },
                             }}
                             sx={{
@@ -166,8 +166,7 @@ const MyOrdersComponent = () => {
                                         sx={{
                                             fontSize: "12px",
                                             fontWeight: selectedOption === option ? "bold" : "normal",
-                                            color: selectedOption === option ? "primary.main" : "inherit",
-                                            width: "100%", // Ensure MenuItems take the full width
+                                            color: selectedOption === option ? "primary.main" : "inherit", 
                                         }}
                                     >
                                         {option}
