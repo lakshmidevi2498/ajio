@@ -2,13 +2,8 @@ import React from 'react'
 import Controls from '../commons/Controls'
 import { Outlet, useNavigate } from 'react-router-dom' 
 
-const ProfileComponent = ({view}) => {
+const ProfileComponent = () => {
   const navigate = useNavigate()
-    const handleLogout = () => {
-        sessionStorage.clear();
-        navigate('/')
-
-      }
 
       const categories = [
         {
@@ -62,7 +57,6 @@ const ProfileComponent = ({view}) => {
                         mb={idx === 2 ? -10 : 0.5}
                         sx={{
                           
-                            fontSize: "13px",
                             cursor: item.link ? "pointer" : "default",
                             color:"#6d6d6d",
                             fontWeight:"bold",

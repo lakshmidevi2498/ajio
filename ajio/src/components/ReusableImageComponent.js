@@ -8,7 +8,7 @@ const ReusableImageComponent = ({data}) => {
     useEffect(() => {
         if (data?.images) {
           setImages(data.images);
-          console.log("data.images", data.images);
+          // console.log("data.images", data.images);
         }
       }, [data]);
   return (

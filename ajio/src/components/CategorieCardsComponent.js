@@ -11,7 +11,6 @@ const CategorieCardsComponent = ({ isThreeGrid }) => {
     const [open, setOpen] = React.useState(false);
     const [data, setData] = useState([])
     const [innerData, setinnerData] = useState([])
-    const [recentlyViewed, setRecentlyViewed] = useState([]);
     const navigate= useNavigate() 
     const { categoryId, subcategoryId } = useParams();
     const productData = useSelector((state) => state.loadproductsdata.data || {}) 
@@ -27,11 +26,6 @@ const CategorieCardsComponent = ({ isThreeGrid }) => {
         console.log("Filtered Data:", filtered);
     }, [productData, categoryId, subcategoryId]);
 
-
-      
-    useEffect(() => {
-        localStorage.setItem("recentlyViewed", JSON.stringify(recentlyViewed));
-      }, [recentlyViewed]);
 
     const handleHover = (item) => {
 

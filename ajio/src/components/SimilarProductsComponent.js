@@ -1,24 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react'; 
+import React, { useEffect, useState } from 'react'; 
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation'; 
 import Controls from '../commons/Controls'; 
-import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'; 
 import { loadProductsDataInitiate } from '../redux/actions/loadProductsAction';
-import { handleRecentView } from './GlobalFunction';
 import InnerSwiperComponent from './InnerSwiperComponent';
 
 const SimilarProductsComponent = ({innerproductsdata}) => {
     console.log("SimilarProductsComponent",innerproductsdata)
 
-    const swiperRef = useRef(null); 
-    const [quickView, setQuickView] = useState(false)
-    const [open, setOpen] = React.useState(false);
-    const [innerData, setinnerData] = useState([])
     const [data , setData] = useState(null)
-
-    const navigate = useNavigate()
     const dispatch = useDispatch()
     const productData = useSelector((state) => state.loadproductsdata.data || {})
     console.log("productData", productData)
@@ -28,8 +20,8 @@ const SimilarProductsComponent = ({innerproductsdata}) => {
 
     useEffect(() => {
         const pdata = productData?.data || [];
-        const categoryId = innerproductsdata.categories;
-        const subcategoryId = innerproductsdata.subcatergory;
+        const categoryId = innerproductsdata?.categories;
+        const subcategoryId = innerproductsdata?.subcatergory;
         const filtered = pdata.filter(
             (item) =>
                 item.categories === categoryId &&
@@ -40,22 +32,7 @@ const SimilarProductsComponent = ({innerproductsdata}) => {
     }, [productData, innerproductsdata]);
     
 
-    const handleHover = (item) => {
-
-        setQuickView(true)
-        setinnerData(item)
-        setOpen(true)
-    }
-    const handleClose = () => {
-        setQuickView(false)
-        setOpen(false)
-    }
-
-    const handleNavigate = (item) => {
-      handleRecentView(item)
-        navigate('/innerproducts',{state:{innerproductsdata:item}})
-    }
-
+    
   return (
     <>
      <Controls.Grid item xs={12} sx={{ position: "relative" }} my={4}>

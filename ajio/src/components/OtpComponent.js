@@ -40,6 +40,10 @@ const OtpComponent = ({ setModalOpen, modalOpen, phoneNumber,setOpen }) => {
         }
     };
 
+    const handleClose = () => {
+        setModalOpen(false);
+    };
+
     const handleVerifyOtp = async () => {
         const otpCode = otp.join("");
         if (!otpCode || otpCode.length < otp.length) {
@@ -56,10 +60,6 @@ const OtpComponent = ({ setModalOpen, modalOpen, phoneNumber,setOpen }) => {
             console.error("Error verifying OTP:", error);
             alert("An error occurred. Please try again later.");
         }
-    };
-
-    const handleClose = () => {
-        setModalOpen(false);
     };
 
     const verifyOTP = async (otp) => {

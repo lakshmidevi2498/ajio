@@ -1,16 +1,15 @@
 
 
+export const handleRecentView = (item) => {
+    console.log("item in handleRecentView", item);
 
-export function handleRecentView(item) {
-    console.log("item in handleRecentView",item)
-    const storedProducts = JSON.parse(sessionStorage.getItem("recentlyViewed"));
-    const updatedList = storedProducts
-      ? [...storedProducts, item].slice(-5) 
-      : [item];
-  
+    const storedProducts = JSON.parse(sessionStorage.getItem("recentlyViewed")) || [];
+    const filteredProducts = storedProducts.filter(product => product._id !== item._id);
+    const updatedList = [...filteredProducts, item].slice(-5);
+
     sessionStorage.setItem("recentlyViewed", JSON.stringify(updatedList));
-  
-}
+};
+
 
 
 

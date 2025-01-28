@@ -3,8 +3,6 @@ import Controls from '../commons/Controls'
 import { useEffect } from 'react';
 import { Formik, Form, Field } from 'formik'; 
 import * as Yup from 'yup';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { adminLoginInitiate } from '../redux/actions/adminLoginAction';
 import {useSelector , useDispatch} from 'react-redux' 
 import theme from '../utilities/theme';
@@ -29,12 +27,13 @@ const AdminLoginComponent = () => {
 
   const adminData = useSelector((state)=>state.adminloginreducer.data)
   console.log("adminData",adminData)
-  const allowedOrigins = process.env.NODE_ENV === 'production' 
-  ? 'https://ajio-2.onrender.com' 
-  : 'http://localhost:5050';
+
  
 
 useEffect(() => {
+  const allowedOrigins = process.env.NODE_ENV === 'production' 
+  ? 'https://ajio-2.onrender.com' 
+  : 'http://localhost:5051';
   const admin = adminData?.data?.admin
  
   const role = admin?.role

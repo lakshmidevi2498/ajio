@@ -25,7 +25,7 @@ const CategoriesSubAccordainComponent = () => {
               </Controls.Grid>
               <Controls.AccordionDetails>
               {cont.map((txt, index) => (
-    < >
+    < React.Fragment>
       <Controls.Grid key={index}
         item gap={1}
         onMouseEnter={() => setHoveredTwoIndex(index)} 
@@ -62,7 +62,7 @@ const CategoriesSubAccordainComponent = () => {
         )}
       </Controls.Grid>
       <Controls.Divider />
-    </>
+    </React.Fragment>
   ))}</Controls.AccordionDetails>
             </Controls.Accordion>
     </>

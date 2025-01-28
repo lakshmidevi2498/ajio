@@ -9,7 +9,7 @@ dotenv.config();
 
 const allowedOrigins = process.env.NODE_ENV === 'production' 
 ? 'https://ajio-2.onrender.com' 
-: 'http://localhost:5050';
+: 'http://localhost:5051';
 
 // Google Strategy
 passport.use(

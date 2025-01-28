@@ -2,7 +2,7 @@
 export const facebookLoginApi = async () => {
   const allowedOrigins = process.env.NODE_ENV === 'production' 
   ? 'https://ajio-2.onrender.com' 
-  : 'http://localhost:5050';
+  : 'http://localhost:5051';
   const allowedOriginsFrontend = process.env.NODE_ENV === 'production' 
   ? 'https://ajio-2.onrender.com' 
   : 'http://localhost:3000';

@@ -9,32 +9,32 @@ const InnerProductDetailsComponent = ({innerData, icons, marginValue, value2, di
     <Controls.Grid item xs={12} sm={6} md={5} sx={{ alignItems: "center", textAlign: "center", justifyContent: { xs: "center", sm: "end" }, }} >
             <Controls.Grid item sx={{ marginTop: marginValue, }} mx='auto'>
               <Controls.Grid item>
-                <Controls.Typography variant="caption1" sx={{ color: "#866528", fontWeight: "medium", fontSize: { xs: "13px", md: "15px" } }}>{innerData.brandname}</Controls.Typography>
+                <Controls.Typography variant="caption1" sx={{ color: "#866528", fontWeight: "medium", fontSize: { xs: "13px", md: "15px" } }}>{innerData?.brandname}</Controls.Typography>
               </Controls.Grid>
               <Controls.Grid item>
-                <Controls.Typography variant="caption1" sx={{ fontWeight: "medium", fontSize: { xs: "12px", md: "15px" } }}>{innerData.name}</Controls.Typography>
+                <Controls.Typography variant="caption1" sx={{ fontWeight: "medium", fontSize: { xs: "12px", md: "15px" } }}>{innerData?.name}</Controls.Typography>
               </Controls.Grid>
-              {innerData.rating !== 0 &&
+              {innerData?.rating !== 0 &&
                 <><Controls.Box
                   sx={{
                     display: "inline-flex",
                     alignItems: "center",
-                    backgroundColor: innerData.rating >= 3 ? "green" : "red",
+                    backgroundColor: innerData?.rating >= 3 ? "green" : "red",
                     color: "white",
                     padding: "4px 8px",
                     borderRadius: "4px",
                   }} my={0.2}
                 >
-                  <Controls.Typography variant="caption1" sx={{ fontSize: { xs: "12px", md: "15px" } }}>{innerData.rating}</Controls.Typography>
+                  <Controls.Typography variant="caption1" sx={{ fontSize: { xs: "12px", md: "15px" } }}>{innerData?.rating}</Controls.Typography>
                   <Controls.StarBorderIcon sx={{ fontSize: { xs: "12px", md: "15px" }, marginLeft: "4px", marginTop: { xs: 0, sm: 0.5 } }} />
                 </Controls.Box>
-                  <Controls.Typography variant="caption1" sx={{ color: "lightgray", marginLeft: "5px", fontSize: { xs: "12px", md: "15px" } }}>{innerData.reviews} Rating</Controls.Typography>
+                  <Controls.Typography variant="caption1" sx={{ color: "lightgray", marginLeft: "5px", fontSize: { xs: "12px", md: "15px" } }}>{innerData?.reviews} Rating</Controls.Typography>
                 </>}
               <Controls.Grid item>
-                <Controls.Typography variant="caption1" sx={{ fontWeight: "medium" }}>₹{innerData.price}</Controls.Typography>
+                <Controls.Typography variant="caption1" sx={{ fontWeight: "medium" }}>₹{innerData?.price}</Controls.Typography>
               </Controls.Grid>
-              {innerData.discountOne && <Controls.Grid item>
-                <Controls.Typography variant="caption1" sx={{ color: "#866528", fontWeight: "medium", fontSize: { xs: "12px", md: "15px" } }}>MRP </Controls.Typography><Controls.Typography variant="caption1" sx={{ textDecoration: "line-through", fontWeight: "normal", color: "#866528", fontSize: { xs: "12px", sm: "15px" } }}>Rs. {innerData.discountOne}</Controls.Typography><Controls.Typography variant="caption1" sx={{ fontWeight: "bold", color: "#866528", fontSize: { xs: "12px", sm: "15px" } }}>{innerData.discountTwo}</Controls.Typography>
+              {innerData?.discountOne && <Controls.Grid item>
+                <Controls.Typography variant="caption1" sx={{ color: "#866528", fontWeight: "medium", fontSize: { xs: "12px", md: "15px" } }}>MRP </Controls.Typography><Controls.Typography variant="caption1" sx={{ textDecoration: "line-through", fontWeight: "normal", color: "#866528", fontSize: { xs: "12px", sm: "15px" } }}>Rs. {innerData?.discountOne}</Controls.Typography><Controls.Typography variant="caption1" sx={{ fontWeight: "bold", color: "#866528", fontSize: { xs: "12px", sm: "15px" } }}>{innerData?.discountTwo}</Controls.Typography>
               </Controls.Grid>}
               <Controls.Grid item>
                 <Controls.Typography variant="caption1" sx={{ fontSize: "12px", color: "gray" }}>Additional GST may apply</Controls.Typography>
@@ -55,7 +55,7 @@ const InnerProductDetailsComponent = ({innerData, icons, marginValue, value2, di
                       marginX: "auto"
                     }}
                   /><Controls.Grid item sm={10} >
-                    <Controls.Typography variant="caption1" sx={{ fontSize: { xs: "12px", lg: "12px" }, color: "#866528", }}>Use Code {innerData.code}</Controls.Typography>
+                    <Controls.Typography variant="caption1" sx={{ fontSize: { xs: "12px", lg: "12px" }, color: "#866528", }}>Use Code {innerData?.code}</Controls.Typography>
                   </Controls.Grid>
                   <Controls.Grid item sm={10}>
                     <Controls.Typography variant="caption1" sx={{ fontSize: "11px", color: "#176D93", }}>T&C</Controls.Typography>
@@ -76,7 +76,7 @@ const InnerProductDetailsComponent = ({innerData, icons, marginValue, value2, di
                 <Controls.Grid item xs={8} sx={{ textAlign: "start" }}>
                   <Controls.Grid item sx={{ backgroundColor: "#fff8eb", borderLeft: "1px dashed black", borderBottom: "1px dashed black" }} px={.3}>
                     <Controls.Typography variant="caption1" sx={{ fontSize: "11px", color: "gray" }}>Get it for</Controls.Typography>
-                    <Controls.Typography variant="caption1" sx={{ fontSize: "11px", color: "green" }}>₹{innerData.getitprice}</Controls.Typography>
+                    <Controls.Typography variant="caption1" sx={{ fontSize: "11px", color: "green" }}>₹{innerData?.getitprice}</Controls.Typography>
                   </Controls.Grid>
                   <Controls.Grid item p={0} m={0}>
                     <Controls.Typography variant="caption1" sx={{ fontSize: { xs: "10px", md: "12px", lg: "12px" }, padding: 0, margin: 0, lineHeight: "normal", }}>Get Flat 400 off on 2590 & above. Get Flat 500 off on app only offer.</Controls.Typography>
@@ -92,9 +92,9 @@ const InnerProductDetailsComponent = ({innerData, icons, marginValue, value2, di
               </Controls.Grid>
 
               <Controls.Grid item mt={0.2} >
-                <Controls.Typography variant="caption1" sx={{ fontSize: "14px", }}>{innerData.color}</Controls.Typography>
+                <Controls.Typography variant="caption1" sx={{ fontSize: "14px", }}>{innerData?.color}</Controls.Typography>
                 <Controls.Grid item mt={0.2} >
-                  <Controls.Box compoent="span" sx={{ fontSize: "14px", backgroundColor: innerData.color, borderRadius: "50px", width: "20px", height: "20px", marginX: "auto", border: "1px solid black" }} p={2}></Controls.Box>
+                  <Controls.Box compoent="span" sx={{ fontSize: "14px", backgroundColor: innerData?.color, borderRadius: "50px", width: "20px", height: "20px", marginX: "auto", border: "1px solid black" }} p={2}></Controls.Box>
                 </Controls.Grid>
                 <Controls.Grid item my={0.2} sx={{ justifyContent: "center" }}>
                   <Controls.Grid item>
@@ -148,14 +148,14 @@ const InnerProductDetailsComponent = ({innerData, icons, marginValue, value2, di
                 </Controls.Grid>
 
               </Controls.Grid>
-              {isCartProduct(innerData._id) ? (
-                <Controls.Grid item my={1} xs={10} mx="auto" onClick={() => handleRemoveFromBag(innerData._id)} >
+              {isCartProduct(innerData?._id) ? (
+                <Controls.Grid item my={1} xs={10} mx="auto" onClick={() => handleRemoveFromBag(innerData?._id)} >
                   <Controls.Button variant="contained" sx={{ fontSize: { xs: "12px", lg: "18px" }, backgroundColor: "white", color: "#866528", paddingX: { xs: "40px", md: "35px", lg: "50px" }, border: "1px solid #866528", fontWeight: "normal", '&:hover': { border: "1px solid #866528", backgroundColor: "#866528", color: 'white' } }}><Controls.ShoppingBagOutlinedIcon sx={{ color: "#866528", marginRight: "3px", fontSize: { xs: "14px", md: "18px" }, '&:hover': { color: "white" } }} />Already in Cart</Controls.Button>
                   <Controls.Typography variant='caption1' sx={{ color: "gray", fontSize: { xs: "10px", sm: "8px", md: "10px", lg: "12px" }, display: value2 }}>HANDPICKED STYLES | ASSURED QUALITY</Controls.Typography>
 
                 </Controls.Grid>
               ) : (
-                <Controls.Grid item my={1} xs={10} mx="auto" onClick={() => handleAddToBag(innerData._id, selectedSize)}  >
+                <Controls.Grid item my={1} xs={10} mx="auto" onClick={() => handleAddToBag(innerData?._id, selectedSize)}  >
                   <Controls.Button variant="contained" sx={{ fontSize: { xs: "12px", lg: "18px" }, backgroundColor: "#866528", color: "white", paddingX: { xs: "40px", md: "35px", lg: "60px" }, '&:hover': { border: "white" }, }}><Controls.ShoppingBagOutlinedIcon sx={{ color: "white", marginRight: "3px", fontSize: { xs: "14px", md: "18px" } }} />ADD TO BAG</Controls.Button>
                   <Controls.Typography variant='caption1' sx={{ color: "gray", fontSize: { xs: "10px", sm: "8px", md: "10px", lg: "12px" }, display: value2 }}>HANDPICKED STYLES | ASSURED QUALITY</Controls.Typography>
 
@@ -230,13 +230,13 @@ const InnerProductDetailsComponent = ({innerData, icons, marginValue, value2, di
 
               </Controls.Grid>
               <Controls.Grid item sx={{ display: displayValue }}>
-                {isWishlistProduct(innerData._id) ? (
+                {isWishlistProduct(innerData?._id) ? (
                   <Controls.Grid item xs={10} mx="auto">
                     <Controls.Button variant="contained" sx={{ fontSize: { xs: "12px", lg: "14px" }, backgroundColor: "white", color: "#866528", paddingX: { xs: "5px", lg: "20px" }, border: "1px solid #866528", fontWeight: "normal", '&:hover': { backgroundColor: "white" } }}><Controls.FavoriteIcon sx={{ color: "#866528", marginRight: "3px", fontSize: { xs: "14px", md: "18px" }, '&:hover': { color: "white" } }} />REMOVE FROM WISHLIST</Controls.Button>
                   </Controls.Grid>
 
                 ) : (
-                  <Controls.Grid item xs={10} mx="auto" onClick={() => handleAddToWshlist(innerData._id)}>
+                  <Controls.Grid item xs={10} mx="auto" onClick={() => handleAddToWshlist(innerData?._id)}>
                     <Controls.Button variant="contained" sx={{ fontSize: { xs: "12px", lg: "18px" }, backgroundColor: "white", color: "#866528", paddingX: { xs: "15px", lg: "30px" }, border: "1px solid #866528", fontWeight: "normal", '&:hover': { backgroundColor: "white" } }}><Controls.FavoriteBorderIcon sx={{ color: "#866528", marginRight: "3px", fontSize: { xs: "14px", md: "18px" }, }} />SAVE TO WISHLIST</Controls.Button>
                   </Controls.Grid>
 
@@ -261,7 +261,7 @@ const InnerProductDetailsComponent = ({innerData, icons, marginValue, value2, di
                     product details
                   </Controls.AccordionSummary>
                   <Controls.AccordionDetails>
-                    {Object.entries(innerData).map(([key, value], index) => (
+                    {innerData && Object.entries(innerData).map(([key, value], index) => (
 
                       key !== 'image' && key !== '_id' && key !== 'innerimages' && key !== '__v' && (
                         <Controls.Grid

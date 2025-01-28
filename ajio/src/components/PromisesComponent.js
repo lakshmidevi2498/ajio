@@ -31,7 +31,7 @@ const PromisesComponent = ({value1,value2 ,value3,value4,value5,value6,value7,va
 
     return (
         <Controls.Grid container justifyContent="center" >
-            <Controls.Grid xs={12} sx={{borderTop:value1,borderBottom:value2,justifyContent:value5,textAlign:value6,alignItems:"center",display:"flex"}}p={value3} my={value4}>
+            <Controls.Grid item xs={12} sx={{borderTop:value1,borderBottom:value2,justifyContent:value5,textAlign:value6,alignItems:"center",display:"flex"}}p={value3} my={value4}>
             <Controls.Grid item xs={12} sm={value9} lg={9.5} xl={12}sx={{margin:"auto",alignItems:"center",display:"flex",flexDirection:{xs:"row",sm:"row"},}} ml={value11}>
             {content.map((item, index) => (
                 <Controls.Grid item xs={3} sm={6} md={3} key={index} mb={2} gap={1}>

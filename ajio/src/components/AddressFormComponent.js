@@ -73,7 +73,7 @@ const AddressFormComponent = ({setShowAddress ,editAddress}) => {
 
           
               if (method === "post") { 
-                dispatch(postAddressInitiate(values, userId));
+                await dispatch(postAddressInitiate(values, userId));
                 await dispatch(loadAddressInitiate(userId))
               }
               else{ 

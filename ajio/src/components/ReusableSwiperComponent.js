@@ -15,7 +15,7 @@ const ReusableSwiperComponent = ({ data, value1, value2, value3, value4, value5,
     useEffect(() => {
         if (data?.images) {
             setImages(data.images);
-            console.log("data.images", data.images);
+            // console.log("data.images", data.images);
         }
     }, [data]);
 

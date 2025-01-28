@@ -1,16 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React, { useEffect,  useState } from 'react'; 
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import { Pagination, Autoplay, Navigation } from 'swiper/modules';
+import 'swiper/css/navigation'; 
 import Controls from '../commons/Controls' 
-import { getToken, getUserId } from './GlobalFunction';
-import axios from 'axios';
-import { useDispatch ,useSelector } from 'react-redux';
-import { loadCartInitiate } from '../redux/actions/loadCartAction';
-import { postCartInitiate } from '../redux/actions/postCartAction';
+import { getToken, getUserId } from './GlobalFunction'; 
+import { useDispatch  } from 'react-redux';
+import { loadCartInitiate } from '../redux/actions/loadCartAction'; 
 import { updateCartInitiate } from '../redux/actions/updateCartAction';
+import SizeModalSwiperComponent from './SizeModalSwiperComponent';
 
 const style = {
     position: "absolute",
@@ -21,8 +18,7 @@ const style = {
     maxWidth: { md: "800px", lg: "380px", xxl: "1200px" },
     height: "auto",
     maxHeight: "90vh",
-    bgcolor: "background.paper",
-    // border: "2px solid lightgray",
+    bgcolor: "background.paper", 
     boxShadow: 24,
     p: 0,
     overflowY: "auto",
@@ -30,7 +26,7 @@ const style = {
 
 const SizeModalComponent = ({id, open, setOpen, setProduct, productData }) => {
     console.log("productData SizeModalComponent", productData,id)
-    const swiperRef = useRef(null);
+ 
     const [selectedSize, setSelectedSize] = useState("S")
     const [updateProduct,setUpdateProduct] = useState({})
     const userId = getUserId()
@@ -41,8 +37,7 @@ const SizeModalComponent = ({id, open, setOpen, setProduct, productData }) => {
         setOpen(false);
     };
     useEffect(()=>{
-        setUpdateProduct(productData)
-        // console.log("")
+        setUpdateProduct(productData) 
     },[productData])
 
     const sizes = ["XS", "S", "M", "L", "XL", "2XL", "3XL"];
@@ -128,100 +123,8 @@ const SizeModalComponent = ({id, open, setOpen, setProduct, productData }) => {
                                 Select size
                             </Controls.Typography>
                             </Controls.Grid>
-                            <Controls.Grid
-                                item
-                                xs={12}
-                                sx={{
-                                    width: "100%",
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                    textAlign: "center",
-                                    position: "relative",   
-                                }}my={2}
-                            >
-                                <Swiper
-                                    spaceBetween={10}
-                                    navigation={{
-                                        nextEl: '.custom-swiper-button-next',
-                                        prevEl: '.custom-swiper-button-prev',
-                                    }}
-                                    modules={[Navigation]}
-                                    onSwiper={(swiper) => {
-                                        swiperRef.current = swiper;
-                                    }}
-                                    breakpoints={{
-                                        1440: { slidesPerView: 6 },
-                                        1024: { slidesPerView: 5 },
-                                        768: { slidesPerView: 5 },
-                                        576: { slidesPerView: 5 },
-                                        320: { slidesPerView: 5 },
-                                    }}
-                                    style={{
-                                        width: "100%",
-                                        maxWidth: "95%",   
-                                        margin: "0 auto",  
-                                        display: "flex",  
-                                        justifyContent: "center",
-                                    }}
-                                >
-                                    {sizes.map((item, index) => (
-                                        <SwiperSlide key={index}>
-                                            <Controls.Typography
-                                                variant="caption1"
-                                                onClick={() => handleSizeClick(item)}
-                                                sx={{
-                                                    fontSize: { xs: "10px", xxl: "16px" },
-                                                    borderRadius: "50%",
-                                                    border: `1px solid ${selectedSize === item ? "#866528" : "lightgray"
-                                                        }`,
-                                                    backgroundColor:
-                                                        selectedSize === item ? "#176D93" : "transparent",
-                                                    color: selectedSize === item ? "white" : "#000",
-                                                    display: "flex",
-                                                    alignItems: "center",
-                                                    justifyContent: "center",
-                                                    width: { xs: "30px", lg: "30px" },
-                                                    height: { xs: "30px", lg: "30px" },
-                                                    cursor: "pointer",
-                                                }}
-                                            >
-                                                {item}
-                                            </Controls.Typography>
-                                        </SwiperSlide>
-                                    ))}
-                                </Swiper>
 
-                                {/* Custom Navigation Buttons */}
-                                <Controls.Grid
-                                    className="custom-swiper-button-prev"
-                                    sx={{
-                                        display: "flex",
-                                        position: "absolute",
-                                        top: "45%",
-                                        left: "-40px",
-                                        transform: "translateY(-50%)",
-                                        zIndex: 10,
-                                        padding: 2,
-                                    }}
-                                >
-                                    <Controls.ChevronLeftIcon sx={{ color: "lightgray", fontSize: "35px" }} />
-                                </Controls.Grid>
-                                <Controls.Grid
-                                    className="custom-swiper-button-next"
-                                    sx={{
-                                        display: "flex",
-                                        position: "absolute",
-                                        top: "45%",
-                                        right: "-10px",
-                                        transform: "translateY(-50%)",
-                                        zIndex: 10,
-                                        padding: 1,
-                                    }}
-                                >
-                                    <Controls.ChevronRightIcon sx={{ color: "lightgray", fontSize: "35px" }} />
-                                </Controls.Grid>
-                            </Controls.Grid>
+                            <SizeModalSwiperComponent handleSizeClick={handleSizeClick} sizes={sizes} selectedSize={selectedSize}/>
 
                         </Controls.Grid>
                         <Controls.Grid item xs={12} sx={{ textAlign: "left", mb: 1 }} px={2}>

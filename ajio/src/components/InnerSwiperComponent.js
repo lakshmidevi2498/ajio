@@ -34,6 +34,7 @@ const InnerSwiperComponent = ({data }) => {
       handleRecentView(item)
         navigate('/innerproducts',{state:{innerproductsdata:item}})
     }
+    const uniqueProducts = Array.from(new Map(data?.map(item => [item._id, item])).values());
 
   return (
     <>
@@ -56,8 +57,8 @@ const InnerSwiperComponent = ({data }) => {
           320: { slidesPerView: 1 },
         }}
       >
-        {data?.map((item, index) => (
-          <SwiperSlide key={index}>
+        {uniqueProducts?.map((item, index) => (
+          <SwiperSlide key={item._id}>
             <Controls.Grid
               item
               xs={12}
@@ -78,6 +79,7 @@ const InnerSwiperComponent = ({data }) => {
               <Controls.Box
                 component="img"
                 src={item.image}
+                
                 sx={{
                   width: "100%",
                   height: "auto",

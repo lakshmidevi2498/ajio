@@ -59,7 +59,7 @@ const ShopMoreProducts = ({innerproductsdata}) => {
             fontFamily:"lora"
           }}
         >
-          Shop More {innerproductsdata.subcatergory}
+          Shop More {innerproductsdata?.subcatergory}
         </Controls.Typography>
 
      
@@ -75,7 +75,7 @@ const ShopMoreProducts = ({innerproductsdata}) => {
       <Controls.Grid item sm={12} md={10}lg={8} sx={{display:"flex",justifyContent:"space-between",marginX:"auto",}} gap={1} mt={5}mb={8}>
            <Controls.Grid item xs={4} sx={{backgroundColor:"#f8f8f8",}}p={2} >
             <Controls.Grid item xs={12} sx={{display:"flex",justifyContent:"center",}} gap={1} my="auto">
-              <Controls.Typography variant='caption1' sx={{color:"#307597",}}>All {innerproductsdata.subcatergory}</Controls.Typography>
+              <Controls.Typography variant='caption1' sx={{color:"#307597",}}>All {innerproductsdata?.subcatergory}</Controls.Typography>
               <Controls.ChevronRight sx={{color:"gray"}}/>
             </Controls.Grid>
             </Controls.Grid>
@@ -87,7 +87,7 @@ const ShopMoreProducts = ({innerproductsdata}) => {
             </Controls.Grid>
             <Controls.Grid item xs={4} sx={{backgroundColor:"#f8f8f8",}}p={2}>
             <Controls.Grid item xs={12} sx={{display:"flex",justifyContent:"center"}} gap={1} my="auto">
-              <Controls.Typography variant='caption1' sx={{color:"#307597"}}>Brand: {innerproductsdata.brandname}</Controls.Typography>
+              <Controls.Typography variant='caption1' sx={{color:"#307597"}}>Brand: {innerproductsdata?.brandname}</Controls.Typography>
               <Controls.ChevronRight sx={{color:"gray"}}/>
             </Controls.Grid>
             </Controls.Grid>

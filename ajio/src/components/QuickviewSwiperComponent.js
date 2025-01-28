@@ -7,7 +7,7 @@ import Controls from "../commons/Controls";
 
 const QuickviewSwiperComponent = ({ innerData, marginValue, height }) => {
   console.log("innserimages data", innerData)
-  console.log("innserimages", innerData.innerimages)
+  console.log("innserimages", innerData?.innerimages)
   const [selectedIndex, setSelectedIndex] = useState(0);
   const horizontalSwiperRef = useRef(null);
 
