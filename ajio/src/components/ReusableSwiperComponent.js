@@ -59,7 +59,6 @@ const ReusableSwiperComponent = ({ data, value1, value2, value3, value4, value5,
                             <Controls.CardMedia
                                 component="img"
                                 src={item}
-                                loading="lazy"
                                 sx={{
                                     width: '100%',
                                     objectFit: 'cover',
